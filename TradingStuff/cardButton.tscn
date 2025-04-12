@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw13r2tuco25i"]
+
+[ext_resource type="Texture2D" uid="uid://b02bkyguge61" path="res://icon.svg" id="1_0ko6j"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 155.0
+offset_bottom = 153.0
+texture_normal = ExtResource("1_0ko6j")
+texture_pressed = ExtResource("1_0ko6j")
+texture_hover = ExtResource("1_0ko6j")
+texture_disabled = ExtResource("1_0ko6j")
+texture_focused = ExtResource("1_0ko6j")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 132.0
+offset_right = 129.0
+offset_bottom = 165.0
+text = "Name"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 162.0
+offset_right = 131.0
+offset_bottom = 195.0
+text = "Price"
