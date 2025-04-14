@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs78shlf270n7"]
+
+[ext_resource type="Script" uid="uid://cb4d7qtnef83q" path="res://TradingStuff/CardTradeUI/CardTradeUI.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="2_5wdf0"]
+
+[node name="CardTradeUI" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainHBox" type="HBoxContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+
+[node name="LeftPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Avatar" type="TextureRect" parent="UIRoot/MainHBox/LeftPanel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UIRoot/MainHBox/LeftPanel"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5wdf0")
+theme_override_font_sizes/font_size = 40
+text = "$69"
+
+[node name="SellButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5wdf0")
+theme_override_font_sizes/font_size = 40
+text = "Sell"
+
+[node name="UpButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+layout_mode = 2
+text = "<TO>"
+
+[node name="BeButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+layout_mode = 2
+text = "<BE>"
+
+[node name="ContinueButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+layout_mode = 2
+text = "(continued)"
+
+[node name="MiddlePanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/MiddlePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="RightPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="PlayerMoney" type="Label" parent="UIRoot/MainHBox/RightPanel"]
+layout_mode = 2
+text = "$42"
+
+[node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 2
