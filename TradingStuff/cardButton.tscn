@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw13r2tuco25i"]
+[gd_scene load_steps=4 format=3 uid="uid://dw13r2tuco25i"]
 
 [ext_resource type="Texture2D" uid="uid://b43yy5mt7asc6" path="res://TradingStuff/Style/Icon2square.png" id="1_0ko6j"]
+[ext_resource type="Script" uid="uid://du7jfuyf33ird" path="res://TradingStuff/card_button.gd" id="2_qx7yv"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_m4pr4"]
 
 [node name="TextureButton" type="TextureButton"]
 offset_left = 1.0
@@ -13,21 +15,36 @@ texture_pressed = ExtResource("1_0ko6j")
 texture_hover = ExtResource("1_0ko6j")
 texture_disabled = ExtResource("1_0ko6j")
 texture_focused = ExtResource("1_0ko6j")
+script = ExtResource("2_qx7yv")
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 147.0
 offset_right = 186.0
 offset_bottom = 180.0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_m4pr4")
+theme_override_font_sizes/font_size = 60
 text = "Name"
 
-[node name="Label2" type="Label" parent="."]
+[node name="PriceLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 187.0
 offset_right = 188.0
 offset_bottom = 220.0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_m4pr4")
+theme_override_font_sizes/font_size = 60
 text = "Price"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 80.0
+offset_right = 212.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("3_m4pr4")
+theme_override_font_sizes/font_size = 35
+text = "Choose"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

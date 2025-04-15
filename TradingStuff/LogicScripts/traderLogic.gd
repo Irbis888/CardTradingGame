@@ -4,6 +4,7 @@ extends Object
 
 const Card = preload("res://TradingStuff/LogicScripts/cardLogic.gd")  # если понадобится типизация
 
+var name: String
 var LI: int  # ЛИ — валюта
 var collection: Array  # Коллекция карт
 

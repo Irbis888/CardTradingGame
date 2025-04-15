@@ -3,7 +3,7 @@ class_name Player
 extends Trader
 
 func _init(name: String, li: int, starting_cards: Array):
-	super._init(name, li, starting_cards)
+	super(name, li, starting_cards)
 
 func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	for i in give:
@@ -38,7 +38,7 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 		
 	take.sort()
 	take.reverse()
-	for i in give:
+	for i in take:
 		counter.collection.remove_at(i)
 	
 	for i in taken:

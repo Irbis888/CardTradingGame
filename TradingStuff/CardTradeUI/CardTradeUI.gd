@@ -3,17 +3,68 @@ extends CanvasLayer
 @onready var money_label = $UIRoot/MainHBox/LeftPanel/MoneyLabel
 @onready var sell_button = $UIRoot/MainHBox/LeftPanel/SellButton
 @onready var player_money_label = $UIRoot/MainHBox/RightPanel/PlayerMoney
+@onready var trader_name_label = $UIRoot/MainHBox/LeftPanel/TraderNameLabel
+@onready var player_name_label = $UIRoot/MainHBox/RightPanel/PlayerName
+@onready var opponent_cards = $UIRoot/MainHBox/MiddlePanel/OpponentCards
+@onready var player_cards = $UIRoot/MainHBox/RightPanel/PlayerCards
+
+
+var CardScene = load("res://TradingStuff/cardButton.tscn")
+
+
 
 var player_money = 69
+var player: Player
+var counter: Trader
 
 func _ready():
 	sell_button.pressed.connect(on_sell_pressed)
-	update_money()
+	#update_money()
+	
+func init(player: Player, counter: Trader) -> void:
+	self.player = player
+	self.counter = counter
+	redraw_ui()
+	
 
 func on_sell_pressed():
-	player_money += 5
-	update_money()
+	var give : Array[int] = []
+	var c : int = 0
+	for i in player_cards.get_children():
+		if i.chosen:
+			give.append(c)
+		c += 1
+	var take : Array[int] = []
+	c = 0
+	for i in opponent_cards.get_children():
+		if i.chosen:
+			take.append(c)
+		c += 1	
+	
+	player.trade(counter, give, take)
+	redraw_ui()
 
-func update_money():
-	money_label.text = "$%d" % player_money
-	player_money_label.text = "$%d" % (player_money - 27) # просто пример разницы
+func redraw_ui():
+	for child in opponent_cards.get_children():
+		child.queue_free()
+	for child in player_cards.get_children():
+		child.queue_free()
+	player_name_label.text = player.name
+	trader_name_label.text = counter.name
+	
+	player_money_label.text = "$" + str(player.LI)
+	trader_name_label.text = "$" + str(counter.LI)
+	
+	var card
+	for i in counter.collection:
+		card = CardScene.instantiate()		
+		opponent_cards.add_child(card)
+		card.init(i)
+	for i in player.collection:
+		card = CardScene.instantiate()		
+		player_cards.add_child(card)
+		card.init(i)
+
+
+func _on_up_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://TradingStuff/main_trade_screen.tscn")
