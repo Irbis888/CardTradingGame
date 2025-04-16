@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bts748d3aodce"]
+[gd_scene load_steps=3 format=3 uid="uid://bts748d3aodce"]
 
+[ext_resource type="Script" uid="uid://dyhefiw7wcvx6" path="res://TradingStuff/main_trade_screen.gd" id="1_utwgo"]
 [ext_resource type="Script" uid="uid://cdd0trc38c7tb" path="res://TradingStuff/dummyPass.gd" id="1_x4wm4"]
 
 [node name="MainTradeScreen" type="Node2D"]
+script = ExtResource("1_utwgo")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 57.0

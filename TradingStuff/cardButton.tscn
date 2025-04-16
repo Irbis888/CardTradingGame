@@ -17,7 +17,19 @@ texture_disabled = ExtResource("1_0ko6j")
 texture_focused = ExtResource("1_0ko6j")
 script = ExtResource("2_qx7yv")
 
+[node name="CheckButton" type="CheckButton" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 68.0
+offset_top = 80.0
+offset_right = 212.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("3_m4pr4")
+theme_override_font_sizes/font_size = 35
+text = "Choose"
+
 [node name="NameLabel" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 66.0
 offset_top = 147.0
@@ -28,6 +40,7 @@ theme_override_font_sizes/font_size = 60
 text = "Name"
 
 [node name="PriceLabel" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 68.0
 offset_top = 187.0
@@ -37,14 +50,14 @@ theme_override_fonts/font = ExtResource("3_m4pr4")
 theme_override_font_sizes/font_size = 60
 text = "Price"
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
 layout_mode = 0
-offset_left = 68.0
-offset_top = 80.0
-offset_right = 212.0
-offset_bottom = 148.0
-theme_override_fonts/font = ExtResource("3_m4pr4")
-theme_override_font_sizes/font_size = 35
-text = "Choose"
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 256.0
+offset_bottom = 252.0
+mouse_filter = 2
+expand_mode = 5
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

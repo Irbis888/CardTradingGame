@@ -22,10 +22,10 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	
 	for i in give:
 		given.append(self.collection[i])
-		income += int(self.collection[i].get_price() / counter.get_mult())
+		income += int(self.collection[i].base_price / counter.get_mult())
 	for i in take:
 		taken.append(counter.collection[i])
-		income -= int(counter.collection[i].get_price() * counter.get_mult())
+		income -= int(counter.collection[i].base_price * counter.get_mult())
 	
 	self.LI += income
 	counter.LI -= income

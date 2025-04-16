@@ -1557,7 +1557,23 @@ theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 40
 text = "$69"
 
-[node name="SellButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/LeftPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="MiddlePanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fnhhu")
+
+[node name="SellButton" type="Button" parent="UIRoot/MainHBox/MiddlePanel"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
@@ -1568,47 +1584,33 @@ flat = true
 icon_alignment = 1
 text_direction = 1
 
-[node name="UpButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="UpButton" type="Button" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 40
 text = "Return"
 
-[node name="BeButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="TradeSummary" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 40
-text = "<TO BE>"
+theme_override_font_sizes/font_size = 60
+text = "Summary:
+"
 
-[node name="ContinueButton" type="Button" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="TradedCards" type="VBoxContainer" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 40
-text = "<continued>"
-
-[node name="TradedCards" type="VBoxContainer" parent="UIRoot/MainHBox/LeftPanel"]
-layout_mode = 2
-
-[node name="MiddlePanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("4_fnhhu")
-
-[node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/MiddlePanel"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 2
 
 [node name="RightPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel"]
+[node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-columns = 2
+expand_mode = 2
 
 [node name="PlayerName" type="Label" parent="UIRoot/MainHBox/RightPanel"]
 layout_mode = 2
@@ -1622,11 +1624,13 @@ theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 50
 text = "$42"
 
-[node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
-custom_minimum_size = Vector2(100, 100)
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/RightPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
-expand_mode = 2
 
-[connection signal="pressed" from="UIRoot/MainHBox/LeftPanel/UpButton" to="." method="_on_up_button_pressed"]
+[node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[connection signal="pressed" from="UIRoot/MainHBox/MiddlePanel/UpButton" to="." method="_on_up_button_pressed"]

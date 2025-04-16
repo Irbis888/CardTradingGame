@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckow23j46gks0"
-path="res://.godot/imported/drachi.jpg-2f118892a7cb58424a13636e59191e72.ctex"
+path="res://.godot/imported/draci.jpg-4ada47f6c2ecf26abc71dcae76f4fc19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TradingStuff/Style/CardPics/drachi.jpg"
-dest_files=["res://.godot/imported/drachi.jpg-2f118892a7cb58424a13636e59191e72.ctex"]
+source_file="res://TradingStuff/Style/CardPics/draci.jpg"
+dest_files=["res://.godot/imported/draci.jpg-4ada47f6c2ecf26abc71dcae76f4fc19.ctex"]
 
 [params]
 

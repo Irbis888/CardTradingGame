@@ -1,0 +1,65 @@
+
+[gd_scene load_steps=6 format=3]
+
+[node name="TradeScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlayerSide" type="VBoxContainer" parent="MainContainer"]
+margin_right = 300.0
+margin_bottom = 600.0
+
+[node name="PlayerAvatar" type="TextureRect" parent="MainContainer/PlayerSide"]
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="PlayerLabel" type="Label" parent="MainContainer/PlayerSide"]
+text = "You: 69$"
+
+[node name="PlayerCardsLabel" type="Label" parent="MainContainer/PlayerSide"]
+text = "Your cards:"
+
+[node name="PlayerScroll" type="ScrollContainer" parent="MainContainer/PlayerSide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="PlayerCardContainer" type="HBoxContainer" parent="MainContainer/PlayerSide/PlayerScroll"]
+
+[node name="Center" type="VBoxContainer" parent="MainContainer"]
+margin_right = 200.0
+margin_bottom = 600.0
+
+[node name="TextBox" type="RichTextLabel" parent="MainContainer/Center"]
+rect_min_size = Vector2(200, 100)
+
+[node name="SellButton" type="Button" parent="MainContainer/Center"]
+text = "Sell"
+
+[node name="ReturnButton" type="Button" parent="MainContainer/Center"]
+text = "Return"
+
+[node name="TraderSide" type="VBoxContainer" parent="MainContainer"]
+margin_right = 300.0
+margin_bottom = 600.0
+
+[node name="TraderAvatar" type="TextureRect" parent="MainContainer/TraderSide"]
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="TraderLabel" type="Label" parent="MainContainer/TraderSide"]
+text = "Joe: 42$"
+
+[node name="TraderCardsLabel" type="Label" parent="MainContainer/TraderSide"]
+text = "Opponent's cards:"
+
+[node name="TraderScroll" type="ScrollContainer" parent="MainContainer/TraderSide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="TraderCardContainer" type="HBoxContainer" parent="MainContainer/TraderSide/TraderScroll"]

@@ -1,12 +1,13 @@
 extends CanvasLayer
 
 @onready var trader_money_label = $UIRoot/MainHBox/LeftPanel/MoneyLabel
-@onready var sell_button = $UIRoot/MainHBox/LeftPanel/SellButton
+@onready var sell_button = $UIRoot/MainHBox/MiddlePanel/SellButton
 @onready var player_money_label = $UIRoot/MainHBox/RightPanel/PlayerMoney
 @onready var trader_name_label = $UIRoot/MainHBox/LeftPanel/TraderNameLabel
 @onready var player_name_label = $UIRoot/MainHBox/RightPanel/PlayerName
-@onready var opponent_cards = $UIRoot/MainHBox/MiddlePanel/OpponentCards
-@onready var player_cards = $UIRoot/MainHBox/RightPanel/PlayerCards
+@onready var opponent_cards = $UIRoot/MainHBox/LeftPanel/ScrollContainer/OpponentCards
+@onready var player_cards = $UIRoot/MainHBox/RightPanel/ScrollContainer/PlayerCards
+@onready var summary_label = $UIRoot/MainHBox/MiddlePanel/TradeSummary
 
 @onready var player_portrait = $UIRoot/MainHBox/RightPanel/PlayerAvatar
 @onready var trader_portrait = $UIRoot/MainHBox/LeftPanel/Avatar

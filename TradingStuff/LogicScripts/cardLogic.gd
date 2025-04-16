@@ -3,7 +3,7 @@ class_name Card
 
 
 var name: String
-var base_price: int
+var base_price: int = 10
 var rarity: int
 
 var str: int
@@ -31,9 +31,15 @@ func get_literal_name() -> String:
 		_:
 			return "NO"
 
-func _init(name: String, base_price: int):
+func _init(name: String, pic: Resource, str, def, mag, series, rarity):
 	self.name = name
-	self.base_price = base_price
+	self.picture = pic
+	self.str = str
+	self.def = def
+	self.mag = mag
+	self.rarity = rarity
+	self.series = series
+	base_price = abs(self.get_price())
 
 func get_price() -> int:
 	# Пока просто возвращает базовую цену

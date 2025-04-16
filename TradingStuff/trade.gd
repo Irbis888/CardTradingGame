@@ -5,10 +5,12 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 	var ui = get_tree().current_scene.get_node("CardTradeUI")
-	var my_collection = [Card.new("Spider", 10), Card.new("Tarakan", 15)]
-	var his_collection = [Card.new("Tommygun", 10), Card.new("Mob Boss", 15)]
+	var his_collection = []
+	var size = 10
+	for i in size:
+		his_collection.append(Globals.cardList.pick_random())
 	ui.init(Globals.playerAccount,
-	 Trader.new("Jack", 69, his_collection, preload("res://TradingStuff/Style/Portraits/M5.png")))
+	 Trader.new("Siddy", 69, his_collection, preload("res://TradingStuff/Style/Portraits/M5.png")))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
