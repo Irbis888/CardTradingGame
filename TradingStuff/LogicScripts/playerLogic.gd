@@ -2,8 +2,8 @@
 class_name Player
 extends Trader
 
-func _init(name: String, li: int, starting_cards: Array):
-	super(name, li, starting_cards)
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource):
+	super(name, li, starting_cards, portrait)
 
 func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	for i in give:

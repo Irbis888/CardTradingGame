@@ -15,6 +15,10 @@ run/main_scene="uid://bts748d3aodce"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/size/viewport_width=1960
