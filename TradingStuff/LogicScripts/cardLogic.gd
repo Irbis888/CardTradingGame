@@ -13,6 +13,7 @@ var mag: int
 var series: String
 var picture: Resource
 
+
 func get_literal_name() -> String:
 	match rarity:
 		0:
@@ -34,8 +35,9 @@ func _init(name: String, base_price: int):
 	self.name = name
 	self.base_price = base_price
 
-func get_price(coeffVector: Vector3i) -> int:
+func get_price() -> int:
 	# Пока просто возвращает базовую цену
+	var coeffVector = Vector3i(1,1,1) * randi()%10
 	var sum = int(Vector3(coeffVector).dot(Vector3(str, def, mag)))
 	sum += (rarity+1) * randf_range(0.5, 1.5) * 20
 	sum *= randf_range(0.8, 1.2)

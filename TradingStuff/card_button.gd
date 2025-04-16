@@ -9,6 +9,8 @@ var cardObject: Card
 var chosen: bool = false
 
 func init(card: Card) -> void:
+	var coeffs = Vector3i(5, 3, 7)
+	
 	self.cardObject = card
 	name_label.text = cardObject.name
 	price_label.text = "$" + str(cardObject.get_price())

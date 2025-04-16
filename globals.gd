@@ -10,6 +10,6 @@ var cardList: Array[Card]
 func _ready() -> void:
 	pass
 	
-func create_cards -> void:
-	
+func create_cards () -> void:
+	pass
 	
