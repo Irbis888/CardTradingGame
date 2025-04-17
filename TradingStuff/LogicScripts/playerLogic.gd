@@ -4,6 +4,31 @@ extends Trader
 
 func _init(name: String, li: int, starting_cards: Array, portrait: Resource):
 	super(name, li, starting_cards, portrait)
+	
+func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
+	for i in give:
+		if i >= len(self.collection) or i < 0:
+			print("Bad given card indices")
+			return -1
+	
+	for i in take:
+		if i >= len(counter.collection) or i < 0:
+			print("Bad taken card indices")
+			return -1
+			
+	var given = []
+	var taken = []
+	var income : int = 0
+	
+	for i in give:
+		given.append(self.collection[i])
+		income += int(self.collection[i].base_price / counter.get_mult())
+	for i in take:
+		taken.append(counter.collection[i])
+		income -= int(counter.collection[i].base_price * counter.get_mult())
+	
+	
+	return income
 
 func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	for i in give:

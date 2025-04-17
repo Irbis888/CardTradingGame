@@ -37,12 +37,13 @@ var nameList = [
 
 var my_collection = []
 var playerAccount : Player
+var nextTrader: Trader
 
 
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 42, my_collection, preload("res://TradingStuff/Style/Portraits/M4.png"))
+	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/M4.png"))
 	
 func generate_collection(size:int):
 		for i in size:

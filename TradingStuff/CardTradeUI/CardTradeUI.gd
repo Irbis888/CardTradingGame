@@ -43,12 +43,43 @@ func on_sell_pressed():
 	for i in opponent_cards.get_children():
 		if i.chosen:
 			take.append(c)
-		c += 1	
-	
+		c += 1
+			
 	player.trade(counter, give, take)
 	redraw_ui()
 
+func gen_summary():
+	var give : Array[int] = []
+	var c : int = 0
+	for i in player_cards.get_children():
+		if i.chosen:
+			give.append(c)
+		c += 1
+	var take : Array[int] = []
+	c = 0
+	for i in opponent_cards.get_children():
+		if i.chosen:
+			take.append(c)
+		c += 1
+	var cost = player.priceCount(counter, give, take)
+	var out = """Summary:
+		"""
+	if cost < 0:
+		out += "You get $" + str(-cost)
+	elif cost > 0:
+		out += "You lose $" + str(cost)
+	out += "\nYou give:\n"
+	for i in give:
+		out += player.collection[i].name + "\n"
+	out += "\nYou take:\n"
+	for i in take:
+		out += counter.collection[i].name + "\n"
+	return out
+		
+	
+
 func redraw_ui():
+	#summary_label.text = gen_summary()
 	for child in opponent_cards.get_children():
 		child.queue_free()
 	for child in player_cards.get_children():
@@ -66,11 +97,11 @@ func redraw_ui():
 	for i in counter.collection:
 		card = CardScene.instantiate()		
 		opponent_cards.add_child(card)
-		card.init(i)
+		card.init(i, self)
 	for i in player.collection:
 		card = CardScene.instantiate()		
 		player_cards.add_child(card)
-		card.init(i)
+		card.init(i,self)
 
 
 func _on_up_button_pressed() -> void:

@@ -1590,6 +1590,12 @@ theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 40
 text = "Return"
 
+[node name="Label" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5wdf0")
+theme_override_font_sizes/font_size = 60
+text = "Does not work"
+
 [node name="TradeSummary" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")

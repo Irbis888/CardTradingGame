@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://de1glvpnlkiqg"]
+
+[ext_resource type="Script" uid="uid://dowciun22c754" path="res://trader_button.gd" id="1_kchh0"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="1_puob8"]
+
+[node name="Button" type="Button"]
+texture_filter = 1
+offset_right = 203.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("1_puob8")
+theme_override_font_sizes/font_size = 40
+text = "Trade with"
+script = ExtResource("1_kchh0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
