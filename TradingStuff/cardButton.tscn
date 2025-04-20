@@ -60,4 +60,6 @@ offset_bottom = 252.0
 mouse_filter = 2
 expand_mode = 5
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

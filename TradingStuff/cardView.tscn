@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csve18x6nitdg"]
+[gd_scene load_steps=6 format=3 uid="uid://d3cypyp7313y8"]
 
-[ext_resource type="Texture2D" uid="uid://ckow23j46gks0" path="res://TradingStuff/Style/CardPics/draci.jpg" id="1_v68bh"]
-[ext_resource type="Texture2D" uid="uid://d235vtmdv72eh" path="res://TradingStuff/Style/CardFrames/fU.png" id="2_mgepw"]
+[ext_resource type="Script" uid="uid://qt3u4kk1pcsr" path="res://TradingStuff/card_view.gd" id="1_e6qnf"]
+[ext_resource type="Texture2D" uid="uid://br6kd5mivyfpx" path="res://TradingStuff/Style/CardPics/vittolupo.jpg" id="1_mgepw"]
+[ext_resource type="Texture2D" uid="uid://c80nyumaiifen" path="res://TradingStuff/Style/CardFrames/fSP.png" id="2_e6qnf"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_e6qnf"]
 [ext_resource type="Texture2D" uid="uid://notw1gr3ofsp" path="res://TradingStuff/Style/Icon1.png" id="3_mgepw"]
 
@@ -11,10 +12,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1602.0
-offset_bottom = -633.0
+offset_right = -1410.0
+offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e6qnf")
 
 [node name="Portrait1280x853" type="TextureRect" parent="."]
 clip_contents = true
@@ -24,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_v68bh")
+texture = ExtResource("1_mgepw")
 expand_mode = 1
 
 [node name="Frame" type="TextureRect" parent="."]
@@ -32,9 +34,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 18.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_mgepw")
+texture = ExtResource("2_e6qnf")
 expand_mode = 1
 
 [node name="SeriesFrame" type="TextureRect" parent="Frame"]
@@ -45,9 +49,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -153.5
-offset_top = -56.0
+offset_top = -85.0
 offset_right = 153.5
-offset_bottom = -12.0
+offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_mgepw")
@@ -65,7 +69,7 @@ offset_right = -4.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_e6qnf")
 theme_override_font_sizes/font_size = 50
@@ -81,9 +85,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -162.0
-offset_top = -186.0
+offset_top = -228.1
 offset_right = 162.0
-offset_bottom = -48.0
+offset_bottom = -90.1
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -92,6 +96,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 3.0
+offset_right = -15.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -125,46 +133,48 @@ theme_override_font_sizes/font_size = 45
 text = "MAG: 7"
 autowrap_mode = 1
 
-[node name="RarityLabel" type="Label" parent="Frame"]
+[node name="RarityLabel" type="Label" parent="Frame/StatPanel"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.05
-anchor_right = 0.75
-anchor_bottom = 0.1
-offset_left = 103.75
-offset_top = 313.2
-offset_right = 78.25
-offset_bottom = 396.25
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 61.5
+offset_top = 7.0
+offset_right = 142.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_e6qnf")
 theme_override_font_sizes/font_size = 50
-text = "Rariry
+text = "Rarity
 "
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Frame"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 335.0
-offset_bottom = 55.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.0
+offset_top = 35.0
+offset_right = 159.0
+offset_bottom = 74.0
+grow_horizontal = 2
 
 [node name="NameLabel" type="Label" parent="Frame/Panel"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.05
-anchor_right = 0.75
-anchor_bottom = 0.1
-offset_left = -1.5
-offset_top = -7.95
-offset_right = -26.0
-offset_bottom = 31.1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_e6qnf")
 theme_override_font_sizes/font_size = 50

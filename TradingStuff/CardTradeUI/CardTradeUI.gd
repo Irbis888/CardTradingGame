@@ -11,6 +11,7 @@ extends CanvasLayer
 
 @onready var player_portrait = $UIRoot/MainHBox/RightPanel/PlayerAvatar
 @onready var trader_portrait = $UIRoot/MainHBox/LeftPanel/Avatar
+@onready var myCard = $UIRoot/MainHBox/MiddlePanel/TradedCards
 
 
 var CardScene = load("res://TradingStuff/cardButton.tscn")
@@ -65,9 +66,9 @@ func gen_summary():
 	var out = """Summary:
 		"""
 	if cost < 0:
-		out += "You get $" + str(-cost)
+		out += "You lose $" + str(-cost)
 	elif cost > 0:
-		out += "You lose $" + str(cost)
+		out += "You get $" + str(cost)
 	out += "\nYou give:\n"
 	for i in give:
 		out += player.collection[i].name + "\n"

@@ -1605,6 +1605,8 @@ text = "Summary:
 
 [node name="TradedCards" type="VBoxContainer" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="RightPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
 custom_minimum_size = Vector2(300, 0)
