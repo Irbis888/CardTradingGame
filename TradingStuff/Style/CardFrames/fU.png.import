@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqi271k17wh6j"
-path="res://.godot/imported/Chippindale.jpg-e34e25013425016eea5eb85bee29991b.ctex"
+uid="uid://d235vtmdv72eh"
+path="res://.godot/imported/fU.png-9068d2ff79cdc158e76bde3f38405179.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TradingStuff/Style/CardPics/Chippindale.jpg"
-dest_files=["res://.godot/imported/Chippindale.jpg-e34e25013425016eea5eb85bee29991b.ctex"]
+source_file="res://TradingStuff/Style/CardFrames/fU.png"
+dest_files=["res://.godot/imported/fU.png-9068d2ff79cdc158e76bde3f38405179.ctex"]
 
 [params]
 
