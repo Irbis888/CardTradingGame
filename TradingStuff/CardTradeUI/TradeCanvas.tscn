@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://bs78shlf270n7"]
+[gd_scene load_steps=18 format=4 uid="uid://bs78shlf270n7"]
 
 [ext_resource type="Script" uid="uid://cb4d7qtnef83q" path="res://TradingStuff/CardTradeUI/CardTradeUI.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="2_5wdf0"]
+[ext_resource type="Texture2D" uid="uid://btx5kmj51wuyq" path="res://TradingStuff/Style/Portraits/CharacterFrame.png" id="2_im8wl"]
 [ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="3_m3ht3"]
 [ext_resource type="Theme" uid="uid://wvbj4rarj3ea" path="res://TradingStuff/Style/trade_panel.tres" id="4_fnhhu"]
+[ext_resource type="Texture2D" uid="uid://de1m654mq2857" path="res://TradingStuff/Style/CardFrames/fSSP.png" id="6_lf15b"]
 
 [sub_resource type="Image" id="Image_i4qsn"]
 data = {
@@ -1530,40 +1532,49 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="LeftPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
-custom_minimum_size = Vector2(200, 0)
+[node name="RightPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_by4qj")
 
-[node name="Avatar" type="TextureRect" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 expand_mode = 2
 
-[node name="TraderNameLabel" type="Label" parent="UIRoot/MainHBox/LeftPanel"]
-texture_filter = 1
+[node name="PlayerFrame" type="TextureRect" parent="UIRoot/MainHBox/RightPanel/PlayerAvatar"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("2_im8wl")
+expand_mode = 2
+
+[node name="PlayerName" type="Label" parent="UIRoot/MainHBox/RightPanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 40
-text = "Trader name"
+theme_override_font_sizes/font_size = 50
+text = "PlayerName"
 
-[node name="MoneyLabel" type="Label" parent="UIRoot/MainHBox/LeftPanel"]
-texture_filter = 1
+[node name="PlayerMoney" type="Label" parent="UIRoot/MainHBox/RightPanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 40
-text = "$69"
+theme_override_font_sizes/font_size = 50
+text = "$42"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/LeftPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/RightPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/LeftPanel/ScrollContainer"]
+[node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
@@ -1590,12 +1601,6 @@ theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 40
 text = "Return"
 
-[node name="Label" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 60
-text = "Does not work"
-
 [node name="TradeSummary" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
@@ -1608,36 +1613,53 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="RightPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
-custom_minimum_size = Vector2(300, 0)
+[node name="LeftPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_by4qj")
 
-[node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
+[node name="Avatar" type="TextureRect" parent="UIRoot/MainHBox/LeftPanel"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 expand_mode = 2
 
-[node name="PlayerName" type="Label" parent="UIRoot/MainHBox/RightPanel"]
+[node name="TraderFrame" type="TextureRect" parent="UIRoot/MainHBox/LeftPanel/Avatar"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("6_lf15b")
+expand_mode = 2
+
+[node name="TraderNameLabel" type="Label" parent="UIRoot/MainHBox/LeftPanel"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 50
-text = "PlayerName"
+theme_override_font_sizes/font_size = 40
+text = "Trader name"
 
-[node name="PlayerMoney" type="Label" parent="UIRoot/MainHBox/RightPanel"]
+[node name="MoneyLabel" type="Label" parent="UIRoot/MainHBox/LeftPanel"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 50
-text = "$42"
+theme_override_font_sizes/font_size = 40
+text = "$69"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/RightPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/LeftPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel/ScrollContainer"]
+[node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/LeftPanel/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 

@@ -31,7 +31,9 @@ func _on_mouse_entered() -> void:
 	if card_view_instance == null:
 		card_view_instance = card_view_scene.instantiate()
 		parent.myCard.add_child(card_view_instance)
-		card_view_instance.global_position = get_global_mouse_position() + Vector2(10, 10) # немного сместим от курсора
+		#card_view_instance.global_position = get_global_mouse_position() + Vector2(10, -200) # немного сместим от курсора
+		#card_view_instance.z_index = 100
+		#card_view_instance.top_level = true
 		card_view_instance.init(cardObject)
 
 func _on_mouse_exited() -> void:
