@@ -1,92 +1,383 @@
 [
 	{
-		"attack": 7,
-		"defense": 3,
 		"id": 0,
-		"magic": 3,
-		"name": "DraRicci",
+		"name": "Chippindale",
+		"picture": "chippindale.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 3,
+		"defense": 2,
+		"magic": 1
+	},
+	{
+		"id": 1,
+		"name": "Pororo",
+		"picture": "pororo.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 2,
+		"defense": 3,
+		"magic": 2
+	},
+	{
+		"id": 2,
+		"name": "OldGarry",
+		"picture": "oldgarry.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 1,
+		"defense": 4,
+		"magic": 1
+	},
+	{
+		"id": 3,
+		"name": "Quizzle",
+		"picture": "quizzle.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 4,
+		"defense": 1,
+		"magic": 1
+	},
+	{
+		"id": 4,
+		"name": "Sanchez",
+		"picture": "sanchez.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 2,
+		"defense": 2,
+		"magic": 3
+	},
+	{
+		"id": 5,
+		"name": "Crystalo",
+		"picture": "crystalo.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 1,
+		"defense": 1,
+		"magic": 5
+	},
+	{
+		"id": 6,
+		"name": "Sparklino",
+		"picture": "sparklino.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 3,
+		"defense": 3,
+		"magic": 1
+	},
+	{
+		"id": 7,
+		"name": "Kickimero",
+		"picture": "kickimero.png",
+		"rarity": 0,
+		"series": "Pokemafia",
+		"attack": 2,
+		"defense": 1,
+		"magic": 4
+	},
+	{
+		"id": 8,
+		"name": "Dravinci",
+		"picture": "dravinci.jpg",
+		"rarity": 1,
+		"series": "Pokemafia",
+		"attack": 5,
+		"defense": 4,
+		"magic": 3
+	},
+	{
+		"id": 9,
+		"name": "Draricci",
 		"picture": "draricci.jpg",
 		"rarity": 1,
-		"series": "Dragons"
+		"series": "Pokemafia",
+		"attack": 4,
+		"defense": 5,
+		"magic": 4
 	},
 	{
-		"attack": 3,
-		"defense": 7,
-		"id": 1,
-		"magic": 5,
-		"name": "DraVinci",
-		"picture": "dravinci.jpg",
-		"rarity": 2,
-		"series": "Dragons"
-	},
-	{
-		"attack": 2,
-		"defense": 2,
-		"id": 2,
-		"magic": 1,
+		"id": 10,
 		"name": "Draci",
 		"picture": "draci.jpg",
-		"rarity": 0,
-		"series": "Dragons"
-	},
-	{
-		"attack": 3,
-		"defense": 4,
-		"id": 3,
-		"magic": 2,
-		"name": "VittoLupo",
-		"picture": "vittolupo.jpg",
-		"rarity": 2,
-		"series": "Dragons"
-	},
-	{
-		"attack": 4,
-		"defense": 3,
-		"id": 4,
-		"magic": 1,
-		"name": "TrentinoTrelli",
-		"picture": "trentinotrelli.jpg",
 		"rarity": 1,
-		"series": "Pokes"
-	},
-	{
-		"attack": 2,
-		"defense": 5,
-		"id": 5,
-		"magic": 3,
-		"name": "Pororo",
-		"picture": "pororo.jpg",
-		"rarity": 0,
-		"series": "Ghosts"
-	},
-	{
-		"attack": 5,
-		"defense": 2,
-		"id": 6,
-		"magic": 2,
-		"name": "Chippindale",
-		"picture": "chippindale.jpg",
-		"rarity": 3,
-		"series": "Dragons"
-	},
-	{
+		"series": "Pokemafia",
 		"attack": 3,
-		"defense": 3,
-		"id": 7,
-		"magic": 4,
+		"defense": 6,
+		"magic": 2
+	},
+	{
+		"id": 11,
 		"name": "JackDonalds",
 		"picture": "jackdonalds.jpg",
 		"rarity": 1,
-		"series": "Pokes"
+		"series": "Pokemafia",
+		"attack": 6,
+		"defense": 3,
+		"magic": 3
 	},
 	{
+		"id": 12,
+		"name": "VittoLupo",
+		"picture": "vittolupo.jpg",
+		"rarity": 1,
+		"series": "Pokemafia",
 		"attack": 4,
 		"defense": 4,
-		"id": 8,
-		"magic": 1,
+		"magic": 5
+	},
+	{
+		"id": 13,
 		"name": "Bobtsovski",
 		"picture": "bobtsovski.jpg",
+		"rarity": 1,
+		"series": "Pokemafia",
+		"attack": 5,
+		"defense": 5,
+		"magic": 2
+	},
+	{
+		"id": 14,
+		"name": "TrentinoTrelli",
+		"picture": "trentinotrelli.jpg",
+		"rarity": 1,
+		"series": "Pokemafia",
+		"attack": 3,
+		"defense": 7,
+		"magic": 3
+	},
+	{
+		"id": 15,
+		"name": "CrocoBruno",
+		"picture": "crocoBruno.png",
+		"rarity": 1,
+		"series": "Pokemafia",
+		"attack": 7,
+		"defense": 3,
+		"magic": 4
+	},
+	{
+		"id": 16,
+		"name": "DraciMod",
+		"picture": "draciMod.png",
 		"rarity": 2,
-		"series": "Ghosts"
+		"series": "Pokemafia",
+		"attack": 8,
+		"defense": 6,
+		"magic": 5
+	},
+	{
+		"id": 17,
+		"name": "DraricciMod",
+		"picture": "draricciMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 6,
+		"defense": 8,
+		"magic": 7
+	},
+	{
+		"id": 18,
+		"name": "DravinciMod",
+		"picture": "dravinciMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 7,
+		"defense": 7,
+		"magic": 8
+	},
+	{
+		"id": 19,
+		"name": "JackDonaldsMod",
+		"picture": "jackdonaldsMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 9,
+		"defense": 5,
+		"magic": 6
+	},
+	{
+		"id": 20,
+		"name": "BobtsovskiMod",
+		"picture": "bobtsovskiMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 5,
+		"defense": 9,
+		"magic": 7
+	},
+	{
+		"id": 21,
+		"name": "CrocoBrunoMod",
+		"picture": "crocoBrunoMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 8,
+		"defense": 8,
+		"magic": 6
+	},
+	{
+		"id": 22,
+		"name": "TrentinoMod",
+		"picture": "trentinoMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 6,
+		"defense": 7,
+		"magic": 9
+	},
+	{
+		"id": 23,
+		"name": "VittoMod",
+		"picture": "vittoMod.png",
+		"rarity": 2,
+		"series": "Pokemafia",
+		"attack": 7,
+		"defense": 6,
+		"magic": 10
+	},
+	{
+		"id": 24,
+		"name": "BobCatski",
+		"picture": "SR/bobCatski.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 12,
+		"defense": 10,
+		"magic": 9
+	},
+	{
+		"id": 25,
+		"name": "Bombardilo",
+		"picture": "SR/bombardilo.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 15,
+		"defense": 8,
+		"magic": 8
+	},
+	{
+		"id": 26,
+		"name": "Brawl",
+		"picture": "SR/brawl.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 9,
+		"defense": 14,
+		"magic": 10
+	},
+	{
+		"id": 27,
+		"name": "HappyFurry",
+		"picture": "SR/happyfurry.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 10,
+		"defense": 12,
+		"magic": 11
+	},
+	{
+		"id": 28,
+		"name": "Meditation",
+		"picture": "SR/meditation.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 8,
+		"defense": 9,
+		"magic": 15
+	},
+	{
+		"id": 29,
+		"name": "Poker",
+		"picture": "SR/poker.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 11,
+		"defense": 11,
+		"magic": 12
+	},
+	{
+		"id": 30,
+		"name": "Roadtrip",
+		"picture": "SR/roadtrip.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 13,
+		"defense": 13,
+		"magic": 7
+	},
+	{
+		"id": 31,
+		"name": "SadDonalds",
+		"picture": "SR/sadDonalds.png",
+		"rarity": 3,
+		"series": "Pokemafia",
+		"attack": 14,
+		"defense": 7,
+		"magic": 13
+	},
+	{
+		"id": 32,
+		"name": "DraRicciSign",
+		"picture": "SP/draricciSign.png",
+		"rarity": 4,
+		"series": "Pokemafia",
+		"attack": 18,
+		"defense": 14,
+		"magic": 16
+	},
+	{
+		"id": 33,
+		"name": "DraVinciSign",
+		"picture": "SP/dravinciSign.png",
+		"rarity": 4,
+		"series": "Pokemafia",
+		"attack": 15,
+		"defense": 18,
+		"magic": 15
+	},
+
+	{
+		"id": 34,
+		"name": "EraemEreff",
+		"picture": "SSP/EraemEreff.png",
+		"rarity": 5,
+		"series": "Pokemafia",
+		"attack": 20,
+		"defense": 16,
+		"magic": 19
+	},
+	{
+		"id": 35,
+		"name": "HolyGoat",
+		"picture": "SSP/holyGoat.png",
+		"rarity": 5,
+		"series": "Pokemafia",
+		"attack": 17,
+		"defense": 20,
+		"magic": 18
+	},
+	{
+		"id": 36,
+		"name": "Swinouborous",
+		"picture": "SSP/swinouborous.png",
+		"rarity": 5,
+		"series": "Pokemafia",
+		"attack": 19,
+		"defense": 19,
+		"magic": 17
+	},
+	{
+		"id": 37,
+		"name": "XiuZiang",
+		"picture": "SSP/xiuZiang.png",
+		"rarity": 5,
+		"series": "Pokemafia",
+		"attack": 16,
+		"defense": 17,
+		"magic": 20
 	}
 ]

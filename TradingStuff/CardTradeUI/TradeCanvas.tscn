@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bs78shlf270n7"]
+[gd_scene load_steps=19 format=4 uid="uid://bs78shlf270n7"]
 
 [ext_resource type="Script" uid="uid://cb4d7qtnef83q" path="res://TradingStuff/CardTradeUI/CardTradeUI.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="2_5wdf0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="3_m3ht3"]
 [ext_resource type="Theme" uid="uid://wvbj4rarj3ea" path="res://TradingStuff/Style/trade_panel.tres" id="4_fnhhu"]
 [ext_resource type="Texture2D" uid="uid://de1m654mq2857" path="res://TradingStuff/Style/CardFrames/fSSP.png" id="6_lf15b"]
+[ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="7_t8l1v"]
 
 [sub_resource type="Image" id="Image_i4qsn"]
 data = {
@@ -1540,7 +1541,7 @@ size_flags_horizontal = 3
 [node name="PlayerAvatar" type="TextureRect" parent="UIRoot/MainHBox/RightPanel"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 3
 expand_mode = 2
 
@@ -1622,7 +1623,7 @@ theme = SubResource("Theme_by4qj")
 [node name="Avatar" type="TextureRect" parent="UIRoot/MainHBox/LeftPanel"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 3
 expand_mode = 2
 
@@ -1662,5 +1663,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="UIRoot"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_t8l1v")
 
 [connection signal="pressed" from="UIRoot/MainHBox/MiddlePanel/UpButton" to="." method="_on_up_button_pressed"]
