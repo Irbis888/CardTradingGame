@@ -1,45 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://bts748d3aodce"]
 
 [ext_resource type="Script" uid="uid://dyhefiw7wcvx6" path="res://TradingStuff/main_trade_screen.gd" id="1_utwgo"]
-[ext_resource type="Script" uid="uid://cdd0trc38c7tb" path="res://TradingStuff/dummyPass.gd" id="1_x4wm4"]
+[ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="3_utb0o"]
 
 [node name="MainTradeScreen" type="Node2D"]
 script = ExtResource("1_utwgo")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_top = 164.0
-offset_right = 1960.0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 116.0
+offset_top = 59.0
+offset_right = 1819.0
+offset_bottom = 978.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_top = 1.0
+offset_right = 1958.0
 offset_bottom = 1080.0
-columns = 2
-
-[node name="Button" type="Button" parent="GridContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "Торговать
-"
-script = ExtResource("1_x4wm4")
-
-[node name="Button2" type="Button" parent="GridContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 35
-text = "Торговать
-"
-script = ExtResource("1_x4wm4")
-
-[node name="Button3" type="Button" parent="GridContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 35
-text = "Торговать
-"
-script = ExtResource("1_x4wm4")
-
-[connection signal="pressed" from="GridContainer/Button" to="GridContainer/Button" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/Button3" to="GridContainer/Button3" method="_on_pressed"]
+mouse_filter = 2
+texture = ExtResource("3_utb0o")
+expand_mode = 1

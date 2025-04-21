@@ -2,7 +2,7 @@ extends Node2D
 
 var TraderList : Array[Trader] = []
 var traderScene = load("res://TradingStuff/traderButton.tscn")
-@onready var container = $GridContainer
+@onready var container = $ScrollContainer/GridContainer
 
 func generate_traders():
 	for i in range(4):

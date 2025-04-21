@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var player_name_label = $UIRoot/MainHBox/RightPanel/PlayerName
 @onready var opponent_cards = $UIRoot/MainHBox/LeftPanel/ScrollContainer/OpponentCards
 @onready var player_cards = $UIRoot/MainHBox/RightPanel/ScrollContainer/PlayerCards
-@onready var summary_label = $UIRoot/MainHBox/MiddlePanel/TradeSummary
+@onready var summary_label = $UIRoot/MainHBox/MiddlePanel/ScrollContainer/TradeSummary
 
 @onready var player_portrait = $UIRoot/MainHBox/RightPanel/PlayerAvatar
 @onready var trader_portrait = $UIRoot/MainHBox/LeftPanel/Avatar
