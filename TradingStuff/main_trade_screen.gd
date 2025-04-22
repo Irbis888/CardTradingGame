@@ -24,7 +24,6 @@ func _ready() -> void:
 		ts = traderScene.instantiate()
 		container.add_child(ts)
 		ts.init(i)
-		
-	
-	
-	
+
+func _on_exit_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")

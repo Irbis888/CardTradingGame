@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bts748d3aodce"]
+[gd_scene load_steps=5 format=3 uid="uid://bts748d3aodce"]
 
 [ext_resource type="Script" uid="uid://dyhefiw7wcvx6" path="res://TradingStuff/main_trade_screen.gd" id="1_utwgo"]
+[ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="2_d3qlb"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_kjsa1"]
 [ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="3_utb0o"]
 
 [node name="MainTradeScreen" type="Node2D"]
@@ -10,12 +12,42 @@ script = ExtResource("1_utwgo")
 offset_left = 116.0
 offset_top = 59.0
 offset_right = 1819.0
-offset_bottom = 978.0
+offset_bottom = 872.0
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_left = 543.0
+offset_top = 905.0
+offset_right = 1348.0
+offset_bottom = 1051.0
+texture_normal = ExtResource("2_d3qlb")
+texture_pressed = ExtResource("2_d3qlb")
+texture_hover = ExtResource("2_d3qlb")
+texture_disabled = ExtResource("2_d3qlb")
+texture_focused = ExtResource("2_d3qlb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -11.5
+offset_right = 42.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_kjsa1")
+theme_override_font_sizes/font_size = 120
+text = "Back"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -25,3 +57,5 @@ offset_bottom = 1080.0
 mouse_filter = 2
 texture = ExtResource("3_utb0o")
 expand_mode = 1
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
