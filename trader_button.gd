@@ -1,6 +1,7 @@
 extends Button
 
 var trader: Trader
+@onready var rank_label = $RankLabel
 
 
 func init(tr: Trader) -> void:
@@ -8,6 +9,7 @@ func init(tr: Trader) -> void:
 	self.trader = tr
 	self.icon = trader.portrait
 	self.text = trader.name
+	rank_label.text = Globals.CardNames[trader.rank] + " " + trader.suit
 	
 func _on_pressed() -> void:
 	Globals.nextTrader = trader
