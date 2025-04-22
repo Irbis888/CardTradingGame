@@ -35,6 +35,13 @@ var nameList = [
 	"Gianni 'The Smile' Ferro"
 ]
 
+enum CardRanks {
+		SIX, SEVEN, EIGHT, NINE, TEN, JACK, KING, ACE
+}
+
+var CardNames = ["Six", "Seven", "Eight", "Nine", "Ten", "Jack", "King", "Ace"]
+var CardSuits = ["of Spades", "of Hearts", "of Clubs", "of Diamonds"]
+
 var my_collection = []
 var playerAccount : Player
 var nextTrader: Trader
@@ -43,7 +50,7 @@ var nextTrader: Trader
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"))
+	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.JACK, "of Spades")
 	
 func generate_collection(size:int):
 		for i in size:

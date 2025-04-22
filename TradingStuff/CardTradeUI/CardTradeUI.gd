@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var trader_portrait = $UIRoot/MainHBox/LeftPanel/Avatar
 @onready var myCard = $UIRoot/MainHBox/MiddlePanel/TradedCards
 
+@onready var player_rank = $UIRoot/MainHBox/RightPanel/PlayerRank
+@onready var trader_rank = $UIRoot/MainHBox/LeftPanel/OpponentRank
 
 var CardScene = load("res://TradingStuff/cardButton.tscn")
 
@@ -93,6 +95,11 @@ func redraw_ui():
 	
 	player_portrait.texture = player.portrait
 	trader_portrait.texture = counter.portrait
+	
+	player_rank.text = Globals.CardNames[player.rank] + " " + player.suit
+	trader_rank.text = Globals.CardNames[counter.rank] + " " + counter.suit
+	
+	
 	
 	var card
 	for i in counter.collection:

@@ -2,8 +2,8 @@
 class_name Player
 extends Trader
 
-func _init(name: String, li: int, starting_cards: Array, portrait: Resource):
-	super(name, li, starting_cards, portrait)
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String):
+	super(name, li, starting_cards, portrait, rank, suit)
 	
 func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	for i in give:
@@ -55,6 +55,10 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	self.LI += income
 	counter.LI -= income
 	var c = 0
+	
+	if self.rank < Globals.CardRanks.ACE:
+		self.rank += 1
+
 	
 	give.sort()
 	give.reverse()
