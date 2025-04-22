@@ -34,6 +34,7 @@ var nameList = [
 	"Tony 'Whiskers' Gallo",
 	"Gianni 'The Smile' Ferro"
 ]
+var day: int = 1
 
 var my_collection = []
 var playerAccount : Player

@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://di4ffarlvt3jc"]
+
+[ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://be8e60b8mdyxr" path="res://main_menu.gd" id="1_jix8l"]
+[ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="2_jix8l"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_glbon"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jix8l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_fu7sn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -499.0
+offset_top = 50.0
+offset_right = 390.0
+offset_bottom = 936.0
+grow_horizontal = 2
+
+[node name="StartButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_jix8l")
+texture_pressed = ExtResource("2_jix8l")
+texture_hover = ExtResource("2_jix8l")
+texture_disabled = ExtResource("2_jix8l")
+texture_focused = ExtResource("2_jix8l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -11.5
+offset_right = 42.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 120
+text = "Start game"
+
+[node name="TutorButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_jix8l")
+texture_pressed = ExtResource("2_jix8l")
+texture_hover = ExtResource("2_jix8l")
+texture_disabled = ExtResource("2_jix8l")
+texture_focused = ExtResource("2_jix8l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/TutorButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -11.5
+offset_right = 42.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 120
+text = "Tutorial"
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_jix8l")
+texture_pressed = ExtResource("2_jix8l")
+texture_hover = ExtResource("2_jix8l")
+texture_disabled = ExtResource("2_jix8l")
+texture_focused = ExtResource("2_jix8l")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -11.5
+offset_right = 42.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 120
+text = "Exit"
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/TutorButton" to="." method="_on_tutor_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

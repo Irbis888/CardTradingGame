@@ -1610,7 +1610,7 @@ scroll_deadzone = 2
 [node name="TradeSummary" type="Label" parent="UIRoot/MainHBox/MiddlePanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 60
 text = "Summary:
@@ -1619,7 +1619,7 @@ text = "Summary:
 [node name="TradedCards" type="VBoxContainer" parent="UIRoot/MainHBox/MiddlePanel"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 0
 
 [node name="LeftPanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
 custom_minimum_size = Vector2(200, 0)

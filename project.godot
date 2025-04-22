@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CardTrading"
-run/main_scene="uid://bts748d3aodce"
+run/main_scene="uid://di4ffarlvt3jc"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
