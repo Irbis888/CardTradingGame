@@ -4,18 +4,23 @@ var TraderList : Array[Trader] = []
 var traderScene = load("res://TradingStuff/traderButton.tscn")
 @onready var container = $ScrollContainer/GridContainer
 
+
+
 func generate_traders():
+	var weights = Globals.get_rank_weights_for(Globals.playerAccount.rank)
+	
 	for i in range(4):
 		var pn = randi_range(2, 6)
 		var portrait = load("res://TradingStuff/Style/Portraits/M" + str(pn) + ".png")
 		var gangName = Globals.nameList.pick_random()
 		var coll = []
 
-		var rand_rank = randi_range(Globals.CardRanks.SIX, Globals.CardRanks.ACE)
+		#var rand_rank = randi_range(Globals.CardRanks.SIX, Globals.CardRanks.ACE)
+		var trader_rank = Globals.choose_weighted_rank(weights)
 		var rand_suit = Globals.CardSuits[randi_range(0, 3)]
-		for j in range(randi_range(20, 60)):
-			coll.append(Globals.cardList.pick_random())
-		TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, rand_rank, rand_suit))
+		for j in range(randi_range(4, 10)):
+			coll.append(Globals.choose_card_for_rank(trader_rank))
+		TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit))
 		
 func _ready() -> void:
 	generate_traders()
