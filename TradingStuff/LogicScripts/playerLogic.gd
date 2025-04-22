@@ -2,8 +2,10 @@
 class_name Player
 extends Trader
 
-func _init(name: String, li: int, starting_cards: Array, portrait: Resource):
-	super(name, li, starting_cards, portrait)
+var total_trade_volume: int = 0
+
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String):
+	super(name, li, starting_cards, portrait, rank, suit)
 	
 func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	for i in give:
@@ -48,13 +50,20 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	for i in give:
 		given.append(self.collection[i])
 		income += int(self.collection[i].base_price / counter.get_mult())
+		total_trade_volume += int(self.collection[i].base_price / counter.get_mult())
 	for i in take:
 		taken.append(counter.collection[i])
 		income -= int(counter.collection[i].base_price * counter.get_mult())
+		total_trade_volume += int(counter.collection[i].base_price / counter.get_mult())
 	
 	self.LI += income
 	counter.LI -= income
 	var c = 0
+	
+	if self.rank < Globals.CardRanks.ACE and total_trade_volume>=1000*(self.rank + 1):
+		self.rank += 1
+		total_trade_volume = 0
+
 	
 	give.sort()
 	give.reverse()
