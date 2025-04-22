@@ -50,7 +50,7 @@ var nextTrader: Trader
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.JACK, "of Spades")
+	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.NINE, "of Spades")
 	
 func generate_collection(size:int):
 		for i in size:

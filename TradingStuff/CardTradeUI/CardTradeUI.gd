@@ -10,7 +10,10 @@ extends CanvasLayer
 @onready var summary_label = $UIRoot/MainHBox/MiddlePanel/ScrollContainer/TradeSummary
 
 @onready var player_portrait = $UIRoot/MainHBox/RightPanel/PlayerAvatar
+@onready var player_frame = $UIRoot/MainHBox/RightPanel/PlayerAvatar/PlayerFrame
+
 @onready var trader_portrait = $UIRoot/MainHBox/LeftPanel/Avatar
+@onready var trader_frame = $UIRoot/MainHBox/LeftPanel/Avatar/TraderFrame
 @onready var myCard = $UIRoot/MainHBox/MiddlePanel/TradedCards
 
 @onready var player_rank = $UIRoot/MainHBox/RightPanel/PlayerRank
@@ -99,8 +102,16 @@ func redraw_ui():
 	player_rank.text = Globals.CardNames[player.rank] + " " + player.suit
 	trader_rank.text = Globals.CardNames[counter.rank] + " " + counter.suit
 	
+	if counter.rank == Globals.CardRanks.ACE:
+		trader_frame.texture = load("res://TradingStuff/Style/CardFrames/fSSP.png")
+	else:
+		trader_frame.texture = load("res://TradingStuff/Style/Portraits/CharacterFrame.png")
 	
-	
+	if player.rank == Globals.CardRanks.ACE:
+		player_frame.texture = load("res://TradingStuff/Style/CardFrames/fSSP.png")
+	else:
+		player_frame.texture = load("res://TradingStuff/Style/Portraits/CharacterFrame.png")
+		
 	var card
 	for i in counter.collection:
 		card = CardScene.instantiate()		
