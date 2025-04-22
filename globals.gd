@@ -1,5 +1,6 @@
 extends Node
 
+
 var traderList : Array[Trader]
 var cardList: Array[Card]
 var nameList = [
@@ -37,15 +38,73 @@ var nameList = [
 var day: int = 1
 
 enum CardRanks {
-		SIX, SEVEN, EIGHT, NINE, TEN, JACK, KING, ACE
+		SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
 }
 
-var CardNames = ["Six", "Seven", "Eight", "Nine", "Ten", "Jack", "King", "Ace"]
+var CardNames = ["Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
 var CardSuits = ["of Spades", "of Hearts", "of Clubs", "of Diamonds"]
+
+# это меняет с какой частотой спавнится каждый ранг (с учетом ранга джеки боя)
+
+func get_rank_weights_for(player_rank: int) -> Dictionary:
+	var weights := {
+		Globals.CardRanks.SIX: 10,
+		Globals.CardRanks.SEVEN: 10,
+		Globals.CardRanks.EIGHT: 10,
+		Globals.CardRanks.NINE: 10,
+		Globals.CardRanks.TEN: 10,
+		Globals.CardRanks.JACK: 5,
+		Globals.CardRanks.KING: 5,
+		Globals.CardRanks.QUEEN: 5,
+		Globals.CardRanks.ACE: 5,
+	}
+
+	if player_rank < Globals.CardRanks.JACK:
+		weights[Globals.CardRanks.QUEEN] = 3
+		weights[Globals.CardRanks.KING] = 2
+		weights[Globals.CardRanks.ACE] = 0
+
+	return weights
+
+static func choose_weighted_rank(weights: Dictionary) -> int:
+	var total_weight = 0
+	for w in weights.values():
+		total_weight += w
+	
+	var rand = randi_range(0, total_weight - 1)
+	var cumulative = 0
+	
+	for rank in weights.keys():
+		cumulative += weights[rank]
+		if rand < cumulative:
+			return rank
+	
+	return weights.keys()[0]  # fallback
 
 var my_collection = []
 var playerAccount : Player
 var nextTrader: Trader
+
+# тут будет код для генерации карт с учетом ранга челика
+
+func get_weight_for_card(card: Card, rank: int) -> int:
+	if rank == CardRanks.ACE:
+		return card.rarity * 5
+	elif rank >= CardRanks.QUEEN:
+		return card.rarity * 3
+	elif rank >= CardRanks.TEN:
+		return card.rarity * 2
+	else:
+		return 6 - card.rarity  # чаще выпадут дешёвые
+		
+
+func choose_card_for_rank(rank: int) -> Card:
+	var weighted_cards := []
+	for card in cardList:
+		var weight := get_weight_for_card(card, rank)
+		for i in range(weight):
+			weighted_cards.append(card)
+	return weighted_cards.pick_random()
 
 
 func _ready() -> void:
