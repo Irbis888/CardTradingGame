@@ -1,7 +1,7 @@
 extends Node
 
 
-var traderList : Array[Trader]
+var traderList : Array[Trader] 
 var cardList: Array[Card]
 var nameList = [
 	"Vinny 'The Wrench' Moretti",
@@ -56,6 +56,7 @@ He make you outta the concrete boot but took your face
 Your collection was put on sale and started going around whole city
 Get you collection back!"
 var is_next_to_trade = true
+
 
 # это меняет с какой частотой спавнится каждый ранг (с учетом ранга джеки боя)
 
@@ -123,7 +124,7 @@ func choose_card_for_rank(rank: int) -> Card:
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.NINE, "of Spades")
+	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.NINE, "of Spades", 1.0)
 	
 func generate_collection(size:int):
 		for i in size:
