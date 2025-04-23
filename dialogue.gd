@@ -15,6 +15,7 @@ func _on_start_button_pressed() -> void:
 		Globals.NextText = "One another day in trading. You spent all your todays money on ZLOI juice.
 	You still have your cards."
 		get_tree().change_scene_to_file("res://TradingStuff/main_trade_screen.tscn")
+		Globals.playerAccount.LI = 0
 	else:
 		Globals.NextPic = load("res://TradingStuff/Style/StoryPics/playing.jpg")
 		Globals.NextText = "Good morning! Time to participate in trading"

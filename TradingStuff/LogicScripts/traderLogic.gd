@@ -18,6 +18,15 @@ func _init(name: String, li: int, starting_cards: Array, portrait: Resource, ran
 	self.portrait = portrait
 	self.rank = rank
 	self.suit = suit
+	
+func get_price_multiplier_against(other_rank: int) -> float:
+	var diff = self.rank - other_rank 
+	if diff < 0:
+		return 1.0 + diff * 0.05 
+	elif diff > 0:
+		return 1.1 + diff * 0.1 
+	else: return 1.0
+		
 
 func get_mult() -> float:
 	# Заглушка множителя
