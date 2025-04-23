@@ -44,6 +44,19 @@ enum CardRanks {
 var CardNames = ["Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
 var CardSuits = ["of Spades", "of Hearts", "of Clubs", "of Diamonds"]
 
+var NextPic: Resource = load("res://TradingStuff/Style/StoryPics/sink.jpg")
+var NextText: String = "You used to be the Mafia Boss, the true Ace of Spades
+But no king rule forever
+You brother in arms betrayed you and sent to feed fish
+The only thing that saved your life and your position in the Mafia was 
+
+A DEAL WITH SEA DEVIL
+
+He make you outta the concrete boot but took your face
+Your collection was put on sale and started going around whole city
+Get you collection back!"
+var is_next_to_trade = true
+
 # это меняет с какой частотой спавнится каждый ранг (с учетом ранга джеки боя)
 
 func get_rank_weights_for(player_rank: int) -> Dictionary:

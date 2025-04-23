@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctf33sfu5oj01"]
+
+[ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="1_kp46k"]
+[ext_resource type="Script" uid="uid://ckwrigp3gde0j" path="res://dialogue.gd" id="1_q2h7b"]
+[ext_resource type="Texture2D" uid="uid://bigprg7ofn8ig" path="res://TradingStuff/Style/StoryPics/sink.jpg" id="2_hoxo3"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_q2h7b"]
+[ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="4_iq77p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q2h7b")
+
+[node name="bckgr" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_kp46k")
+
+[node name="TextureRect" type="TextureRect" parent="bckgr"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 50.0
+offset_right = 696.0
+offset_bottom = 778.0
+texture = ExtResource("2_hoxo3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="bckgr"]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 58.0
+offset_right = 1839.0
+offset_bottom = 776.0
+theme_override_fonts/font = ExtResource("3_q2h7b")
+theme_override_font_sizes/font_size = 50
+text = "You used to be the Mafia Boss, the true Ace of Spades
+But no king rule forever
+You brother in arms betrayed you and sent to feed fish
+The only thing that saved your life and your position in the Mafia was 
+
+A DEAL WITH SEA DEVIL
+
+He make you outta the concrete boot but took your face
+Your collection was put on sale and started going around whole city
+Get you collection back!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="bckgr"]
+offset_left = 177.0
+offset_top = 799.0
+offset_right = 1772.0
+offset_bottom = 1060.0
+texture_normal = ExtResource("4_iq77p")
+texture_pressed = ExtResource("4_iq77p")
+texture_hover = ExtResource("4_iq77p")
+texture_disabled = ExtResource("4_iq77p")
+texture_focused = ExtResource("4_iq77p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="bckgr/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -11.5
+offset_right = 42.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_q2h7b")
+theme_override_font_sizes/font_size = 120
+text = " NEXT"
+
+[connection signal="pressed" from="bckgr/StartButton" to="." method="_on_start_button_pressed"]

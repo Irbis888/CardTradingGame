@@ -56,7 +56,18 @@ func  _ready() -> void:
 	set_label_text()
 
 func set_label_text():
-	$TextureRect/Label.text = strs[page]
+	var s = strs[page]
+	var out = ""
+	var c = 0
+	for i in s:
+		if i == "\n":
+			c = 0
+		if c >= 50:
+			out += "\n"
+			c = 0
+		out += i
+		c += 1
+	$TextureRect/Label.text = out
 
 
 func _on_exit_button_pressed() -> void:

@@ -31,4 +31,8 @@ func _ready() -> void:
 		ts.init(i)
 
 func _on_exit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	Globals.NextPic = load("res://TradingStuff/Style/StoryPics/zloi.jpg")
+	Globals.NextText = "One another day in trading. You spent all your todays money on ZLOI juice.
+	You still have your cards."
+	get_tree().change_scene_to_file("res://dialogue.tscn")
+	
