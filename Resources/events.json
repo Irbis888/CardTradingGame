@@ -1,0 +1,21 @@
+[
+	{
+		"type": "suit_price_modifier",
+		"name": "Generous Clubs",
+		"description": "Today, all traders with the club suit are more generous.",
+		"target_suit": "of Clubs",
+		"price_multiplier": 0.85
+	},
+	{
+		"type": "rank_price_modifier",
+		"name": "Jack's Day",
+		"description": "Traders with rank JACK raise their prices.",
+		"target_rank": 5,
+		"price_multiplier": 1.2
+	},
+	{
+		"type": "text_only",
+		"name": "Quiet Day",
+		"description": "Nothing special is happening today."
+	}
+]

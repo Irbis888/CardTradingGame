@@ -4,8 +4,8 @@ extends Trader
 
 var total_trade_volume: int = 0
 
-func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String):
-	super(name, li, starting_cards, portrait, rank, suit)
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String, event_price_modifier: float):
+	super(name, li, starting_cards, portrait, rank, suit, event_price_modifier)
 	
 func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	for i in give:
@@ -20,14 +20,18 @@ func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 			
 	var given = []
 	var taken = []
+	
 	var income : int = 0
+	var trade_mult = counter.get_price_multiplier_against(self.rank)
 	
 	for i in give:
 		given.append(self.collection[i])
-		income += int(self.collection[i].base_price / counter.get_mult())
+		#income += int(self.collection[i].base_price / counter.get_mult())
+		income += int(self.collection[i].base_price / trade_mult)
 	for i in take:
 		taken.append(counter.collection[i])
-		income -= int(counter.collection[i].base_price * counter.get_mult())
+		#income -= int(counter.collection[i].base_price * counter.get_mult())
+		income -= int(counter.collection[i].base_price * trade_mult)
 	
 	
 	return income
@@ -46,14 +50,17 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	var given = []
 	var taken = []
 	var income : int = 0
+	var trade_mult = counter.get_price_multiplier_against(self.rank)
 	
 	for i in give:
 		given.append(self.collection[i])
-		income += int(self.collection[i].base_price / counter.get_mult())
+		#income += int(self.collection[i].base_price / counter.get_mult())
+		income += int(self.collection[i].base_price / trade_mult)
 		total_trade_volume += int(self.collection[i].base_price / counter.get_mult())
 	for i in take:
 		taken.append(counter.collection[i])
-		income -= int(counter.collection[i].base_price * counter.get_mult())
+		#income -= int(counter.collection[i].base_price * counter.get_mult())
+		income -= int(counter.collection[i].base_price * trade_mult)
 		total_trade_volume += int(counter.collection[i].base_price / counter.get_mult())
 	
 	self.LI += income

@@ -20,12 +20,16 @@ func generate_traders():
 		var rand_suit = Globals.CardSuits[randi_range(0, 3)]
 		for j in range(randi_range(4, 10)):
 			coll.append(Globals.choose_card_for_rank(trader_rank))
-		TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit))
+		#TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
+		Globals.traderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
 		
 func _ready() -> void:
+	Globals.traderList.clear()
 	generate_traders()
+	EventManager.apply_event(EventManager.current_event)
 	var ts
-	for i in TraderList:
+	#for i in TraderList:
+	for i in Globals.traderList:
 		ts = traderScene.instantiate()
 		container.add_child(ts)
 		ts.init(i)
