@@ -17,5 +17,50 @@
 		"type": "text_only",
 		"name": "Quiet Day",
 		"description": "Nothing special is happening today."
+	},
+	{
+		"type": "suit_price_modifier",
+		"name": "Hearts on Sale",
+		"description": "After a bloody turf war, heart traders lower their prices to move stock fast.",
+		"target_suit": "of Hearts",
+		"price_multiplier": 0.75
+	},
+	{
+		"type": "suit_price_modifier",
+		"name": "Spades' Tribute",
+		"description": "Spade traders raise prices to fund protection money for their don.",
+		"target_suit": "of Spades",
+		"price_multiplier": 1.3
+	},
+	{
+		"type": "rank_price_modifier",
+		"name": "Aces High",
+		"description": "Aces are in demand after last night's high-stakes game.",
+		"target_rank": 1,
+		"price_multiplier": 1.25
+	},
+	{
+		"type": "rank_price_modifier",
+		"name": "Queen's Favor",
+		"description": "Queen-rank traders offer deals to earn favor with the syndicate.",
+		"target_rank": 4,
+		"price_multiplier": 0.9
+	},
+	{
+		"type": "text_only",
+		"name": "Rumors in the Air",
+		"description": "Rumors swirl, but no one makes a move... yet."
+	},
+	{
+		"type": "suit_price_modifier",
+		"name": "Diamond Crackdown",
+		"description": "With diamond dons under investigation, traders hike prices out of fear.",
+		"target_suit": "of Diamonds",
+		"price_multiplier": 1.4
+	},
+	{
+		"type": "text_only",
+		"name": "Old Debts",
+		"description": "Some say a legendary card shark is back in town."
 	}
 ]

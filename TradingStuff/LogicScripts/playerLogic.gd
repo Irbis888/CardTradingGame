@@ -56,18 +56,18 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 		given.append(self.collection[i])
 		#income += int(self.collection[i].base_price / counter.get_mult())
 		income += int(self.collection[i].base_price / trade_mult)
-		total_trade_volume += int(self.collection[i].base_price / counter.get_mult())
+		total_trade_volume += int(self.collection[i].base_price / trade_mult)
 	for i in take:
 		taken.append(counter.collection[i])
 		#income -= int(counter.collection[i].base_price * counter.get_mult())
 		income -= int(counter.collection[i].base_price * trade_mult)
-		total_trade_volume += int(counter.collection[i].base_price / counter.get_mult())
+		total_trade_volume += int(counter.collection[i].base_price * trade_mult)
 	
 	self.LI += income
 	counter.LI -= income
 	var c = 0
 	
-	if self.rank < Globals.CardRanks.ACE and total_trade_volume>=1000*(self.rank + 1):
+	if self.rank < Globals.CardRanks.ACE and total_trade_volume>=500*(self.rank + 1):
 		self.rank += 1
 		total_trade_volume = 0
 
