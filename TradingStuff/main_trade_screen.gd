@@ -14,14 +14,24 @@ func generate_traders():
 		var portrait = load("res://TradingStuff/Style/Portraits/M" + str(pn) + ".png")
 		var gangName = Globals.nameList.pick_random()
 		var coll = []
+		var dialogue: String
 
-		#var rand_rank = randi_range(Globals.CardRanks.SIX, Globals.CardRanks.ACE)
+
 		var trader_rank = Globals.choose_weighted_rank(weights)
 		var rand_suit = Globals.CardSuits[randi_range(0, 3)]
 		for j in range(randi_range(4, 10)):
 			coll.append(Globals.choose_card_for_rank(trader_rank))
+			
+		if trader_rank - Globals.playerAccount.rank >= 2:
+			dialogue = Globals.dialogueRude.pick_random()
+		elif trader_rank - Globals.playerAccount.rank <= -2:
+			dialogue = Globals.dialoguesFlatter.pick_random()
+		else:
+			dialogue = Globals.dialoguesNeutral.pick_random()	
+			
 		#TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
-		Globals.traderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
+		Globals.traderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank,
+		 rand_suit, 1.0, dialogue))
 		
 func _ready() -> void:
 	Globals.traderList.clear()

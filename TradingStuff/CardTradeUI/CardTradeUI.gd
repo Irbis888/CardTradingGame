@@ -18,6 +18,9 @@ extends CanvasLayer
 
 @onready var player_rank = $UIRoot/MainHBox/RightPanel/PlayerRank
 @onready var trader_rank = $UIRoot/MainHBox/LeftPanel/OpponentRank
+@onready var trader_dialogue = $UIRoot/MainHBox/MiddlePanel/DialogueTexture/DialogueLabel
+
+@onready var day_counter = $"UIRoot/MainHBox/MiddlePanel/DayCounter"
 
 var CardScene = load("res://TradingStuff/cardButton.tscn")
 
@@ -49,8 +52,7 @@ func on_sell_pressed():
 	for i in opponent_cards.get_children():
 		if i.chosen:
 			take.append(c)
-		c += 1
-			
+		c += 1	
 	player.trade(counter, give, take)
 	redraw_ui()
 
@@ -101,6 +103,7 @@ func redraw_ui():
 	
 	player_rank.text = Globals.CardNames[player.rank] + " " + player.suit
 	trader_rank.text = Globals.CardNames[counter.rank] + " " + counter.suit
+	trader_dialogue.text = counter.dialogue
 	
 	if counter.rank == Globals.CardRanks.ACE:
 		trader_frame.texture = load("res://TradingStuff/Style/CardFrames/fSSP.png")
@@ -121,6 +124,8 @@ func redraw_ui():
 		card = CardScene.instantiate()		
 		player_cards.add_child(card)
 		card.init(i,self)
+		
+		day_counter.text = "Day " + str(Globals.day)
 
 
 func _on_up_button_pressed() -> void:

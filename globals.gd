@@ -35,6 +35,30 @@ var nameList = [
 	"Tony 'Whiskers' Gallo",
 	"Gianni 'The Smile' Ferro"
 ]
+
+var dialoguesNeutral = [
+	"Show me what you've got!",
+	"What happened to your face?",
+	"I've got the best cards in all of Cardia Nostra!"	,
+	"Another day, another risky deal. You in?",
+	"Win, lose... as long as you walk away breathing, it’s a good day."
+]
+
+var dialogueRude = [
+	"I'm doing charity work today, it seems.",
+	"You smell of desperation... and saltwater.",
+	"I shouldn't even be seen dealing with you. Count yourself lucky.",
+	"Pfft... I should be dealing with those who still have a face.",
+	"Make your offer quickly, before I change my mind."
+]
+
+var dialoguesFlatter = [
+	"It's an honor to be dealing with the street legend. My collection is at your service!",
+	"Please, take a look at my best offers!",
+	"Anything for you, sir!",
+	"Legendary Jackie Boy! Every trader in Cardia Nostra envies me right now!"
+]
+
 var day: int = 1
 
 enum CardRanks {
@@ -124,7 +148,8 @@ func choose_card_for_rank(rank: int) -> Card:
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"), Globals.CardRanks.NINE, "of Spades", 1.0)
+	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"),
+	Globals.CardRanks.NINE, "of Spades", 1.0, "")
 	
 func generate_collection(size:int):
 		for i in size:
