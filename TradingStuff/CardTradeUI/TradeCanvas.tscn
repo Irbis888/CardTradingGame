@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://bs78shlf270n7"]
+[gd_scene load_steps=20 format=4 uid="uid://bs78shlf270n7"]
 
 [ext_resource type="Script" uid="uid://cb4d7qtnef83q" path="res://TradingStuff/CardTradeUI/CardTradeUI.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="2_5wdf0"]
 [ext_resource type="Texture2D" uid="uid://btx5kmj51wuyq" path="res://TradingStuff/Style/Portraits/CharacterFrame.png" id="2_im8wl"]
-[ext_resource type="Texture2D" uid="uid://bisq1kl57gopr" path="res://TradingStuff/Style/Icon2.png" id="3_m3ht3"]
 [ext_resource type="Theme" uid="uid://wvbj4rarj3ea" path="res://TradingStuff/Style/trade_panel.tres" id="4_fnhhu"]
+[ext_resource type="Texture2D" uid="uid://c7stf3foj450e" path="res://TradingStuff/Style/right.png" id="5_ejout"]
+[ext_resource type="Texture2D" uid="uid://b1yg5cpks4e7t" path="res://TradingStuff/Style/Icon4.png" id="5_t8l1v"]
 [ext_resource type="Texture2D" uid="uid://de1m654mq2857" path="res://TradingStuff/Style/CardFrames/fSSP.png" id="6_lf15b"]
 [ext_resource type="Texture2D" uid="uid://osrnxqk6kdpb" path="res://TradingStuff/Style/bckgr2.png" id="7_t8l1v"]
 
@@ -1593,13 +1594,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_fnhhu")
 
+[node name="DayCounter" type="Label" parent="UIRoot/MainHBox/MiddlePanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5wdf0")
+theme_override_font_sizes/font_size = 50
+text = "Day"
+horizontal_alignment = 1
+
+[node name="DialogueTexture" type="TextureRect" parent="UIRoot/MainHBox/MiddlePanel"]
+layout_mode = 2
+texture = ExtResource("5_ejout")
+
+[node name="DialogueLabel" type="Label" parent="UIRoot/MainHBox/MiddlePanel/DialogueTexture"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5wdf0")
+theme_override_font_sizes/font_size = 40
+text = "bla bla bla"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="SellButton" type="Button" parent="UIRoot/MainHBox/MiddlePanel"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5wdf0")
 theme_override_font_sizes/font_size = 60
 text = "Trade"
-icon = ExtResource("3_m3ht3")
+icon = ExtResource("5_t8l1v")
 flat = true
 icon_alignment = 1
 text_direction = 1

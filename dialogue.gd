@@ -23,5 +23,6 @@ func _on_start_button_pressed() -> void:
 		Globals.NextPic = load("res://TradingStuff/Style/StoryPics/playing.jpg")
 		#Globals.NextText = "Good morning! Time to participate in trading"
 		EventManager.pick_random_event()
+		Globals.day +=1
 		Globals.NextText = EventManager.current_event.description
 		get_tree().change_scene_to_file("res://dialogue.tscn")

@@ -4,8 +4,8 @@ extends Trader
 
 var total_trade_volume: int = 0
 
-func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String, event_price_modifier: float):
-	super(name, li, starting_cards, portrait, rank, suit, event_price_modifier)
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String, event_price_modifier: float, dialogue: String):
+	super(name, li, starting_cards, portrait, rank, suit, event_price_modifier, dialogue)
 	
 func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	for i in give:
