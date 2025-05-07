@@ -59,7 +59,7 @@ var dialoguesFlatter = [
 	"Legendary Jackie Boy! Every trader in Cardia Nostra envies me right now!"
 ]
 
-var day: int = 1
+var day: int = 0
 
 enum CardRanks {
 		SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
@@ -81,6 +81,68 @@ Your collection was put on sale and started going around whole city
 Get you collection back!"
 var is_next_to_trade = true
 
+var story_traders: Array = []
+
+func load_story_dumbasses():
+	var data = load_json_file("res://Resources/story_traders.json")
+	if data != null:
+		story_traders = data
+	else:
+		print("no story traders for ya")
+
+func get_story_bitches():
+	for trader_data in Globals.story_traders:
+		for appearance in trader_data.appearances:
+			if appearance.day == Globals.day:
+				var cards = []
+				for card_id in appearance.cards:
+					var card = Globals.get_card_by_id(card_id)
+					if card != null:
+						cards.append(card)
+			
+				var portrait_path = "res://TradingStuff/Style/Portraits/" + trader_data.portrait
+				var portrait = load(portrait_path)
+
+				var story_trader = Trader.new(
+					trader_data.name,
+					trader_data.money,
+					cards,
+					portrait,
+					trader_data.rank,
+					trader_data.suit,
+					1.0,
+					trader_data.mult,
+					appearance.dialogue
+				)
+				Globals.traderList.insert(0, story_trader)  # всегда первым
+		
+
+func generate_traders():
+	var weights = Globals.get_rank_weights_for(Globals.playerAccount.rank)
+	
+	while Globals.traderList.size() != 4:
+		var pn = randi_range(2, 9)
+		var portrait = load("res://TradingStuff/Style/Portraits/M" + str(pn) + ".png")
+		var gangName = Globals.nameList.pick_random()
+		var coll = []
+		var dialogue: String
+
+
+		var trader_rank = Globals.choose_weighted_rank(weights)
+		var rand_suit = Globals.CardSuits[randi_range(0, 3)]
+		for j in range(randi_range(4, 10)):
+			coll.append(Globals.choose_card_for_rank(trader_rank))
+			
+		if trader_rank - Globals.playerAccount.rank >= 2:
+			dialogue = Globals.dialogueRude.pick_random()
+		elif trader_rank - Globals.playerAccount.rank <= -2:
+			dialogue = Globals.dialoguesFlatter.pick_random()
+		else:
+			dialogue = Globals.dialoguesNeutral.pick_random()	
+			
+		#TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
+		Globals.traderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank,
+		 rand_suit, 1.0, 1.0, dialogue))
 
 # это меняет с какой частотой спавнится каждый ранг (с учетом ранга джеки боя)
 
@@ -149,7 +211,8 @@ func _ready() -> void:
 	create_cards()
 	generate_collection(3)
 	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"),
-	Globals.CardRanks.NINE, "of Spades", 1.0, "")
+	Globals.CardRanks.NINE, "of Spades", 1.0, 1.0, "")
+	load_story_dumbasses()
 	
 func generate_collection(size:int):
 		for i in size:
@@ -161,8 +224,14 @@ func create_cards () -> void:
 	if cards_data:
 		for i in cards_data:
 			var c = Card.new(i["name"], load("res://TradingStuff/Style/CardPics/" + i["picture"]),
-			i["attack"], i["defense"], i["magic"], i["series"], i["rarity"] )
+			i["attack"], i["defense"], i["magic"], i["series"], i["rarity"], i["id"] )
 			cardList.append(c)
+			
+func get_card_by_id(id: int) -> Card:
+	for c in cardList:
+		if c.id == id:
+			return c
+	return null
 	
 func load_json_file(path):
 	var file = FileAccess.open(path, FileAccess.READ)
