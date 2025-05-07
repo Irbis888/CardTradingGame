@@ -48,11 +48,14 @@ func on_sell_pressed():
 			give.append(c)
 		c += 1
 	var take : Array[int] = []
+	
 	c = 0
 	for i in opponent_cards.get_children():
 		if i.chosen:
 			take.append(c)
 		c += 1	
+		
+		
 	player.trade(counter, give, take)
 	redraw_ui()
 

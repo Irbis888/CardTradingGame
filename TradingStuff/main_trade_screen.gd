@@ -5,38 +5,11 @@ var traderScene = load("res://TradingStuff/traderButton.tscn")
 @onready var container = $ScrollContainer/GridContainer
 
 
-
-func generate_traders():
-	var weights = Globals.get_rank_weights_for(Globals.playerAccount.rank)
-	
-	for i in range(4):
-		var pn = randi_range(2, 6)
-		var portrait = load("res://TradingStuff/Style/Portraits/M" + str(pn) + ".png")
-		var gangName = Globals.nameList.pick_random()
-		var coll = []
-		var dialogue: String
-
-
-		var trader_rank = Globals.choose_weighted_rank(weights)
-		var rand_suit = Globals.CardSuits[randi_range(0, 3)]
-		for j in range(randi_range(4, 10)):
-			coll.append(Globals.choose_card_for_rank(trader_rank))
-			
-		if trader_rank - Globals.playerAccount.rank >= 2:
-			dialogue = Globals.dialogueRude.pick_random()
-		elif trader_rank - Globals.playerAccount.rank <= -2:
-			dialogue = Globals.dialoguesFlatter.pick_random()
-		else:
-			dialogue = Globals.dialoguesNeutral.pick_random()	
-			
-		#TraderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank, rand_suit, 1.0))
-		Globals.traderList.append(Trader.new(gangName, randi_range(10, 100)+100, coll, portrait, trader_rank,
-		 rand_suit, 1.0, dialogue))
 		
 func _ready() -> void:
-	Globals.traderList.clear()
-	generate_traders()
-	EventManager.apply_event(EventManager.current_event)
+	#Globals.traderList.clear()
+	#generate_traders()
+	#EventManager.apply_event(EventManager.current_event)
 	var ts
 	#for i in TraderList:
 	for i in Globals.traderList:

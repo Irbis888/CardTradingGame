@@ -13,6 +13,8 @@ var mag: int
 var series: String
 var picture: Resource
 
+var id: int
+
 
 func get_literal_name() -> String:
 	match rarity:
@@ -31,7 +33,7 @@ func get_literal_name() -> String:
 		_:
 			return "NO"
 
-func _init(name: String, pic: Resource, str, def, mag, series, rarity):
+func _init(name: String, pic: Resource, str, def, mag, series, rarity, id):
 	self.name = name
 	self.picture = pic
 	self.str = str
@@ -39,6 +41,7 @@ func _init(name: String, pic: Resource, str, def, mag, series, rarity):
 	self.mag = mag
 	self.rarity = rarity
 	self.series = series
+	self.id = id
 	base_price = abs(self.get_price())
 
 func get_price() -> int:

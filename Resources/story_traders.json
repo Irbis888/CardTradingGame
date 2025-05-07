@@ -1,0 +1,30 @@
+[
+	{
+		"day": 0,
+		"name": "Old Man",
+		"portrait": "Granddad.png",
+		"rank": 0,
+		"suit": "of Spades",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 0,
+				"dialogue": "Don't worry about losing your face - you were never that handsome anyway. It's a good thing you lived.
+				I used to serve your father, Jack the Man, in the past. I want to help you.",
+				"cards": [],
+
+			},
+			{
+				"day": 2,
+				"dialogue": "I have found some cards in the attic. Take them for free, Jackie - perhaps they will be of use.",
+				"cards": [1, 2, 3]
+			},
+			{
+				"day": 3,
+				"dialogue": "You may have noticed some things are happening overnight. Perhaps you will be able to manipulate the market to your benefit...",
+				"cards": []
+			}
+		],
+	}
+]

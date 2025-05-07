@@ -4,8 +4,9 @@ extends Trader
 
 var total_trade_volume: int = 0
 
-func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String, event_price_modifier: float, dialogue: String):
-	super(name, li, starting_cards, portrait, rank, suit, event_price_modifier, dialogue)
+func _init(name: String, li: int, starting_cards: Array, portrait: Resource, rank: int, suit: String, 
+event_price_modifier: float, trader_mult: float, dialogue: String):
+	super(name, li, starting_cards, portrait, rank, suit, event_price_modifier, trader_mult, dialogue)
 	
 func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	for i in give:
@@ -26,12 +27,10 @@ func priceCount(counter: Trader, give: Array[int], take: Array[int]) -> int:
 	
 	for i in give:
 		given.append(self.collection[i])
-		#income += int(self.collection[i].base_price / counter.get_mult())
-		income += int(self.collection[i].base_price / trade_mult)
+		if trade_mult != 0: income += int(self.collection[i].base_price / trade_mult)
 	for i in take:
 		taken.append(counter.collection[i])
-		#income -= int(counter.collection[i].base_price * counter.get_mult())
-		income -= int(counter.collection[i].base_price * trade_mult)
+		if trade_mult != 0: income -= int(counter.collection[i].base_price * trade_mult)
 	
 	
 	return income
@@ -51,17 +50,27 @@ func trade(counter: Trader, give: Array[int], take: Array[int]) -> void:
 	var taken = []
 	var income : int = 0
 	var trade_mult = counter.get_price_multiplier_against(self.rank)
-	
+	print (trade_mult)
 	for i in give:
-		given.append(self.collection[i])
-		#income += int(self.collection[i].base_price / counter.get_mult())
-		income += int(self.collection[i].base_price / trade_mult)
-		total_trade_volume += int(self.collection[i].base_price / trade_mult)
+		if trade_mult != 0:
+			given.append(self.collection[i])	
+			income += int(self.collection[i].base_price / trade_mult)
+			total_trade_volume += int(self.collection[i].base_price / trade_mult)
+		else: given.append(self.collection[i])
 	for i in take:
-		taken.append(counter.collection[i])
-		#income -= int(counter.collection[i].base_price * counter.get_mult())
-		income -= int(counter.collection[i].base_price * trade_mult)
-		total_trade_volume += int(counter.collection[i].base_price * trade_mult)
+		if trade_mult != 0:
+			taken.append(counter.collection[i])
+			income -= int(counter.collection[i].base_price * trade_mult)
+			total_trade_volume += int(counter.collection[i].base_price / trade_mult)
+		else: taken.append(counter.collection[i])
+		
+		
+	if self.LI + income < 0:
+		print("Player can't afford this trade.")
+		return
+	if counter.LI - income < 0:
+		print("Trader can't afford this trade.")
+		return
 	
 	self.LI += income
 	counter.LI -= income

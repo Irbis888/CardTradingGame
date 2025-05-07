@@ -3,6 +3,14 @@ extends Control
 var is_to_trade: bool
 
 func _ready() -> void:
+	# проверка
+	if Globals.day == 0:
+		Globals.traderList.clear()
+		Globals.get_story_bitches()
+		Globals.generate_traders()
+		EventManager.apply_event(EventManager.current_event)
+		Globals.day = 1
+	
 	$bckgr/TextureRect.texture = Globals.NextPic
 	$bckgr/Label.text = Globals.NextText
 	is_to_trade = Globals.is_next_to_trade
@@ -23,6 +31,12 @@ func _on_start_button_pressed() -> void:
 		Globals.NextPic = load("res://TradingStuff/Style/StoryPics/playing.jpg")
 		#Globals.NextText = "Good morning! Time to participate in trading"
 		EventManager.pick_random_event()
+		Globals.traderList.clear()
+		print("hi ", Globals.story_traders.size())
 		Globals.day +=1
+		Globals.get_story_bitches()
+		Globals.generate_traders()
+		EventManager.apply_event(EventManager.current_event)
+		
 		Globals.NextText = EventManager.current_event.description
 		get_tree().change_scene_to_file("res://dialogue.tscn")
