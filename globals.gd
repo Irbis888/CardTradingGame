@@ -3,6 +3,8 @@ extends Node
 
 var traderList : Array[Trader] 
 var cardList: Array[Card]
+var quest_manager: QuestManager
+
 var nameList = [
 	"Vinny 'The Wrench' Moretti",
 	"Salvatore 'Silk Suit' Romano",
@@ -94,6 +96,23 @@ func get_story_bitches():
 	for trader_data in Globals.story_traders:
 		for appearance in trader_data.appearances:
 			if appearance.day == Globals.day:
+				
+				var quest_id = appearance.get("quest_id", null)
+			
+				if quest_id != null:
+					var quest = quest_manager.get_quest_by_id(quest_id)
+					if quest == null:
+						continue
+
+				#	 Если у квеста есть prev_quest_id и он не выполнен — пропускаем NPC
+					if quest.has("prev_quest_id") and not quest_manager.is_quest_completed(quest.prev_quest_id):
+						continue
+				
+				if appearance.has("required_quest_id"):
+					quest_id = appearance.required_quest_id
+					if not quest_manager.is_quest_completed(quest_id):
+						continue  # Квест не завершён — пропустить это появление
+				
 				var cards = []
 				for card_id in appearance.cards:
 					var card = Globals.get_card_by_id(card_id)
@@ -102,19 +121,31 @@ func get_story_bitches():
 			
 				var portrait_path = "res://TradingStuff/Style/Portraits/" + trader_data.portrait
 				var portrait = load(portrait_path)
+				
+				var rank: int
+				if appearance.has("rank"):
+					rank = appearance.rank
+				else:
+					rank = trader_data.rank
+					
+				var money: int
+				if appearance.has("money"):
+					money = appearance.money
+				else:
+					money = trader_data.money
 
 				var story_trader = Trader.new(
 					trader_data.name,
-					trader_data.money,
+					money,
 					cards,
 					portrait,
-					trader_data.rank,
+					rank,
 					trader_data.suit,
 					1.0,
 					trader_data.mult,
 					appearance.dialogue
 				)
-				Globals.traderList.insert(0, story_trader)  # всегда первым
+				Globals.traderList.append(story_trader)
 		
 
 func generate_traders():
@@ -213,6 +244,8 @@ func _ready() -> void:
 	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"),
 	Globals.CardRanks.NINE, "of Spades", 1.0, 1.0, "")
 	load_story_dumbasses()
+	quest_manager = QuestManager.new()
+	add_child(quest_manager)
 	
 func generate_collection(size:int):
 		for i in size:

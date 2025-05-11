@@ -17,13 +17,51 @@
 			},
 			{
 				"day": 2,
-				"dialogue": "I have found some cards in the attic. Take them for free, Jackie - perhaps they will be of use.",
-				"cards": [1, 2, 3]
+				"dialogue": "People of Cardia Nostra will want different things of you. Decide carefully whether or not you want to give them what they want.",
+				"cards": []
 			},
 			{
 				"day": 3,
+				"dialogue": "I have found some cards in the attic. Take them for free, Jackie - perhaps they will be of use.",
+				"cards": [1, 2, 16]
+			},
+						{
+				"day": 4,
 				"dialogue": "You may have noticed some things are happening overnight. Perhaps you will be able to manipulate the market to your benefit...",
 				"cards": []
+			}
+		],
+	}, 
+	
+	{
+		"day": 2,
+		"name": "Schoolboy",
+		"portrait": "Schoolboy.png",
+		"rank": 0,
+		"suit": "of Spades",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 3,
+				"dialogue": "Please accept my card as a tribute, sir. They say mafia is not for kids like me, but I have to join it to protect my mother and sister.",
+				"cards": [1],
+				"quest_id": 1
+			},
+			{
+				"day": 4,
+				"dialogue": "T-the dons demand that I pay them, and I have no means to do so. If you could give me a rare card, you'd save my life. And I'll pay you threefold when I climb up the ranks",
+				"cards": [],
+				"rank": 2,
+				"quest_id": 2
+			},
+						{
+				"day": 6,
+				"dialogue": "Ahahahahahah! I scammed you! I'm the king of mafia now, and I won't give you shit!",
+				"cards": [],
+				"money": 9001,
+				"required_quest_id": 2,
+				"rank": 8
 			}
 		],
 	}

@@ -10,6 +10,7 @@ func _ready() -> void:
 		Globals.generate_traders()
 		EventManager.apply_event(EventManager.current_event)
 		Globals.day = 1
+		Globals.quest_manager.get_quests_for_day(Globals.day)
 	
 	$bckgr/TextureRect.texture = Globals.NextPic
 	$bckgr/Label.text = Globals.NextText
@@ -28,6 +29,7 @@ func _on_start_button_pressed() -> void:
 		Globals.playerAccount.LI = 0
 	else:
 
+		Globals.quest_manager.check_quests_end_of_day(Globals.traderList)
 		Globals.NextPic = load("res://TradingStuff/Style/StoryPics/playing.jpg")
 		#Globals.NextText = "Good morning! Time to participate in trading"
 		EventManager.pick_random_event()
@@ -37,6 +39,9 @@ func _on_start_button_pressed() -> void:
 		Globals.get_story_bitches()
 		Globals.generate_traders()
 		EventManager.apply_event(EventManager.current_event)
+		
+		Globals.quest_manager.get_quests_for_day(Globals.day)
+
 		
 		Globals.NextText = EventManager.current_event.description
 		get_tree().change_scene_to_file("res://dialogue.tscn")

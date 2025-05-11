@@ -1,0 +1,25 @@
+[
+	{
+		"id": 1,
+		"name": "Schoolboy_1",
+		"day": 3,
+		"trader_name": "Schoolboy",
+		"type": "receive_card",
+		"required_card_conditions": {
+			"id": 1
+		},
+		"next_npc_day": 4,
+		"next_quest_id": 2
+	},
+	{
+		"id": 2,
+		"name": "Schoolboy_2",
+		"day": 4,
+		"trader_name": "Schoolboy",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 2
+		},
+		"prev_quest_id": 1
+	}
+]
