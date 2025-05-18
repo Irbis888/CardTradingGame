@@ -3,10 +3,14 @@ extends Node
 var current_event = null
 
 var all_events: Array = []
+var queued_event_id: int = -1
 
 func _ready():
 	load_events()
 	pick_random_event()
+	
+func set_queued(q: int):
+	queued_event_id = q
 
 func load_events():
 	all_events = Globals.load_json_file("res://Resources/events.json")
@@ -17,9 +21,27 @@ func pick_random_event():
 	if all_events.is_empty():
 		current_event = {}
 		return
-	current_event = all_events.pick_random()
+		
+	var non_story_events = []
+	for event in all_events:
+		if not event.has("is_story"): 
+			non_story_events.append(event)
+
+	if non_story_events.is_empty():
+		current_event = {}
+		print("No non-story events available.")
+		return
+
+	current_event = non_story_events.pick_random()
 	print("i chose you", current_event.name)
 	#apply_event(current_event)
+	
+func get_event_by_id(id: int) -> Dictionary:
+	for event in all_events:
+		if event.has("id") and event.id == id:
+			return event
+	return {} 
+
 
 func apply_event(event: Dictionary) -> void:
 	if current_event == null:

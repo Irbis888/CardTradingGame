@@ -1,0 +1,15 @@
+[
+	{
+		"id": 1,
+		"name": "All SSP",
+		"description": "Nice you got all SSPs",
+		"condition_type": "has_all_ssp"
+	},
+	{
+		"id": 2,
+		"name": "TEST QUEST ENDING",
+		"description": "The schoolboy manipulates time and space to end the game right fucking now.",
+		"condition_type": "quest_completed",
+		"quest_id": 4
+	}
+]

@@ -21,5 +21,29 @@
 			"rarity": 2
 		},
 		"prev_quest_id": 1
+	},
+	
+	{
+		"id": 3,
+		"name": "Nurse_quest",
+		"day": 5,
+		"trader_name": "Nurse",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 0
+		},
+		"reward_event_id": 11
+	},
+	
+		{
+		"id": 4,
+		"name": "Test ending",
+		"day": 8,
+		"trader_name": "Schoolboy",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 0
+		}
 	}
+	
 ]

@@ -62,7 +62,34 @@
 				"money": 9001,
 				"required_quest_id": 2,
 				"rank": 8
+			},
+			{
+				"day": 8,
+				"dialogue": "I have come again to test the endings. Give me a common card to end the game now",
+				"cards": [],
+				"rank": 8,
+				"quest_id": 4
 			}
 		],
+	},
+	
+	{
+		"day": 5,
+		"name": "Dolores 'No Pulse' Morello",
+		"portrait": "Nurse.png",
+		"rank": 1,
+		"suit": "of Clubs",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 5,
+				"dialogue": "Um... There's an injured Ricky Double-Fold's capo at the hospital. Give me a common card - and he'll never leave the place... God, it would be embarassing if I was talking to the wrong guy right now.",
+				"cards": [],
+				"quest_id": 3
+			}
+		]
 	}
+	
+	
 ]
