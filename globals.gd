@@ -4,6 +4,8 @@ extends Node
 var traderList : Array[Trader] 
 var cardList: Array[Card]
 var quest_manager: QuestManager
+var current_ending: Dictionary = {}
+
 
 var nameList = [
 	"Vinny 'The Wrench' Moretti",
@@ -246,6 +248,19 @@ func _ready() -> void:
 	load_story_dumbasses()
 	quest_manager = QuestManager.new()
 	add_child(quest_manager)
+	
+
+func has_all_ssp_cards() -> bool:
+	var required_ids := [34, 35, 36, 37]
+	var owned_ids := []
+
+	for card in playerAccount.collection:
+		var card_id = card.id
+		if card_id in required_ids and card_id not in owned_ids:
+			owned_ids.append(card_id)
+
+	return owned_ids.size() == 4
+
 	
 func generate_collection(size:int):
 		for i in size:

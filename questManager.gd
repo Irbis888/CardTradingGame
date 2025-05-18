@@ -110,6 +110,9 @@ func check_quests_end_of_day(traders: Array) -> void:
 				completed_quests.append(quest)
 				print("Quest completed: ", quest.name)
 				
+				if quest.has("reward_event_id"):
+					EventManager.set_queued(quest.reward_event_id)
+				
 			else: print("Quest failed: ", quest.name)
 
 

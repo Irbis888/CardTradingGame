@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://globals.gd"
 EventManager="*res://eventManager.gd"
+EndingsManager="*res://endingsManager.gd"
 
 [display]
 

@@ -18,6 +18,10 @@ func _ready() -> void:
 		ts.init(i)
 
 func _on_exit_button_pressed() -> void:
+	Globals.quest_manager.check_quests_end_of_day(Globals.traderList)
+	if EndingsManager.check_for_endings():
+			return
+		
 	Globals.NextPic = load("res://TradingStuff/Style/StoryPics/zloi.jpg")
 	Globals.NextText = "One another day in trading. You spent all your todays money on ZLOI juice.
 	You still have your cards."

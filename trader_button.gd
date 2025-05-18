@@ -1,15 +1,15 @@
 extends Button
 
 var trader: Trader
-@onready var rank_label = $RankLabel
+
 
 
 func init(tr: Trader) -> void:
 	pass
 	self.trader = tr
 	self.icon = trader.portrait
-	self.text = trader.name
-	rank_label.text = Globals.CardNames[trader.rank] + " " + trader.suit
+	self.text = "%s\n%s %s" % [trader.name, Globals.CardNames[trader.rank], trader.suit]
+
 	
 func _on_pressed() -> void:
 	Globals.nextTrader = trader

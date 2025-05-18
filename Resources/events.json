@@ -1,5 +1,6 @@
 [
 	{
+		"id": 1,
 		"type": "suit_price_modifier",
 		"name": "Generous Clubs",
 		"description": "Today, all traders with the club suit are more generous.",
@@ -7,6 +8,7 @@
 		"price_multiplier": 0.85
 	},
 	{
+		"id": 2,
 		"type": "rank_price_modifier",
 		"name": "Jack's Day",
 		"description": "Traders with rank JACK raise their prices.",
@@ -14,11 +16,13 @@
 		"price_multiplier": 1.2
 	},
 	{
+		"id": 3,
 		"type": "text_only",
 		"name": "Quiet Day",
 		"description": "Nothing special is happening today."
 	},
 	{
+		"id": 4,
 		"type": "suit_price_modifier",
 		"name": "Hearts on Sale",
 		"description": "After a bloody turf war, heart traders lower their prices to move stock fast.",
@@ -26,6 +30,7 @@
 		"price_multiplier": 0.75
 	},
 	{
+		"id": 5,
 		"type": "suit_price_modifier",
 		"name": "Spades' Tribute",
 		"description": "Spade traders raise prices to fund protection money for their don.",
@@ -33,6 +38,7 @@
 		"price_multiplier": 1.3
 	},
 	{
+		"id": 6,
 		"type": "rank_price_modifier",
 		"name": "Aces High",
 		"description": "Aces are in demand after last night's high-stakes game.",
@@ -40,6 +46,7 @@
 		"price_multiplier": 1.25
 	},
 	{
+		"id": 7,
 		"type": "rank_price_modifier",
 		"name": "Queen's Favor",
 		"description": "Queen-rank traders offer deals to earn favor with the syndicate.",
@@ -47,11 +54,13 @@
 		"price_multiplier": 0.9
 	},
 	{
+		"id": 8,
 		"type": "text_only",
 		"name": "Rumors in the Air",
 		"description": "Rumors swirl, but no one makes a move... yet."
 	},
 	{
+		"id": 9,
 		"type": "suit_price_modifier",
 		"name": "Diamond Crackdown",
 		"description": "With diamond dons under investigation, traders hike prices out of fear.",
@@ -59,8 +68,21 @@
 		"price_multiplier": 1.4
 	},
 	{
+		"id": 10,
 		"type": "text_only",
 		"name": "Old Debts",
 		"description": "Some say a legendary card shark is back in town."
-	}
+	},
+	
+	{
+		"id": 11,
+		"type": "suit_price_modifier",
+		"name": "Spades Capo Dead",
+		"description": "A Spades capo, known for his loyality to your enemy Ricky Two-Folds,
+		mysteriously dies at hospital.
+		The Spades are shaken and have to lower their prices.",
+		"target_suit": "of Spades",
+		"price_multiplier": 0.3,
+		"is_story": true
+	},
 ]
