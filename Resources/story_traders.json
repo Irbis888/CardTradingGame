@@ -75,7 +75,7 @@
 	
 	{
 		"day": 5,
-		"name": "Dolores 'No Pulse' Morello",
+		"name": "Dolores 'The Pillow' Morello",
 		"portrait": "Nurse.png",
 		"rank": 1,
 		"suit": "of Clubs",
@@ -87,6 +87,25 @@
 				"dialogue": "Um... There's an injured Ricky Double-Fold's capo at the hospital. Give me a common card - and he'll never leave the place... God, it would be embarassing if I was talking to the wrong guy right now.",
 				"cards": [],
 				"quest_id": 3
+			}
+		]
+	},
+	
+		{
+		"day": 8,
+		"name": "Matilda 'The Shotgun' Fellini",
+		"portrait": "Isaeva.png",
+		"rank": 4,
+		"suit": "of Hearts",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 8,
+				"dialogue": "I heard it's thanks to you that mumbling fool is in his grave and doesn't pester my hospital room.
+				Take these. My grandson is too old to play with them anyway.",
+				"cards": [15, 20],
+				"required_quest_id": 3,
 			}
 		]
 	}
