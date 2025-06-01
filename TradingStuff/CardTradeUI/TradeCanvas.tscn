@@ -1580,8 +1580,10 @@ text = "Player Rank Here
 justification_flags = 161
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/RightPanel"]
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 2
 
 [node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel/ScrollContainer"]
 layout_mode = 2
@@ -1704,8 +1706,10 @@ text = "Opponent Rank
 "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/LeftPanel"]
+custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 2
 
 [node name="OpponentCards" type="GridContainer" parent="UIRoot/MainHBox/LeftPanel/ScrollContainer"]
 layout_mode = 2
