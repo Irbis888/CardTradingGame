@@ -4,6 +4,7 @@ extends TextureButton
 @onready var price_label = $PriceLabel
 @onready var cb = $CheckButton
 @onready var tex = $TextureRect
+@onready var frame = $Frame
 
 
 var cardObject: Card
@@ -22,6 +23,7 @@ func init(card: Card, parent) -> void:
 	name_label.text = cardObject.name
 	price_label.text = "$" + str(cardObject.base_price)
 	tex.texture = card.picture
+	frame.texture = load("res://TradingStuff/Style/CardFrames/f" + card.get_literal_name() +".png")
 		
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	self.chosen = toggled_on

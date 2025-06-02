@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw13r2tuco25i"]
+[gd_scene load_steps=6 format=3 uid="uid://dw13r2tuco25i"]
 
 [ext_resource type="Texture2D" uid="uid://b43yy5mt7asc6" path="res://TradingStuff/Style/Icon2square.png" id="1_0ko6j"]
 [ext_resource type="Script" uid="uid://du7jfuyf33ird" path="res://TradingStuff/card_button.gd" id="2_qx7yv"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://TradingStuff/Style/at01.ttf" id="3_m4pr4"]
+[ext_resource type="Texture2D" uid="uid://br6kd5mivyfpx" path="res://TradingStuff/Style/CardPics/vittolupo.jpg" id="3_pkpt1"]
+[ext_resource type="Texture2D" uid="uid://de1m654mq2857" path="res://TradingStuff/Style/CardFrames/fSSP.png" id="5_pkpt1"]
 
 [node name="TextureButton" type="TextureButton"]
+z_index = 1
 offset_left = 1.0
 offset_top = -1.0
-offset_right = 170.0
-offset_bottom = 202.0
+offset_right = 321.0
+offset_bottom = 419.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("1_0ko6j")
 texture_pressed = ExtResource("1_0ko6j")
 texture_hover = ExtResource("1_0ko6j")
 texture_disabled = ExtResource("1_0ko6j")
 texture_focused = ExtResource("1_0ko6j")
+stretch_mode = 0
 script = ExtResource("2_qx7yv")
 
 [node name="CheckButton" type="CheckButton" parent="."]
@@ -52,13 +56,31 @@ text = "Price"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = 1
-layout_mode = 0
-offset_left = 64.0
-offset_top = 60.0
-offset_right = 256.0
-offset_bottom = 252.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -4.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-expand_mode = 5
+texture = ExtResource("3_pkpt1")
+expand_mode = 1
+
+[node name="Frame" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_pkpt1")
+expand_mode = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

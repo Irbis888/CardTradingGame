@@ -1588,7 +1588,6 @@ size_flags_vertical = 2
 [node name="PlayerCards" type="GridContainer" parent="UIRoot/MainHBox/RightPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 2
 
 [node name="MiddlePanel" type="VBoxContainer" parent="UIRoot/MainHBox"]
 custom_minimum_size = Vector2(300, 0)
@@ -1715,6 +1714,7 @@ size_flags_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="UIRoot"]
