@@ -138,3 +138,10 @@ func get_quest_by_id(id: int) -> Dictionary:
 		if quest.get("id", -1) == id:
 			return quest
 	return {}  # Возвращает пустой словарь, если квест не найден
+	
+func count_completed_quests_with_tag(tag: String) -> int:
+	var count := 0
+	for quest in completed_quests:
+		if quest.has("tag") and quest.tag == tag:
+			count += 1
+	return count

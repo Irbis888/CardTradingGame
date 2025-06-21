@@ -1,15 +1,41 @@
 [
 	{
 		"id": 1,
-		"name": "All SSP",
-		"description": "Nice you got all SSPs",
+		"name": "The Collector",
+		"description": "You finally get your hands on all Super Special Cards.
+		All other dons have no choice, but to submit to you... You capture Ricky and feed him to the fish, exactly at the same spot where he tried to do that to you.
+		Revenge feels sweet. And now, you are the Ace of Spades, and no one can stop you!",
 		"condition_type": "has_all_ssp"
 	},
 	{
 		"id": 2,
-		"name": "TEST QUEST ENDING",
-		"description": "The schoolboy manipulates time and space to end the game right fucking now.",
+		"name": "The Summoners",
+		"description": "At midnight, you and your new friends summon The Fire Devil.
+		He sees that it is you who summons him, and you are a spawn of his nemesis, the Sea Devil.
+		The Fire Devil is enraged and confused. You will not get any help from him...
+		He burns you and the cultists to a crisp as you try to run.",
 		"condition_type": "quest_completed",
-		"quest_id": 4
+		"quest_id": 6
+	},
+	
+	{
+		"id": 3,
+		"name": "The Trustful One",
+		"description": "Silas 'The Merger' Belladonna suddenly becomes Cardia Nostra's new mayor.
+		You hear news of Ricky Double‑Fold's arrest and life sentence. And then the Hearts' don. And the Club's one.
+		It's not long before you are arrested as well. Scared of what you might say, Silas has you murdered in your cell before trial.",
+		"condition_type": "quest_completed",
+		"quest_id": 11
+	},
+	{
+		"id": 4,
+		"name": "The New Mayor",
+		"description": "For a large bribe, you are 'elected' to be Cardia Nostra's new mayor. Everyone is a bit shocked at first, as you are a faceless mobster, but they get used to it.
+		You turn out to be not that bad. You imprison Ricky and the opposing dons, effectively reducing crime in the city.
+		You even fight water pollution to honor your saviour, the Sea Devil.
+		You live a long life, until you die peacefully, at age 93. You are given a honorary burial and a street named after you.",
+		"condition_type": "quest_completed",
+		"quest_id": 12
 	}
+	
 ]
