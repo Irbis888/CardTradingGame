@@ -1606,16 +1606,22 @@ horizontal_alignment = 1
 layout_mode = 2
 texture = ExtResource("5_ejout")
 
-[node name="DialogueLabel" type="Label" parent="UIRoot/MainHBox/MiddlePanel/DialogueTexture"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainHBox/MiddlePanel/DialogueTexture"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.33
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -548.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="DialogueLabel" type="Label" parent="UIRoot/MainHBox/MiddlePanel/DialogueTexture/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_5wdf0")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "bla bla bla"
 horizontal_alignment = 1
 vertical_alignment = 1

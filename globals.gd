@@ -41,26 +41,26 @@ var nameList = [
 ]
 
 var dialoguesNeutral = [
-	"Show me what you've got!",
-	"What happened to your face?",
-	"I've got the best cards in all of Cardia Nostra!"	,
-	"Another day, another risky deal. You in?",
-	"Win, lose... as long as you walk away breathing, it’s a good day."
+	"Покажи что у тебя есть!",
+	"Что у тебя с лицом?",
+	"У меня лучшие карты в Кардиа Ностра!"	,
+	"Ещё один день, ещё одни торги. Ты готов?",
+	"Выиграть, проиграть... пока ты уходишь целым, это хороший день"
 ]
 
 var dialogueRude = [
-	"I'm doing charity work today, it seems.",
-	"You smell of desperation... and saltwater.",
-	"I shouldn't even be seen dealing with you. Count yourself lucky.",
-	"Pfft... I should be dealing with those who still have a face.",
-	"Make your offer quickly, before I change my mind."
+	"Я сегодня как будто меценатствую",
+	"От тебя пахнет отчаянием.. И рыбой",
+	"Не стоило даже связываться с тобой у всех на виду! Считай, тебе повезло",
+	"Пфф. Я должен торговать с теми у кого лицо ещё на месте",
+	"Предлагай, пока я не передумал"
 ]
 
 var dialoguesFlatter = [
-	"It's an honor to be dealing with the street legend. My collection is at your service!",
-	"Please, take a look at my best offers!",
-	"Anything for you, sir!",
-	"Legendary Jackie Boy! Every trader in Cardia Nostra envies me right now!"
+	"Такая честь торговать с легендой улиц! Моя коллекция к вашим услугам",
+	"Взгляните на моё лучшее предложение!",
+	"Сэр, для вас - что угодно!",
+	"Легендарный Джеки Бой! Теперь вся Кардия Ностра будет мне завидовать!"
 ]
 
 var day: int = 0
@@ -69,20 +69,20 @@ enum CardRanks {
 		SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
 }
 
-var CardNames = ["Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
-var CardSuits = ["of Spades", "of Hearts", "of Clubs", "of Diamonds"]
+var CardNames = ["Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"]
+var CardSuits = ["пик", "червей", "треф", "бубен"]
 
 var NextPic: Resource = load("res://TradingStuff/Style/StoryPics/sink.jpg")
-var NextText: String = "You used to be the Mafia Boss, the true Ace of Spades
-But no king rule forever
-You brother in arms betrayed you and sent to feed fish
-The only thing that saved your life and your position in the Mafia was 
+var NextText: String = "Ты был боссом Кардия Ностра, настоящим тузом пик
+Но короли не правят вечно
+Твои братья по оружию предали тебя, и отправили кормить рыб
+Единственное что спасло тебя и твоё положение в Мафии это 
 
-A DEAL WITH SEA DEVIL
+СДЕЛКА С МОРСКИМ ДЬЯВОЛОМ
 
-He make you outta the concrete boot but took your face
-Your collection was put on sale and started going around whole city
-Get you collection back!"
+Он достал тебя из таза с бетоном, но взамен забрал твоё лицо
+Твою коллекцию выставили на торги, и она разошлась по всему городу
+Собери её обратно!"
 var is_next_to_trade = true
 
 var story_traders: Array = []
@@ -249,8 +249,8 @@ func choose_card_for_rank(rank: int) -> Card:
 func _ready() -> void:
 	create_cards()
 	generate_collection(3)
-	playerAccount = Player.new("Jackie Boy", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"),
-	Globals.CardRanks.NINE, "of Spades", 1.0, 1.0, "")
+	playerAccount = Player.new("Джеки Бой", 4200, my_collection, preload("res://TradingStuff/Style/Portraits/jackieBoy.jpg"),
+	Globals.CardRanks.NINE, "пик", 1.0, 1.0, "")
 	load_story_dumbasses()
 	quest_manager = QuestManager.new()
 	add_child(quest_manager)

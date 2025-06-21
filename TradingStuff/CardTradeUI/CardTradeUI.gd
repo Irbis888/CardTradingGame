@@ -18,7 +18,7 @@ extends CanvasLayer
 
 @onready var player_rank = $UIRoot/MainHBox/RightPanel/PlayerRank
 @onready var trader_rank = $UIRoot/MainHBox/LeftPanel/OpponentRank
-@onready var trader_dialogue = $UIRoot/MainHBox/MiddlePanel/DialogueTexture/DialogueLabel
+@onready var trader_dialogue = $UIRoot/MainHBox/MiddlePanel/DialogueTexture/ScrollContainer/DialogueLabel
 
 @onready var day_counter = $"UIRoot/MainHBox/MiddlePanel/DayCounter"
 

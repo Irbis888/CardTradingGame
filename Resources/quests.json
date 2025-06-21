@@ -3,7 +3,7 @@
 		"id": 1,
 		"name": "Schoolboy_1",
 		"day": 3,
-		"trader_name": "Schoolboy",
+		"trader_name": "Школьник",
 		"type": "receive_card",
 		"required_card_conditions": {
 			"id": 1
@@ -15,7 +15,7 @@
 		"id": 2,
 		"name": "Schoolboy_2",
 		"day": 4,
-		"trader_name": "Schoolboy",
+		"trader_name": "Школьник",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 2
@@ -27,7 +27,7 @@
 		"id": 3,
 		"name": "Nurse_quest",
 		"day": 5,
-		"trader_name": "Dolores 'The Pillow' Morello",
+		"trader_name": "Долорес Морелло a.k.a. Медсестра",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 0
@@ -39,7 +39,7 @@
 		"id": 4,
 		"name": "Cult_1",
 		"day": 7,
-		"trader_name": "The Scarred Cultist",
+		"trader_name": "Культист, покрытый шрамами",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 0
@@ -52,7 +52,7 @@
 		"id": 5,
 		"name": "Cult_2",
 		"day": 10,
-		"trader_name": "The Joyful Cultist",
+		"trader_name": "Весёлый Культист",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 1
@@ -66,7 +66,7 @@
 		"id": 6,
 		"name": "Cult_3",
 		"day": 12,
-		"trader_name": "The Doubtful Cultist",
+		"trader_name": "Сомневающийся Культист",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 2
@@ -76,9 +76,9 @@
 	
 	{
 		"id": 7,
-		"name": "Victor's Revenge",
+		"name": "Месть Виктора",
 		"day": 14,
-		"trader_name": "Victor 'The Echo' Marconi",
+		"trader_name": "Виктор Маркони а.k.а Эхо",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 3
@@ -89,9 +89,9 @@
 	
 	{
 		"id": 8,
-		"name": "Victor's Return",
+		"name": "Возвращение Виктора",
 		"day": 16,
-		"trader_name": "Victor 'The Echo' Marconi",
+		"trader_name": "Виктор Маркони а.k.а Эхо",
 		"type": "receive_card",
 		"required_card_conditions": {
 			"id": 34
@@ -105,7 +105,7 @@
 		"id": 9,
 		"name": "Silas_1",
 		"day": 6,
-		"trader_name": "Silas 'The Merger' Belladonna",
+		"trader_name": "Силас Беладонна a.k.a Сводник",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 1
@@ -120,7 +120,7 @@
 		"id": 10,
 		"name": "Silas_2",
 		"day": 10,
-		"trader_name": "Silas 'The Merger' Belladonna",
+		"trader_name": "Силас Беладонна a.k.a Сводник",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 2
@@ -135,7 +135,7 @@
 		"id": 11,
 		"name": "Silas_3",
 		"day": 13,
-		"trader_name": "Silas 'The Merger' Belladonna",
+		"trader_name": "Силас Беладонна a.k.a Сводник",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 3
@@ -146,7 +146,7 @@
 		"id": 12,
 		"name": "Mayoralty",
 		"day": 20,
-		"trader_name": "Vincent 'The Stamp' Moretti",
+		"trader_name": "Винсент Моретти a.k.a. Марка",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 5

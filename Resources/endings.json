@@ -1,39 +1,39 @@
 [
 	{
 		"id": 1,
-		"name": "The Collector",
-		"description": "You finally get your hands on all Super Special Cards.
-		All other dons have no choice, but to submit to you... You capture Ricky and feed him to the fish, exactly at the same spot where he tried to do that to you.
-		Revenge feels sweet. And now, you are the Ace of Spades, and no one can stop you!",
+		"name": "Коллекционер",
+		"description": "Ты наконец-то собрал все Супер Специальные карты.
+		У остальных донов не осталось выбора, кроме как подчиниться тебе... Ты поймал Рикки и скормил его рыбам, ровно в том же месте, где он хотел сделать это с тобой.
+		Месть сладка. И теперь ты - Туз Пик, и никто тебя не остановит!",
 		"condition_type": "has_all_ssp"
 	},
 	{
 		"id": 2,
-		"name": "The Summoners",
-		"description": "At midnight, you and your new friends summon The Fire Devil.
-		He sees that it is you who summons him, and you are a spawn of his nemesis, the Sea Devil.
-		The Fire Devil is enraged and confused. You will not get any help from him...
-		He burns you and the cultists to a crisp as you try to run.",
+		"name": "Призыватели",
+		"description": "В полночь ты и твои новые друзья призываете Огненного Дьявола.
+Он видит, что призываешь его именно ты, порождение его кровного врага — Морского Дьявола.
+Огненный Дьявол в ярости и замешательстве. Ты не получишь от него никакой помощи...
+Он сжигает тебя и культистов дотла, когда вы пытаетесь убежать",
 		"condition_type": "quest_completed",
 		"quest_id": 6
 	},
 	
 	{
 		"id": 3,
-		"name": "The Trustful One",
-		"description": "Silas 'The Merger' Belladonna suddenly becomes Cardia Nostra's new mayor.
-		You hear news of Ricky Double‑Fold's arrest and life sentence. And then the Hearts' don. And the Club's one.
-		It's not long before you are arrested as well. Scared of what you might say, Silas has you murdered in your cell before trial.",
+		"name": "Наивный, доверчивый человек",
+		"description": "Силас Беладонна по кричке Сводник внезапно становится новым мэром Кардиа Ностры.
+Ты слышишь новости об аресте и пожизненном заключении Рикки Дабл-Фолда. Затем арестовывают дона Червей и дона Треф.
+Вскоре арестовывают и тебя. Испугавшись того, что ты можешь сказать, Силас убивает тебя в камере до суда.",
 		"condition_type": "quest_completed",
 		"quest_id": 11
 	},
 	{
 		"id": 4,
-		"name": "The New Mayor",
-		"description": "For a large bribe, you are 'elected' to be Cardia Nostra's new mayor. Everyone is a bit shocked at first, as you are a faceless mobster, but they get used to it.
-		You turn out to be not that bad. You imprison Ricky and the opposing dons, effectively reducing crime in the city.
-		You even fight water pollution to honor your saviour, the Sea Devil.
-		You live a long life, until you die peacefully, at age 93. You are given a honorary burial and a street named after you.",
+		"name": "Новый мэр",
+		"description": "По большому блату тебя «избирают» новым мэром Кардия Ностры. Сначала все немного в шоке, ведь ты безликий мафиози, но со временем привыкают.
+Ты оказываешься вовсе не таким уж плохим — сажаешь Рикки и вражеских донoв, эффективно снижая уровень преступности в городе.
+Ты даже борешься с загрязнением воды, чтобы почтить своего спасителя — Морского Дьявола.
+Ты живёшь долгую жизнь и мирно умираешь в возрасте 93 лет. Тебе устраивают почётные похороны, и называют улицу в честь тебя.",
 		"condition_type": "quest_completed",
 		"quest_id": 12
 	}

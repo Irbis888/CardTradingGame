@@ -2,85 +2,85 @@
 	{
 		"id": 1,
 		"type": "suit_price_modifier",
-		"name": "Generous Clubs",
-		"description": "Today, all traders with the club suit are more generous.",
-		"target_suit": "of Clubs",
+		"name": "Щедрые трефы",
+		"description": "Сегодня все торговцы из Треф необычно щедры",
+		"target_suit": "пик",
 		"price_multiplier": 0.5
 	},
 	{
 		"id": 2,
 		"type": "rank_price_modifier",
-		"name": "Jack's Day",
-		"description": "Traders with rank JACK raise their prices.",
+		"name": "День валета",
+		"description": "Торговцы ранга ВАЛЕТ сегодня подняли цены",
 		"target_rank": 5,
 		"price_multiplier": 2
 	},
 	{
 		"id": 3,
 		"type": "text_only",
-		"name": "Quiet Day",
-		"description": "Nothing special is happening today."
+		"name": "День тишины",
+		"description": "Сегодня не произошло ничего особенного"
 	},
 	{
 		"id": 4,
 		"type": "suit_price_modifier",
-		"name": "Hearts on Sale",
-		"description": "After a bloody turf war, heart traders lower their prices to move stock fast.",
-		"target_suit": "of Hearts",
+		"name": "Распродажа Червей",
+		"description": "После кровавой ночной схватки, торговцы Червей опустили цены чтобы быстрее распродаться.",
+		"target_suit": "червей",
 		"price_multiplier": 0.3
 	},
 	{
 		"id": 5,
 		"type": "suit_price_modifier",
-		"name": "Spades' Tribute",
-		"description": "Spade traders raise prices to fund protection money for their don.",
-		"target_suit": "of Spades",
+		"name": "Подношение Пик",
+		"description": "Торговци пик подняли цены чтобы собрать деньги на защиту их дона.",
+		"target_suit": "пик",
 		"price_multiplier": 2
 	},
 	{
 		"id": 6,
 		"type": "rank_price_modifier",
-		"name": "Aces High",
-		"description": "Aces are in demand after last night's high-stakes game.",
+		"name": "Асы в небе",
+		"description": "Тузы поднимают спрос после вчерашней игры высоких ставок.",
 		"target_rank": 1,
 		"price_multiplier": 2
 	},
 	{
 		"id": 7,
 		"type": "rank_price_modifier",
-		"name": "Queen's Favor",
-		"description": "Queen-rank traders offer deals to earn favor with the syndicate.",
+		"name": "Милость Дам",
+		"description": "Трейдеры ранга Дама снижают цены на милость синдикату.",
 		"target_rank": 4,
 		"price_multiplier": 0.5
 	},
 	{
 		"id": 8,
 		"type": "text_only",
-		"name": "Rumors in the Air",
-		"description": "Rumors swirl, but no one makes a move... yet."
+		"name": "Ходят слухи",
+		"description": "Слухи ходят, но никто не делает ходов... пока что"
 	},
 	{
 		"id": 9,
 		"type": "suit_price_modifier",
-		"name": "Diamond Crackdown",
-		"description": "With diamond dons under investigation, traders hike prices out of fear.",
-		"target_suit": "of Diamonds",
+		"name": "Падение Бубен",
+		"description": "Из-за расследования по донам Бубен их торговцы взвинтили цены из страха.",
+		"target_suit": "бубен",
 		"price_multiplier": 1.5
 	},
 	{
 		"id": 10,
 		"type": "text_only",
-		"name": "Old Debts",
-		"description": "Some say a legendary card shark is back in town."
+		"name": "Старые счёты",
+		"description": "Говорят, легендарная акула карт вернулась в город."
 	},
 	
 	{
 		"id": 11,
 		"type": "suit_price_modifier",
-		"name": "Spades Capo Dead",
-		"description": "A Spades capo, known for his loyality to your enemy Ricky Two-Folds,
-		mysteriously dies at hospital.
-		The Spades are shaken and have to lower their prices.",
+		"name": "Капо Пик убит",
+		"description": "Капо Пик, известный своей верностью твоему врагу Рики Two-Folds,
+		умирает в больнице при загадочных обстоятельствах.
+		Пики потрясены и вынуждены снизить цены.",
 		"target_suit": "of Spades",
 		"price_multiplier": 0.3,
 		"is_story": true
@@ -89,20 +89,20 @@
 	{
 		"id": 12,
 		"type": "text_only",
-		"name": "The Fire Rituals",
-		"description": "At night, everyone sees bright red flames twirl in the air.
-		At sunrise, they just dissappear.",
+		"name": "Огненные ритуалы",
+		"description": "Ночью всен видят красное пламя, танцующее в воздухе.
+		К рассвету оно исчезает.",
 		"is_story": true
 	},
 	
 	{
 		"id": 13,
 		"type": "suit_price_modifier",
-		"name": "Diamond Don Burned",
-		"description": "A mysterious fire creatures attacks a Diamond Don as he was going out to get a drink.
-		He manages to escape alive after pouring his 'Zloy' juice at the creature, but he is left with burn scars.
-		Diamonds raise their prices, as they need money to investigate the accident.",
-		"target_suit": "of Diamonds",
+		"name": "Доп Бубен сожжён",
+		"description": "Загадочные огненные существа атаковали дона Бубен когда он вышел за выпивкой.
+		Ему удалось сбежать живым облив своим соком 'Злой' этих тварей, но у него остались шрамы от ожогов.
+		Буби поднимают цены, чтобы собрать денег на расследование инцидента",
+		"target_suit": "бубен",
 		"price_multiplier": 1.5,
 		"is_story": true
 	},

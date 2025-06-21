@@ -1,33 +1,33 @@
 [
 	{
 		"day": 0,
-		"name": "Old Man",
+		"name": "Старик",
 		"portrait": "Granddad.png",
 		"rank": 0,
-		"suit": "of Spades",
+		"suit": "пик",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 0,
-				"dialogue": "Don't worry about losing your face - you were never that handsome anyway. It's a good thing you lived.
-				I used to serve your father, Jack the Man, in the past. I want to help you.",
+				"dialogue": "Не беспокойся из-за потери лица - оно и так не было слишком красивым. Хорошо что ты хоть выжил.
+				Я в прошлом служил твоему отцу, Большому Джеку. Я хочу тебе помочь.",
 				"cards": [],
 
 			},
 			{
 				"day": 2,
-				"dialogue": "People of Cardia Nostra will want different things of you. Decide carefully whether or not you want to give them what they want.",
+				"dialogue": "Люди в Кардия Ностра хотят от тебя разного. Решать мудро, хочешь ли ты им этого давать, или нет.",
 				"cards": []
 			},
 			{
 				"day": 3,
-				"dialogue": "I have found some cards in the attic. Take them for free, Jackie - perhaps they will be of use.",
+				"dialogue": "Я нашёл несколько карт на чердаке. Забери их бесплатно, Джеки - думаю от них будет тебе толк.",
 				"cards": [1, 2, 16]
 			},
 						{
 				"day": 4,
-				"dialogue": "You may have noticed some things are happening overnight. Perhaps you will be able to manipulate the market to your benefit...",
+				"dialogue": "Замечаешь, что каждую ночь что-то происходит? Возможно, когда-нибудь ты сможешь манипулировать рынком так, как тебе надо...",
 				"cards": []
 			}
 		],
@@ -35,29 +35,29 @@
 	
 	{
 		"day": 2,
-		"name": "Schoolboy",
+		"name": "Школьник",
 		"portrait": "Schoolboy.png",
 		"rank": 0,
-		"suit": "of Spades",
+		"suit": "пик",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 3,
-				"dialogue": "Please accept my card as a tribute, sir. They say mafia is not for kids like me, but I have to join it to protect my mother and sister.",
+				"dialogue": "Примите мою карту как дар, сэр. Говорят детям не место в мафии, Но мне надо присоединиться, чтобы защитить мать и сестру.",
 				"cards": [1],
 				"quest_id": 1
 			},
 			{
 				"day": 4,
-				"dialogue": "T-the dons demand that I pay them, and I have no means to do so. If you could give me a rare card, you'd save my life. And I'll pay you threefold when I climb up the ranks",
+				"dialogue": "Д-доны хотят чтобы я им заплатил, и у меня нет таких средств. Если бы вы дали мне редкую карту, вы бы спасли мне жизнь. Когда я поднимусь, я заплачу вам втрое больше",
 				"cards": [],
 				"rank": 2,
 				"quest_id": 2
 			},
 						{
 				"day": 6,
-				"dialogue": "Ahahahahahah! I scammed you! I'm the king of mafia now, and I won't give you shit!",
+				"dialogue": "АХАХХАХХАХХА! Я развёл тебя! Я теперь король мафии, и я не собираюсь тебе нихуя давать!",
 				"cards": [],
 				"money": 9001,
 				"required_quest_id": 2,
@@ -68,16 +68,16 @@
 	
 	{
 		"day": 5,
-		"name": "Dolores 'The Pillow' Morello",
+		"name": "Долорес Морелло a.k.a. Медсестра",
 		"portrait": "Nurse.png",
 		"rank": 1,
-		"suit": "of Clubs",
+		"suit": "треф",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 5,
-				"dialogue": "Um... There's an injured Ricky Double-Fold's capo at the hospital. Give me a common card - and he'll never leave the place... God, it would be embarassing if I was talking to the wrong guy right now.",
+				"dialogue": "Эм... В больнице лежит раненый капо Рикки Double-Fold'а. Дай мне обычную карту — и он оттуда уже никогда не выйдет… Господи, было бы неловко, если бы я пришла не к тому человекоу.",
 				"cards": [],
 				"quest_id": 3
 			}
@@ -86,17 +86,17 @@
 	
 		{
 		"day": 8,
-		"name": "Matilda 'The Shotgun' Fellini",
+		"name": "Матильда Феллини a.k.a. Дробовик",
 		"portrait": "Isaeva.png",
 		"rank": 4,
-		"suit": "of Hearts",
+		"suit": "червей",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 8,
-				"dialogue": "I heard it's thanks to you that mumbling fool is in his grave and doesn't pester my hospital room.
-				Take these. My grandson is too old to play with them anyway.",
+				"dialogue": "Слыхала я, это благодаря тебе этот бормочущий дурак теперь в могиле и больше не докучает мне в палате.
+				Держи вот это. Мой внук всё равно уже слишком взрослый, чтобы с ними играть.",
 				"cards": [15, 20],
 				"required_quest_id": 3,
 			}
@@ -105,17 +105,17 @@
 	
 	{
 		"day": 7,
-		"name": "The Scarred Cultist",
+		"name": "Культист, покрытый шрамами",
 		"portrait": "ScarredCultist.png",
 		"rank": 1,
-		"suit": "of Hearts",
+		"suit": "червей",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 7,
-				"dialogue": "Our cult lacks funding. Give me a common card and we will use our rituals to help you.
-				After all, you are quite supernatural yourself now.",
+				"dialogue": "Нашему культу не хватает финансирования. Дай мне обычную карту, и мы поможем тебе с помощью наших ритуалов.
+				В конце концов, ты теперь и сам в некотором роде сверхъестественный.",
 				"cards": [],
 				"quest_id": 4,
 			}
@@ -124,18 +124,18 @@
 	
 	{
 		"day": 10,
-		"name": "The Joyful Cultist",
+		"name": "Весёлый Культист",
 		"portrait": "JoyfulCultist.png",
 		"rank": 2,
-		"suit": "of Hearts",
+		"suit": "червей",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 10,
-				"dialogue": "WOW! Have you seen our latest ritual, man?
-				Now we want to summon fire demons to help you out! They will burn your enemies!
-				Give us an uncommon card, please!",
+				"dialogue": "ОГО! Ты видел наш последний ритуал, чувак?
+Теперь мы хотим призвать огненных демонов, чтобы помочь тебе! Они сожгут твоих врагов!
+Дай нам, пожалуйста, необычную карту!",
 				"cards": [],
 				"quest_id": 5,
 				"required_quest_id": 4
@@ -145,18 +145,18 @@
 	
 	{
 		"day": 12,
-		"name": "The Doubtful Cultist",
+		"name": "Сомневающийся Культист",
 		"portrait": "DoubtfulCultist.png",
 		"rank": 0,
-		"suit": "of Hearts",
+		"suit": "червей",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 12,
-				"dialogue": "I told them it was a bad idea. But they never listen. 
-				Our next plan is to summon the fire devil himself, and for that we'll need a rare card.
-				I'm not sure it will work, though.",
+				"dialogue": "Я говорил им, что это плохая идея. Но они никогда не слушают.
+Наш следующий план — призвать самого огненного дьявола, а для этого нам понадобится редкая карта.
+Правда, я не уверен, что это сработает.",
 				"cards": [],
 				"quest_id": 6,
 				"required_quest_id": 5
@@ -166,25 +166,25 @@
 	
 	{
 		"day": 14,
-		"name": "Victor 'The Echo' Marconi",
+		"name": "Виктор Маркони а.k.а Эхо",
 		"portrait": "RevengeGuy.png",
 		"rank": 5,
-		"suit": "of Clubs",
+		"suit": "треф",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 14,
-				"dialogue": "I've been betrayed just like you. The new 'Ace of Clubs' took my place and killed my friends.
-				Give me a Super Rare card so that I can get my position back. I promise I'll return the favour.",
+				"dialogue": "Меня предали, совсем как тебя. Новый «Туз Треф» занял моё место и убил моих друзей.
+Дай мне суперредкую карту, чтобы я мог вернуть свои позиции. Я обещаю отплатить тебе тем же.",
 				"cards": [],
 				"quest_id": 7
 			},
 			
 			{
 				"day": 16,
-				"dialogue": "I've killed all those who betrayed me. But I feel hollow.
-				Nothing will return me my friends, nor the trust in my people. I've decided to give my cards to charity and retire. But this one is for you.",
+				"dialogue": "Я убил всех, кто меня предал. Теперь в моей душе пустота.
+Ничто не вернёт мне друзей или веру в моих людей. Я решил отдать свои карты на благотворительность и уйти на пенсию. Но эта карта — для тебя.",
 				"cards": [34],
 				"quest_id": 8,
 				"required_quest_id": 7,
@@ -197,32 +197,33 @@
 	
 	{
 		"day": 6,
-		"name": "Silas 'The Merger' Belladonna",
+		"name": "Силас Беладонна a.k.a Сводник",
 		"portrait": "Guy.png",
 		"rank": 7,
-		"suit": "of Diamonds",
+		"suit": "бубен",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 6,
-				"dialogue": "Hello. I'm sorry for what Ricky Double‑Fold did to ya. Let's make an alliance: give me an uncommon card to protect my restaurant from Ricky, and my people will give you discounts on the market.",
+				"dialogue": "Здарова!. Мне жаль, что Рикки Double-Fold с тобой сделал.
+Давай заключим союз: дай мне необычную карту, чтобы защитить мой ресторан от Рикки, а мои люди сделают тебе скидки на рынке.",
 				"cards": [],
 				"quest_id": 9
 			},
 			
 			{
 				"day": 10,
-				"dialogue": "We've worked well last time, friend! I've found a way to weaken Ricky's position.
-				Give me a rare card, and come see the market tomorrow.",
+				"dialogue": "Мы хорошо сработали в прошлый раз, братан! Я нашёл способ ослабить позиции Рикки.
+Дай мне редкую карту — и приходи завтра на рынок.",
 				"cards": [],
 				"quest_id": 10,
 				"required_quest_id": 9,
 			},
 			{
 				"day": 13,
-				"dialogue": "Great news! My friends at the city hall offered me a nice position for a small 'gift'.
-				Give me a Super Rare card and we'll make sure Ricky perishes.",
+				"dialogue": "Отличные новости! Мои друзья в мэрии предложили мне хорошую должность за небольшой «подарок».
+Дай мне суперредкую карту, и мы позаботимся о том, чтобы Рикки пропал навсегда",
 				"cards": [],
 				"quest_id": 11,
 				"required_quest_id": 10,
@@ -233,17 +234,17 @@
 	
 		{
 		"day": 7,
-		"name": "Sophia 'The Quiet Serve' Ricci",
+		"name": "София Риччи a.k.a Служанка",
 		"portrait": "Waitress.png",
 		"rank": 0,
-		"suit": "of Diamonds",
+		"suit": "бубен",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 7,
-				"dialogue": "It's thanks to you the Spades no longer harass me at the restaraunt...
-				I don't have much, but take this card. And heed my advice: don't trust Silas. He's a snake.",
+				"dialogue": "Благодаря тебе Пики больше не докучают мне в ресторане…
+Я не богатая, но вот, возьми эту карту. И послушай мой совет: не доверяй Силасу. Он настоящая гадюка.",
 				"cards": [3],
 				"required_quest_id": 9,
 			}
@@ -252,17 +253,17 @@
 	
 	{
 		"day": 11,
-		"name": "Tony 'The Turnip' Taveccio",
+		"name": "Тони Тавеччио a.k.a Репка",
 		"portrait": "Shopkeeper.png",
 		"rank": 0,
-		"suit": "of Diamonds",
+		"suit": "бубен",
 		"mult": 1.0,
 		"money": 378,
 		"appearances": [
 			{
 				"day": 11,
-				"dialogue": "Heard the shots' down the street. It's thanks to ya they got rid of Spades' hideout...
-				But I'm curious, why do ya even help that Silas guy?",
+				"dialogue": "Слышал выстрелы тут, на улице. Благодаря тебе избавились от логова пик…
+Но мне интересно, зачем ты вообще помогаешь этому Силасу?",
 				"cards": [3, 7, 8],
 				"required_quest_id": 10,
 			}
@@ -271,17 +272,17 @@
 	
 	{
 		"day": 20,
-		"name": "Vincent 'The Stamp' Moretti",
+		"name": "Винсент Моретти a.k.a. Марка",
 		"portrait": "Clerk.png",
 		"rank": 5,
-		"suit": "of Diamonds",
+		"suit": "бубен",
 		"mult": 0.0,
 		"money": 0,
 		"appearances": [
 			{
 				"day": 20,
-				"dialogue": "You're this don everyone's talking about. A famous mobster going around helping civilians.
-				If you could give me a Super Special Card... I could even go further and make you the Mayor of the city.",
+				"dialogue": "Ты тот самый дон, о котором все говорят. Известный мафиози, который помогает простым людям.
+				Если бы ты дал мне Супер Особую Карту... я бы даже пошёл дальше и сделал тебя мэром города.",
 				"cards": [],
 				"required_tag": "mayoralty",
 				"required_tag_count": 2,
