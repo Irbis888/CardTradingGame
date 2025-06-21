@@ -27,23 +27,131 @@
 		"id": 3,
 		"name": "Nurse_quest",
 		"day": 5,
-		"trader_name": "Nurse",
+		"trader_name": "Dolores 'The Pillow' Morello",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 0
 		},
-		"reward_event_id": 11
+		"reward_event_id": 11,
+		"tag": "mayoralty"
 	},
-	
 		{
 		"id": 4,
-		"name": "Test ending",
-		"day": 8,
-		"trader_name": "Schoolboy",
+		"name": "Cult_1",
+		"day": 7,
+		"trader_name": "The Scarred Cultist",
 		"type": "give_card",
 		"required_card_conditions": {
 			"rarity": 0
+		},
+		"next_quest_id": 5,
+		"reward_event_id": 12
+	},
+	
+		{
+		"id": 5,
+		"name": "Cult_2",
+		"day": 10,
+		"trader_name": "The Joyful Cultist",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 1
+		},
+		"prev_quest_id": 4,
+		"next_quest_id": 6,
+		"reward_event_id": 13
+	},
+	
+		{
+		"id": 6,
+		"name": "Cult_3",
+		"day": 12,
+		"trader_name": "The Doubtful Cultist",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 2
+		},
+		"prev_quest_id": 5
+	},
+	
+	{
+		"id": 7,
+		"name": "Victor's Revenge",
+		"day": 14,
+		"trader_name": "Victor 'The Echo' Marconi",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 3
+		},
+		"next_npc_day": 16,
+		"next_quest_id": 8,
+	},
+	
+	{
+		"id": 8,
+		"name": "Victor's Return",
+		"day": 16,
+		"trader_name": "Victor 'The Echo' Marconi",
+		"type": "receive_card",
+		"required_card_conditions": {
+			"id": 34
+		},
+		"prev_quest_id": 7,
+		"reward_event_id": 14,
+		"tag": "mayoralty"
+	},
+	
+	{
+		"id": 9,
+		"name": "Silas_1",
+		"day": 6,
+		"trader_name": "Silas 'The Merger' Belladonna",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 1
+		},
+		"next_npc_day": 10,
+		"reward_event_id": 15,
+		"next_quest_id": 10,
+		"tag": "mayoralty"
+	},
+	
+	{
+		"id": 10,
+		"name": "Silas_2",
+		"day": 10,
+		"trader_name": "Silas 'The Merger' Belladonna",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 2
+		},
+		"next_npc_day": 13,
+		"reward_event_id": 16,
+		"next_quest_id": 11,
+		"tag": "mayoralty"
+	},
+	
+	{
+		"id": 11,
+		"name": "Silas_3",
+		"day": 13,
+		"trader_name": "Silas 'The Merger' Belladonna",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 3
 		}
-	}
+	},
+	
+	{
+		"id": 12,
+		"name": "Mayoralty",
+		"day": 20,
+		"trader_name": "Vincent 'The Stamp' Moretti",
+		"type": "give_card",
+		"required_card_conditions": {
+			"rarity": 5
+		}
+	},
+	
 	
 ]

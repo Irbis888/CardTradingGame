@@ -27,7 +27,7 @@
 		"name": "Hearts on Sale",
 		"description": "After a bloody turf war, heart traders lower their prices to move stock fast.",
 		"target_suit": "of Hearts",
-		"price_multiplier": 0.2
+		"price_multiplier": 0.3
 	},
 	{
 		"id": 5,
@@ -35,7 +35,7 @@
 		"name": "Spades' Tribute",
 		"description": "Spade traders raise prices to fund protection money for their don.",
 		"target_suit": "of Spades",
-		"price_multiplier": 3
+		"price_multiplier": 2
 	},
 	{
 		"id": 6,
@@ -65,7 +65,7 @@
 		"name": "Diamond Crackdown",
 		"description": "With diamond dons under investigation, traders hike prices out of fear.",
 		"target_suit": "of Diamonds",
-		"price_multiplier": 3
+		"price_multiplier": 1.5
 	},
 	{
 		"id": 10,
@@ -83,6 +83,61 @@
 		The Spades are shaken and have to lower their prices.",
 		"target_suit": "of Spades",
 		"price_multiplier": 0.3,
+		"is_story": true
+	},
+	
+	{
+		"id": 12,
+		"type": "text_only",
+		"name": "The Fire Rituals",
+		"description": "At night, everyone sees bright red flames twirl in the air.
+		At sunrise, they just dissappear.",
+		"is_story": true
+	},
+	
+	{
+		"id": 13,
+		"type": "suit_price_modifier",
+		"name": "Diamond Don Burned",
+		"description": "A mysterious fire creatures attacks a Diamond Don as he was going out to get a drink.
+		He manages to escape alive after pouring his 'Zloy' juice at the creature, but he is left with burn scars.
+		Diamonds raise their prices, as they need money to investigate the accident.",
+		"target_suit": "of Diamonds",
+		"price_multiplier": 1.5,
+		"is_story": true
+	},
+	
+	{
+		"id": 14,
+		"type": "suit_price_modifier",
+		"name": "Clubs in Ruins",
+		"description": "An Ace of Clubs sells his cards and donates his money to charity, before leaving the city forever.
+		A power struggle between remaining Clubs severely weakens their positions and forces them to lower prices.",
+		"price_multiplier": 0.1,
+		"target_suit": "Of Clubs",
+		"is_story": true
+	},
+	
+	{
+		"id": 15,
+		"type": "suit_price_modifier",
+		"name": "Diamond Discount",
+		"description": "A restaurant belonging to a Diamond Don now prospers, as Ricky's men have stopped raiding it.
+		As a reward, Diamond traders are required to give you a discount today.",
+		"price_multiplier": 0.7,
+		"target_suit": "Of Diamonds",
+		"is_story": true
+	},
+	
+	{
+		"id": 16,
+		"type": "suit_price_modifier",
+		"name": "Spades Raided",
+		"description": "The police storm Ricky's hideout, killing or capturing his men. 
+		You hear the story from your old acquaintance, who barely managed to escape.
+		The Spades clan is shaken.",
+		"price_multiplier": 0.5,
+		"target_suit": "Of Spades",
 		"is_story": true
 	},
 ]

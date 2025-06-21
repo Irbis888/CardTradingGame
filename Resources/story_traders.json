@@ -62,13 +62,6 @@
 				"money": 9001,
 				"required_quest_id": 2,
 				"rank": 8
-			},
-			{
-				"day": 8,
-				"dialogue": "I have come again to test the endings. Give me a common card to end the game now",
-				"cards": [],
-				"rank": 8,
-				"quest_id": 4
 			}
 		],
 	},
@@ -108,7 +101,194 @@
 				"required_quest_id": 3,
 			}
 		]
-	}
+	},
+	
+	{
+		"day": 7,
+		"name": "The Scarred Cultist",
+		"portrait": "ScarredCultist.png",
+		"rank": 1,
+		"suit": "of Hearts",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 7,
+				"dialogue": "Our cult lacks funding. Give me a common card and we will use our rituals to help you.
+				After all, you are quite supernatural yourself now.",
+				"cards": [],
+				"quest_id": 4,
+			}
+		]
+	},
+	
+	{
+		"day": 10,
+		"name": "The Joyful Cultist",
+		"portrait": "JoyfulCultist.png",
+		"rank": 2,
+		"suit": "of Hearts",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 10,
+				"dialogue": "WOW! Have you seen our latest ritual, man?
+				Now we want to summon fire demons to help you out! They will burn your enemies!
+				Give us an uncommon card, please!",
+				"cards": [],
+				"quest_id": 5,
+				"required_quest_id": 4
+			}
+		]
+	},
+	
+	{
+		"day": 12,
+		"name": "The Doubtful Cultist",
+		"portrait": "DoubtfulCultist.png",
+		"rank": 0,
+		"suit": "of Hearts",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 12,
+				"dialogue": "I told them it was a bad idea. But they never listen. 
+				Our next plan is to summon the fire devil himself, and for that we'll need a rare card.
+				I'm not sure it will work, though.",
+				"cards": [],
+				"quest_id": 6,
+				"required_quest_id": 5
+			}
+		]
+	},
+	
+	{
+		"day": 14,
+		"name": "Victor 'The Echo' Marconi",
+		"portrait": "RevengeGuy.png",
+		"rank": 5,
+		"suit": "of Clubs",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 14,
+				"dialogue": "I've been betrayed just like you. The new 'Ace of Clubs' took my place and killed my friends.
+				Give me a Super Rare card so that I can get my position back. I promise I'll return the favour.",
+				"cards": [],
+				"quest_id": 7
+			},
+			
+			{
+				"day": 16,
+				"dialogue": "I've killed all those who betrayed me. But I feel hollow.
+				Nothing will return me my friends, nor the trust in my people. I've decided to give my cards to charity and retire. But this one is for you.",
+				"cards": [34],
+				"quest_id": 8,
+				"required_quest_id": 7,
+				"rank": 8
+			}
+		]
+	},
+	
+	
+	
+	{
+		"day": 6,
+		"name": "Silas 'The Merger' Belladonna",
+		"portrait": "Guy.png",
+		"rank": 7,
+		"suit": "of Diamonds",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 6,
+				"dialogue": "Hello. I'm sorry for what Ricky Double‑Fold did to ya. Let's make an alliance: give me an uncommon card to protect my restaurant from Ricky, and my people will give you discounts on the market.",
+				"cards": [],
+				"quest_id": 9
+			},
+			
+			{
+				"day": 10,
+				"dialogue": "We've worked well last time, friend! I've found a way to weaken Ricky's position.
+				Give me a rare card, and come see the market tomorrow.",
+				"cards": [],
+				"quest_id": 10,
+				"required_quest_id": 9,
+			},
+			{
+				"day": 13,
+				"dialogue": "Great news! My friends at the city hall offered me a nice position for a small 'gift'.
+				Give me a Super Rare card and we'll make sure Ricky perishes.",
+				"cards": [],
+				"quest_id": 11,
+				"required_quest_id": 10,
+			}
+			
+		]
+	},
+	
+		{
+		"day": 7,
+		"name": "Sophia 'The Quiet Serve' Ricci",
+		"portrait": "Waitress.png",
+		"rank": 0,
+		"suit": "of Diamonds",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 7,
+				"dialogue": "It's thanks to you the Spades no longer harass me at the restaraunt...
+				I don't have much, but take this card. And heed my advice: don't trust Silas. He's a snake.",
+				"cards": [3],
+				"required_quest_id": 9,
+			}
+		]
+	},
+	
+	{
+		"day": 11,
+		"name": "Tony 'The Turnip' Taveccio",
+		"portrait": "Shopkeeper.png",
+		"rank": 0,
+		"suit": "of Diamonds",
+		"mult": 1.0,
+		"money": 378,
+		"appearances": [
+			{
+				"day": 11,
+				"dialogue": "Heard the shots' down the street. It's thanks to ya they got rid of Spades' hideout...
+				But I'm curious, why do ya even help that Silas guy?",
+				"cards": [3, 7, 8],
+				"required_quest_id": 10,
+			}
+		]
+	},
+	
+	{
+		"day": 20,
+		"name": "Vincent 'The Stamp' Moretti",
+		"portrait": "Clerk.png",
+		"rank": 5,
+		"suit": "of Diamonds",
+		"mult": 0.0,
+		"money": 0,
+		"appearances": [
+			{
+				"day": 20,
+				"dialogue": "You're this don everyone's talking about. A famous mobster going around helping civilians.
+				If you could give me a Super Special Card... I could even go further and make you the Mayor of the city.",
+				"cards": [],
+				"required_tag": "mayoralty",
+				"required_tag_count": 2,
+				"quest_id": 12,
+			}
+		]
+	},
 	
 	
 ]

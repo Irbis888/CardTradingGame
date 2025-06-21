@@ -99,6 +99,12 @@ func get_story_bitches():
 		for appearance in trader_data.appearances:
 			if appearance.day == Globals.day:
 				
+				if appearance.has("required_tag") and appearance.has("required_tag_count"):
+					var tag = appearance.required_tag
+					var needed = appearance.required_tag_count
+					if Globals.quest_manager.count_completed_quests_with_tag(tag) < needed:
+						continue  # игрок еще не выполнил достаточно квестов с этим тегом
+				
 				var quest_id = appearance.get("quest_id", null)
 			
 				if quest_id != null:
