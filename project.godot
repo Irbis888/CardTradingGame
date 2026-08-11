@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="CardTrading"
 run/main_scene="uid://di4ffarlvt3jc"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +29,7 @@ EndingsManager="*res://endingsManager.gd"
 
 window/size/viewport_width=1960
 window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [rendering]
