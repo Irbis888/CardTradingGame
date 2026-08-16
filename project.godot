@@ -17,13 +17,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="CardTrading"
 run/main_scene="uid://di4ffarlvt3jc"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Globals="*res://globals.gd"
-EventManager="*res://eventManager.gd"
-EndingsManager="*res://endingsManager.gd"
+Globals="*res://scripts/core/globals.gd"
+EventManager="*res://scripts/systems/event_manager.gd"
+EndingsManager="*res://scripts/systems/endings_manager.gd"
 
 [display]
 

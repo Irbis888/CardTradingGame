@@ -1,0 +1,93 @@
+{
+	"traders": {
+		"random_names": [
+			"Vinny 'The Wrench' Moretti",
+			"Salvatore 'Silk Suit' Romano",
+			"Tommy 'Knuckles' Mancini",
+			"Frankie 'No Nose' Bellini",
+			"Angelo 'The Hat' Vitale",
+			"Johnny 'Dice' Calabrese",
+			"Rocco 'Two-Times' Russo",
+			"Luca 'The Shadow' Marino",
+			"Tony 'The Fox' Caruso",
+			"Nicky 'The Chin' Gravano",
+			"Vito 'Dead Eyes' Giordano",
+			"Sammy 'Slick' Barone",
+			"Marco 'The Knife' Esposito",
+			"Joey 'Boots' Terranova",
+			"Benny 'Numbers' Capelli",
+			"Donnie 'Quickhands' Rizzo",
+			"Carlo 'Whispers' Abate",
+			"Enzo 'The Ghost' Bellomo",
+			"Pauly 'Bricks' DiAngelo",
+			"Leo 'Switchblade' Romano",
+			"Ralphie 'The Roach' Vassallo",
+			"Dominic 'Fats' Giaccone",
+			"Freddie 'Bang Bang' Lupo",
+			"Albie 'The Suit' Costello",
+			"Mickey 'Snaps' Fiorentino",
+			"Vincent 'Lucky V' D'Amico",
+			"Silvio 'Scar' Bonasera",
+			"Lenny 'The Rat' Accardi",
+			"Tony 'Whiskers' Gallo",
+			"Gianni 'The Smile' Ferro"
+		],
+		"dialogue": {
+			"neutral": [
+				"Покажи что у тебя есть!",
+				"Что у тебя с лицом?",
+				"У меня лучшие карты в Кардия Ностра!",
+				"Ещё один день, ещё одни торги. Ты готов?",
+				"Выиграть, проиграть... пока ты уходишь целым, это хороший день"
+			],
+			"rude": [
+				"Я сегодня как будто меценатствую",
+				"От тебя пахнет отчаянием.. И рыбой",
+				"Не стоило даже связываться с тобой у всех на виду! Считай, тебе повезло",
+				"Пфф. Я должен торговать с теми у кого лицо ещё на месте",
+				"Предлагай, пока я не передумал"
+			],
+			"flattering": [
+				"Такая честь торговать с легендой улиц! Моя коллекция к вашим услугам",
+				"Взгляните на моё лучшее предложение!",
+				"Сэр, для вас - что угодно!",
+				"Легендарный Джеки Бой! Теперь вся Кардия Ностра будет мне завидовать!"
+			]
+		}
+	},
+	"cards": {
+		"rank_names": ["Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз"],
+		"suits": ["пик", "червей", "треф", "бубен"]
+	},
+	"player": {
+		"name": "Джеки Бой",
+		"starting_suit": "пик"
+	},
+	"story": {
+		"intro": "Ты был боссом Кардия Ностра, настоящим тузом пик\nНо короли не правят вечно\nТвои братья по оружию предали тебя, и отправили кормить рыб\nЕдинственное что спасло тебя и твоё положение в Мафии это \n\nСДЕЛКА С МОРСКИМ ДЬЯВОЛОМ\n\nОн достал тебя из таза с бетоном, но взамен забрал твоё лицо\nТвою коллекцию выставили на торги, и она разошлась по всему городу\nСобери её обратно!",
+		"day_complete": "One another day in trading. You spent all your todays money on ZLOI juice.\n\tYou still have your cards."
+	},
+	"tutorial": {
+		"pages": [
+			"Welcome back, boss.\nHang your coat, kill the cigar, and keep your ears open—this is your one shot to claw your way back to the top of the cardboard syndicate.",
+			"The story that still smells of smoke\n\nYou were the Don of Cardia Nostra until your “blood brother” Ricky Double‑Fold slid a knife into your spine and walked off with every rare card in your vault. Four legendary pieces—EraemEreff, Crimson Heart, Goat Exorcist of the Azure Blaze, Pig'o'Boros—are now decorating his greasy hands. Bring them home and Ricky’s breathing privileges expire.",
+			"Respect is printed on cardboard\n\nAround here, nobody cares how many bullets you own—only how many rares sit in your binder. A thick album means low bows. Lose cards, lose face. Remember that when you haggle.",
+			"The pecking order\n\nStreet Pawn (6–10): folks call him “kid.”\n\nJack (J): a common runner, does the dirty pickups.\n\nQueen (Q): “Signora,” pulls strings from velvet gloves.\n\nKing (K): “Don” or “Donna,” controls a whole district.\n\nAce (A): that’s you—once the crown is back on your head.\n\n\nHigher rank unlocks fatter deals and deeper whispers.",
+			"How a day flows in Cardia Nostra\n\n1. Street Report – A random event twists prices. Rarity, set hype, character fame, trader reputation, and each card’s stats get shaken into one volatile cocktail.\n\n\n2. The Deal – Buy, swap, intimidate. The tougher your table talk, the sweeter the margin. Watch for scams.\n\n\n3. Night Count – The accountant tallies your profit, the current value of your collection, and the bump to your rep.\n\n\n\nThree beats make a day; a few days make an empire. Ignore the Street Report and you’ll overpay. Miss a deal and your rival steals the card of your dreams. Sleep on the Night Count and you won’t notice someone slowly stripping you bare.",
+			"Street rules etched in cardstock\n\n1. Never flash your whole hand. A glimpse of two rares is enough to raise the stakes.\n\n\n2. Good connections cost less than good cards. Before spending cash, lean on your aura.\n\n\n3. Collect intel the way you collect foils. Someone out there knows where your legends hide.\n\n\n4. Betrayal is paid in full. Once the four trophies return, the Reckoning Phase with Ricky begins—and cardboard gives way to cold steel.",
+			"Take back what the world stole. Cards are your gun; the binder is your holster.\nNow deal the first hand, Don—time to reshuffle the city."
+		]
+	},
+	"ui": {
+		"attack_prefix": "ATK: ",
+		"defense_prefix": "DEF: ",
+		"magic_prefix": "MAG: ",
+		"money_prefix": "$",
+		"day_prefix": "Day ",
+		"summary_title": "Summary:",
+		"lose_money_prefix": "You lose $",
+		"get_money_prefix": "You get $",
+		"give_header": "You give:",
+		"take_header": "You take:"
+	}
+}

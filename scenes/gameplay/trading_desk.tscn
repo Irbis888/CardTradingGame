@@ -1,0 +1,216 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/gameplay/trading_desk.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/portraits/Granddad.png" id="2_portrait"]
+[ext_resource type="FontFile" path="res://assets/fonts/at01.ttf" id="3_font"]
+[ext_resource type="PackedScene" path="res://scenes/ui/draggable_card.tscn" id="4_card"]
+[ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="5_draggable"]
+[ext_resource type="Script" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="6_drag_surface"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
+bg_color = Color(0.105, 0.11, 0.105, 1)
+border_width_right = 8
+border_color = Color(0.25, 0.26, 0.225, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
+bg_color = Color(0.31, 0.325, 0.27, 1)
+border_width_top = 18
+border_color = Color(0.14, 0.15, 0.125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_table"]
+bg_color = Color(0.135, 0.09, 0.065, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.28, 0.205, 0.145, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_red_square"]
+bg_color = Color(0.82, 0.075, 0.055, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.42, 0.02, 0.015, 1)
+
+[node name="TradingDesk" type="Control"]
+custom_minimum_size = Vector2(0, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.025, 0.025, 1)
+
+[node name="VisitorArea" type="Panel" parent="."]
+layout_mode = 1
+anchor_right = 0.331633
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_visitor")
+
+[node name="WallBandOne" type="ColorRect" parent="VisitorArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 112.0
+offset_bottom = 128.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.18, 0.185, 0.165, 1)
+
+[node name="WallBandTwo" type="ColorRect" parent="VisitorArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 222.0
+offset_bottom = 238.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.18, 0.185, 0.165, 1)
+
+[node name="Portrait" type="TextureRect" parent="VisitorArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 25.0
+offset_right = 260.0
+offset_bottom = 545.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Counter" type="Panel" parent="VisitorArea"]
+layout_mode = 1
+anchor_top = 0.63
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter")
+
+[node name="CounterSlot" type="ColorRect" parent="VisitorArea/Counter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -13.0
+offset_right = 135.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.085, 0.07, 1)
+
+[node name="CounterHighlight" type="ColorRect" parent="VisitorArea/Counter"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 28.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.48, 0.49, 0.4, 0.65)
+
+[node name="Divider" type="ColorRect" parent="."]
+layout_mode = 1
+anchor_left = 0.331633
+anchor_right = 0.331633
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.32, 0.32, 0.275, 1)
+
+[node name="CardTable" type="Panel" parent="."]
+layout_mode = 1
+anchor_left = 0.331633
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_table")
+
+[node name="TableLabel" type="Label" parent="CardTable"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 14.0
+offset_bottom = 58.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.75, 0.61, 0.43, 0.42)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 30
+text = "CARD TABLE"
+horizontal_alignment = 1
+
+[node name="DragSurface" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.331633
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_drag_surface")
+
+[node name="CardOne" parent="DragSurface" instance=ExtResource("4_card")]
+z_index = 1
+layout_mode = 0
+offset_left = 70.0
+offset_top = 80.0
+offset_right = 310.0
+offset_bottom = 424.0
+
+[node name="CardTwo" parent="DragSurface" instance=ExtResource("4_card")]
+z_index = 2
+layout_mode = 0
+offset_left = 445.0
+offset_top = 270.0
+offset_right = 685.0
+offset_bottom = 614.0
+
+[node name="CardThree" parent="DragSurface" instance=ExtResource("4_card")]
+z_index = 3
+layout_mode = 0
+offset_left = 860.0
+offset_top = 90.0
+offset_right = 1100.0
+offset_bottom = 434.0
+
+[node name="RedSquare" type="Panel" parent="DragSurface"]
+z_index = 4
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 550.0
+offset_right = 250.0
+offset_bottom = 660.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_red_square")
+
+[node name="UIDraggable" parent="DragSurface/RedSquare" instance=ExtResource("5_draggable")]

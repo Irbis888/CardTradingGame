@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b2xeul8i7hxjn"]
+
+[ext_resource type="Script" uid="uid://cdkqp2lgr8yfy" path="res://scripts/ui/draggable_card.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://d3cypyp7313y8" path="res://scenes/ui/card_view.tscn" id="2_card_view"]
+[ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="3_draggable"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_shadow"]
+bg_color = Color(0.015, 0.02, 0.025, 0.58)
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="DraggableCard" type="Control" unique_id=1277137214]
+custom_minimum_size = Vector2(240, 344)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 344.0
+pivot_offset = Vector2(120, 172)
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Shadow" type="Panel" parent="." unique_id=663740115]
+z_index = -1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 240.0
+offset_bottom = 344.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_shadow")
+
+[node name="CardVisual" parent="." unique_id=1070025746 instance=ExtResource("2_card_view")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 550.0
+offset_bottom = 800.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.42, 0.42)
+mouse_filter = 2
+
+[node name="UIDraggable" parent="." unique_id=269702041 instance=ExtResource("3_draggable")]
