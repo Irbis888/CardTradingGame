@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/draggable_greybox_item.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="2_draggable"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_desk"]
+bg_color = Color(0.82, 0.075, 0.055, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.42, 0.02, 0.015, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
+bg_color = Color(0.31, 0.33, 0.34, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.12, 0.13, 0.14, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter_mark"]
+bg_color = Color(0.72, 0.12, 0.09, 1)
+
+[node name="DraggableGreyboxItem" type="Control"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 110.0
+pivot_offset = Vector2(55, 55)
+mouse_filter = 2
+script = ExtResource("1_script")
+desk_size = Vector2(110, 110)
+counter_size = Vector2(72, 56)
+
+[node name="DeskView" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_desk")
+
+[node name="CounterView" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter")
+
+[node name="Mark" type="Panel" parent="CounterView"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter_mark")
+
+[node name="BarOne" type="ColorRect" parent="CounterView"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 11.0
+offset_right = 64.0
+offset_bottom = 18.0
+mouse_filter = 2
+color = Color(0.14, 0.15, 0.16, 1)
+
+[node name="BarTwo" type="ColorRect" parent="CounterView"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 25.0
+offset_right = 58.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.14, 0.15, 0.16, 1)
+
+[node name="BarThree" type="ColorRect" parent="CounterView"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 39.0
+offset_right = 62.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.14, 0.15, 0.16, 1)
+
+[node name="UIDraggable" parent="." instance=ExtResource("2_draggable")]

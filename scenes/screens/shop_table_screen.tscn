@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://sd8hvdl1gl46"]
 
 [ext_resource type="PackedScene" path="res://scenes/gameplay/shop_placeholder.tscn" id="1_shop"]
-[ext_resource type="PackedScene" path="res://scenes/gameplay/trading_desk.tscn" id="2_desk"]
+[ext_resource type="PackedScene" uid="uid://cima7max6uau4" path="res://scenes/gameplay/trading_desk.tscn" id="2_desk"]
 
-[node name="ShopTableScreen" type="Control"]
+[node name="ShopTableScreen" type="Control" unique_id=290378006]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,18 +11,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ShopView" parent="." instance=ExtResource("1_shop")]
+[node name="ShopView" parent="." unique_id=674915891 instance=ExtResource("1_shop")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = -1
 anchor_bottom = 0.333333
-grow_horizontal = 2
+grow_vertical = 1
 
-[node name="TradingDesk" parent="." instance=ExtResource("2_desk")]
+[node name="TradingDesk" parent="." unique_id=1999771244 instance=ExtResource("2_desk")]
 layout_mode = 1
+anchors_preset = -1
 anchor_top = 0.333333
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
