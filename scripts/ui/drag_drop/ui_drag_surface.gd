@@ -8,6 +8,8 @@ extends Control
 @export var left_transfer_surface_path: NodePath
 @export var gravity_enabled := false
 @export_range(0.0, 10000.0, 50.0, "or_greater") var gravity_acceleration := 1800.0
+@export_range(0.0, 10000.0, 50.0, "or_greater") var horizontal_deceleration := 1200.0
+@export_range(0.0, 10000.0, 50.0, "or_greater") var maximum_horizontal_speed := 1200.0
 @export var ground_level_path: NodePath
 
 var _draggables: Array = []
@@ -33,6 +35,8 @@ func _process(delta: float) -> void:
 	for draggable in _draggables:
 		if draggable == _active_draggable:
 			draggable.follow_target(delta)
+			if gravity_enabled:
+				_decelerate_horizontal_velocity(draggable, delta)
 		elif gravity_enabled:
 			_apply_gravity(draggable, delta)
 		else:
@@ -49,7 +53,8 @@ func _input(event: InputEvent) -> void:
 		else:
 			_end_drag()
 	elif event is InputEventMouseMotion and _active_draggable != null:
-		_update_drag((event as InputEventMouseMotion).position)
+		var mouse_motion := event as InputEventMouseMotion
+		_update_drag(mouse_motion.position, mouse_motion.velocity)
 	elif event is InputEventScreenTouch:
 		var screen_touch := event as InputEventScreenTouch
 		if screen_touch.index != 0:
@@ -61,7 +66,7 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventScreenDrag and _active_draggable != null:
 		var screen_drag := event as InputEventScreenDrag
 		if screen_drag.index == 0:
-			_update_drag(screen_drag.position)
+			_update_drag(screen_drag.position, screen_drag.velocity)
 
 
 func register_draggable(draggable) -> void:
@@ -118,13 +123,27 @@ func _begin_drag(global_pointer: Vector2) -> void:
 	get_viewport().set_input_as_handled()
 
 
-func _update_drag(global_pointer: Vector2) -> void:
+func _update_drag(
+	global_pointer: Vector2,
+	pointer_velocity: Vector2 = Vector2.ZERO
+) -> void:
+	_set_active_horizontal_velocity(pointer_velocity.x)
 	var desired_position := global_pointer - _grab_offset
 	if _should_transfer_left(global_pointer, desired_position):
-		_transfer_active_to_surface(_left_transfer_surface, global_pointer, &"right")
+		_transfer_active_to_surface(
+			_left_transfer_surface,
+			global_pointer,
+			pointer_velocity,
+			&"right"
+		)
 		return
 	if _should_transfer_right(global_pointer, desired_position):
-		_transfer_active_to_surface(_right_transfer_surface, global_pointer, &"left")
+		_transfer_active_to_surface(
+			_right_transfer_surface,
+			global_pointer,
+			pointer_velocity,
+			&"left"
+		)
 		return
 
 	_active_draggable.set_desired_global_position(
@@ -137,7 +156,12 @@ func _end_drag() -> void:
 	if _active_draggable == null:
 		return
 	_active_draggable.set_picked(false)
-	_active_draggable.reset_motion()
+	if gravity_enabled:
+		var release_velocity: Vector2 = _active_draggable.get_velocity()
+		_active_draggable.set_velocity(Vector2(release_velocity.x, 0.0))
+		_active_draggable.synchronize_position()
+	else:
+		_active_draggable.reset_motion()
 	_active_draggable = null
 	get_viewport().set_input_as_handled()
 
@@ -146,7 +170,8 @@ func accept_transferred_draggable(
 	draggable,
 	global_pointer: Vector2,
 	normalized_grab_offset: Vector2,
-	entry_side: StringName
+	entry_side: StringName,
+	pointer_velocity: Vector2 = Vector2.ZERO
 ) -> void:
 	register_draggable(draggable)
 	var target: Control = draggable.get_target() as Control
@@ -172,6 +197,7 @@ func accept_transferred_draggable(
 	_top_z_index += 1
 	draggable.bring_to_front(_top_z_index)
 	draggable.set_picked(true)
+	_set_active_horizontal_velocity(pointer_velocity.x)
 	get_viewport().set_input_as_handled()
 
 
@@ -202,6 +228,7 @@ func _should_transfer_right(
 func _transfer_active_to_surface(
 	destination_surface: Node,
 	global_pointer: Vector2,
+	pointer_velocity: Vector2,
 	entry_side: StringName
 ) -> void:
 	var draggable = _active_draggable
@@ -219,23 +246,43 @@ func _transfer_active_to_surface(
 		draggable,
 		global_pointer,
 		normalized_grab_offset,
-		entry_side
+		entry_side,
+		pointer_velocity
 	)
 	get_viewport().set_input_as_handled()
+
+
+func _set_active_horizontal_velocity(horizontal_speed: float) -> void:
+	if not gravity_enabled or _active_draggable == null:
+		return
+	_active_draggable.set_velocity(Vector2(
+		clampf(horizontal_speed, -maximum_horizontal_speed, maximum_horizontal_speed),
+		0.0
+	))
+
+
+func _decelerate_horizontal_velocity(draggable, delta: float) -> void:
+	var velocity: Vector2 = draggable.get_velocity()
+	velocity.x = move_toward(velocity.x, 0.0, horizontal_deceleration * delta)
+	velocity.y = 0.0
+	draggable.set_velocity(velocity)
 
 
 func _apply_gravity(draggable, delta: float) -> void:
 	var target: Control = draggable.get_target() as Control
 	var velocity: Vector2 = draggable.get_velocity()
+	velocity.x = move_toward(velocity.x, 0.0, horizontal_deceleration * delta)
 	velocity.y += gravity_acceleration * delta
-	var next_position := target.global_position + velocity * delta
+	var unclamped_position := target.global_position + velocity * delta
 	var boundary := get_boundary_rect()
 	var target_size := target.get_global_rect().size
 	var ground_position := boundary.end.y - target_size.y
-	if next_position.y >= ground_position:
-		next_position.y = ground_position
+	if unclamped_position.y >= ground_position:
+		unclamped_position.y = ground_position
 		velocity.y = 0.0
-	next_position = _clamp_position_to_surface(draggable, next_position)
+	var next_position := _clamp_position_to_surface(draggable, unclamped_position)
+	if not is_equal_approx(next_position.x, unclamped_position.x):
+		velocity.x = 0.0
 	target.global_position = next_position
 	draggable.set_desired_global_position(next_position)
 	draggable.set_velocity(velocity)
