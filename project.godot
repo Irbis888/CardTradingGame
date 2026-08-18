@@ -15,15 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="CardTrading"
-run/main_scene="uid://di4ffarlvt3jc"
+run/main_scene="uid://sd8hvdl1gl46"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 Globals="*res://scripts/core/globals.gd"
-EventManager="*res://scripts/systems/event_manager.gd"
-EndingsManager="*res://scripts/systems/endings_manager.gd"
 
 [display]
 

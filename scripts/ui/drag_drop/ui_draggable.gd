@@ -1,5 +1,6 @@
 class_name UIDraggable
 extends Node
+# a component for draggable controls
 
 
 @export var enabled := true
@@ -55,7 +56,11 @@ func is_drag_enabled() -> bool:
 
 
 func contains_global_point(global_point: Vector2) -> bool:
-	return is_drag_enabled() and _target.get_global_rect().has_point(global_point)
+	if not is_drag_enabled() or not _target.get_global_rect().has_point(global_point):
+		return false
+	if _target.has_method("can_start_drag_at"):
+		return bool(_target.call("can_start_drag_at", global_point))
+	return true
 
 
 func get_desired_global_position() -> Vector2:

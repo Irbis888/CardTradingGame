@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3cypyp7313y8"]
+[gd_scene format=3 uid="uid://d3cypyp7313y8"]
 
 [ext_resource type="Script" uid="uid://qt3u4kk1pcsr" path="res://scripts/ui/card_view.gd" id="1_e6qnf"]
 [ext_resource type="Texture2D" uid="uid://br6kd5mivyfpx" path="res://assets/cards/vittolupo.jpg" id="1_mgepw"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_e6qnf"]
 [ext_resource type="Texture2D" uid="uid://notw1gr3ofsp" path="res://assets/ui/icons/icon_1.png" id="3_mgepw"]
 
-[node name="Card" type="Control"]
+[node name="Card" type="Control" unique_id=475670584]
 custom_minimum_size = Vector2(300, 400)
 layout_mode = 3
 anchors_preset = 15
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6qnf")
 
-[node name="Portrait1280x853" type="TextureRect" parent="."]
+[node name="Portrait1280x853" type="TextureRect" parent="." unique_id=258795354]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -29,7 +29,7 @@ grow_vertical = 2
 texture = ExtResource("1_mgepw")
 expand_mode = 1
 
-[node name="Frame" type="TextureRect" parent="."]
+[node name="Frame" type="TextureRect" parent="." unique_id=1755783862]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +41,20 @@ grow_vertical = 2
 texture = ExtResource("2_e6qnf")
 expand_mode = 1
 
-[node name="SeriesFrame" type="TextureRect" parent="Frame"]
+[node name="TestText" type="Label" parent="Frame" unique_id=1562665884]
+visible = false
+layout_mode = 1
+offset_left = 38.0
+offset_top = 337.0
+offset_right = 541.0
+offset_bottom = 733.0
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("3_e6qnf")
+theme_override_font_sizes/font_size = 40
+text = "великий астроном, но для карточки гораздо веселее то, что в молодости он потерял часть носа на дуэли и после этого носил протез. Это уже хорошо установленная часть его биографии, а не просто легенда."
+autowrap_mode = 2
+
+[node name="SeriesFrame" type="TextureRect" parent="Frame" unique_id=656693837]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -57,7 +70,7 @@ grow_vertical = 0
 texture = ExtResource("3_mgepw")
 expand_mode = 1
 
-[node name="SeriesLabel" type="Label" parent="Frame/SeriesFrame"]
+[node name="SeriesLabel" type="Label" parent="Frame/SeriesFrame" unique_id=1445931056]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -77,7 +90,7 @@ text = "Series: Dragons"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="StatPanel" type="Panel" parent="Frame"]
+[node name="StatPanel" type="Panel" parent="Frame" unique_id=302789292]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -91,7 +104,7 @@ offset_bottom = -90.1
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Stats" type="VBoxContainer" parent="Frame/StatPanel"]
+[node name="Stats" type="VBoxContainer" parent="Frame/StatPanel" unique_id=1043551307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +116,7 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="STR" type="Label" parent="Frame/StatPanel/Stats"]
+[node name="STR" type="Label" parent="Frame/StatPanel/Stats" unique_id=1787132080]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
@@ -113,7 +126,7 @@ theme_override_font_sizes/font_size = 45
 text = "STR: 1"
 autowrap_mode = 1
 
-[node name="DEF" type="Label" parent="Frame/StatPanel/Stats"]
+[node name="DEF" type="Label" parent="Frame/StatPanel/Stats" unique_id=1940339562]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
@@ -123,7 +136,7 @@ theme_override_font_sizes/font_size = 45
 text = "DEF: 3"
 autowrap_mode = 1
 
-[node name="MAG" type="Label" parent="Frame/StatPanel/Stats"]
+[node name="MAG" type="Label" parent="Frame/StatPanel/Stats" unique_id=281824624]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
@@ -133,7 +146,7 @@ theme_override_font_sizes/font_size = 45
 text = "MAG: 7"
 autowrap_mode = 1
 
-[node name="RarityLabel" type="Label" parent="Frame/StatPanel"]
+[node name="RarityLabel" type="Label" parent="Frame/StatPanel" unique_id=1115968760]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -155,7 +168,7 @@ text = "Rarity
 "
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="Frame"]
+[node name="Panel" type="Panel" parent="Frame" unique_id=65186590]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -166,7 +179,7 @@ offset_right = 159.0
 offset_bottom = 74.0
 grow_horizontal = 2
 
-[node name="NameLabel" type="Label" parent="Frame/Panel"]
+[node name="NameLabel" type="Label" parent="Frame/Panel" unique_id=1851290825]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15

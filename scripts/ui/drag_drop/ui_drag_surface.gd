@@ -6,6 +6,7 @@ extends Control
 @export_range(0.0, 32.0, 0.5) var boundary_inset := 0.0
 @export_range(-1.0, 0.95, 0.05) var outside_fraction_override := -1.0
 @export var left_transfer_surface_path: NodePath
+#@export var right_transfer_surface_path: NodePath
 @export var gravity_enabled := false
 @export_range(0.0, 10000.0, 50.0, "or_greater") var gravity_acceleration := 1800.0
 @export_range(0.0, 10000.0, 50.0, "or_greater") var horizontal_deceleration := 1200.0
@@ -13,6 +14,7 @@ extends Control
 @export var ground_level_path: NodePath
 
 var _draggables: Array = []
+var _drop_receivers: Array = []
 var _active_draggable = null
 var _grab_offset := Vector2.ZERO
 var _top_z_index := 0
@@ -51,7 +53,7 @@ func _input(event: InputEvent) -> void:
 		if mouse_button.pressed:
 			_begin_drag(mouse_button.position)
 		else:
-			_end_drag()
+			_end_drag(mouse_button.position)
 	elif event is InputEventMouseMotion and _active_draggable != null:
 		var mouse_motion := event as InputEventMouseMotion
 		_update_drag(mouse_motion.position, mouse_motion.velocity)
@@ -62,7 +64,7 @@ func _input(event: InputEvent) -> void:
 		if screen_touch.pressed:
 			_begin_drag(screen_touch.position)
 		else:
-			_end_drag()
+			_end_drag(screen_touch.position)
 	elif event is InputEventScreenDrag and _active_draggable != null:
 		var screen_drag := event as InputEventScreenDrag
 		if screen_drag.index == 0:
@@ -85,6 +87,24 @@ func unregister_draggable(draggable) -> void:
 	_draggables.erase(draggable)
 	if _active_draggable == draggable:
 		_active_draggable = null
+
+
+func register_drop_receiver(receiver: Node) -> void:
+	if receiver not in _drop_receivers:
+		_drop_receivers.append(receiver)
+
+
+func unregister_drop_receiver(receiver: Node) -> void:
+	_drop_receivers.erase(receiver)
+
+
+func begin_draggable_drag(draggable, global_pointer: Vector2) -> bool:
+	if _active_draggable != null or not draggable.is_drag_enabled():
+		return false
+	if draggable not in _draggables:
+		register_draggable(draggable)
+	_activate_draggable(draggable, global_pointer)
+	return true
 
 
 func set_right_transfer_surface(surface: Node) -> void:
@@ -112,8 +132,11 @@ func _begin_drag(global_pointer: Vector2) -> void:
 
 	if picked == null:
 		return
+	_activate_draggable(picked, global_pointer)
 
-	_active_draggable = picked
+
+func _activate_draggable(draggable, global_pointer: Vector2) -> void:
+	_active_draggable = draggable
 	_active_draggable.synchronize_position()
 	_active_draggable.set_picked(true)
 	_active_draggable.set_velocity(Vector2.ZERO)
@@ -152,16 +175,26 @@ func _update_drag(
 	get_viewport().set_input_as_handled()
 
 
-func _end_drag() -> void:
+func _end_drag(global_pointer: Vector2) -> void:
 	if _active_draggable == null:
 		return
-	_active_draggable.set_picked(false)
+
+	var released_draggable = _active_draggable
+	released_draggable.set_picked(false)
+	if _try_accept_active_draggable(released_draggable, global_pointer):
+		var released_target: Control = released_draggable.get_target() as Control
+		unregister_draggable(released_draggable)
+		if is_instance_valid(released_target):
+			released_target.queue_free()
+		get_viewport().set_input_as_handled()
+		return
+
 	if gravity_enabled:
-		var release_velocity: Vector2 = _active_draggable.get_velocity()
-		_active_draggable.set_velocity(Vector2(release_velocity.x, 0.0))
-		_active_draggable.synchronize_position()
+		var release_velocity: Vector2 = released_draggable.get_velocity()
+		released_draggable.set_velocity(Vector2(release_velocity.x, 0.0))
+		released_draggable.synchronize_position()
 	else:
-		_active_draggable.reset_motion()
+		released_draggable.reset_motion()
 	_active_draggable = null
 	get_viewport().set_input_as_handled()
 
@@ -250,6 +283,18 @@ func _transfer_active_to_surface(
 		pointer_velocity
 	)
 	get_viewport().set_input_as_handled()
+
+
+func _try_accept_active_draggable(draggable, global_pointer: Vector2) -> bool:
+	for receiver in _drop_receivers.duplicate():
+		if not is_instance_valid(receiver):
+			_drop_receivers.erase(receiver)
+			continue
+		if receiver.has_method("try_accept_draggable") and bool(
+			receiver.call("try_accept_draggable", draggable, global_pointer)
+		):
+			return true
+	return false
 
 
 func _set_active_horizontal_velocity(horizontal_speed: float) -> void:
