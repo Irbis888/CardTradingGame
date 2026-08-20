@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cima7max6uau4"]
 
 [ext_resource type="Script" uid="uid://bbt42o15ol7b0" path="res://scripts/gameplay/trading_desk.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dgcsgyvhoi3n6" path="res://assets/portraits/Granddad.png" id="2_portrait"]
+[ext_resource type="Texture2D" uid="uid://c3qgjg0ix25g1" path="res://assets/portraits/M6.png" id="2_hfxn4"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
 [ext_resource type="Script" uid="uid://d38dab7h5dnyx" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="5_drag_surface"]
@@ -83,11 +83,11 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -260.0
 offset_top = 25.0
-offset_right = 260.0
-offset_bottom = 545.0
+offset_right = 220.99966
+offset_bottom = 456.0
 grow_horizontal = 2
 mouse_filter = 2
-texture = ExtResource("2_portrait")
+texture = ExtResource("2_hfxn4")
 expand_mode = 1
 stretch_mode = 5
 

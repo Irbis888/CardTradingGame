@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sd8hvdl1gl46"]
 
-[ext_resource type="PackedScene" path="res://scenes/gameplay/shop_placeholder.tscn" id="1_shop"]
+[ext_resource type="PackedScene" uid="uid://dr1aiig6cgfom" path="res://scenes/gameplay/shop_placeholder.tscn" id="1_shop"]
 [ext_resource type="PackedScene" uid="uid://cima7max6uau4" path="res://scenes/gameplay/trading_desk.tscn" id="2_desk"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dev_console.tscn" id="3_console"]
 
@@ -16,14 +16,13 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.333333
-grow_vertical = 1
 
 [node name="TradingDesk" parent="." unique_id=1999771244 instance=ExtResource("2_desk")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.333333
 
-[node name="DevConsole" parent="." instance=ExtResource("3_console")]
+[node name="DevConsole" parent="." unique_id=1412637035 instance=ExtResource("3_console")]
 layout_mode = 1
 card_spawn_surface_path = NodePath("../TradingDesk/DragSurface")
 suspended_surface_paths = Array[NodePath]([NodePath("../TradingDesk/CounterSurface"), NodePath("../TradingDesk/DragSurface")])

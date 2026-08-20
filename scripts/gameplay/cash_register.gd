@@ -126,6 +126,9 @@ func _print_receipt(receipt_type: StringName) -> void:
 	var receipt_draggable := receipt.get_node_or_null("UIDraggable") as UIDraggable
 	if receipt_draggable != null:
 		receipt_draggable.synchronize_position()
+	_amount_digits = ""
+	_refresh_amount()
+	
 
 
 func _get_receipt_spawn_position(receipt: Control) -> Vector2:
