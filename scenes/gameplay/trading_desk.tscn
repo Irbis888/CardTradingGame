@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
 [ext_resource type="Script" uid="uid://d38dab7h5dnyx" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="5_drag_surface"]
+[ext_resource type="PackedScene" path="res://scenes/ui/cash_register.tscn" id="6_cash_register"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
@@ -107,10 +108,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -13.0
-offset_right = 135.0
-offset_bottom = 13.0
+offset_left = -135.00034
+offset_top = 87.20001
+offset_right = 134.99966
+offset_bottom = 113.20001
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -197,4 +198,12 @@ layout_mode = 0
 offset_left = 120.0
 offset_top = 35.0
 offset_right = 1160.0
+offset_bottom = 685.0
+
+[node name="CashRegister" parent="DragSurface" unique_id=280398190 instance=ExtResource("6_cash_register")]
+z_index = 2
+layout_mode = 0
+offset_left = 855.0
+offset_top = 285.0
+offset_right = 1285.0
 offset_bottom = 685.0

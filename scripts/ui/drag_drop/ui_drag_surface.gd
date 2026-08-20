@@ -125,12 +125,15 @@ func _begin_drag(global_pointer: Vector2) -> void:
 
 	var picked = null
 	for draggable in _draggables:
-		if not draggable.contains_global_point(global_pointer):
+		if not draggable.is_drag_enabled():
 			continue
-		if picked == null or draggable.get_target().z_index >= picked.get_target().z_index:
+		var target := draggable.get_target() as Control
+		if target == null or not target.get_global_rect().has_point(global_pointer):
+			continue
+		if picked == null or target.z_index >= picked.get_target().z_index:
 			picked = draggable
 
-	if picked == null:
+	if picked == null or not picked.contains_global_point(global_pointer):
 		return
 	_activate_draggable(picked, global_pointer)
 

@@ -1,0 +1,531 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/gameplay/cash_register.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="2_draggable"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_body"]
+bg_color = Color(0.255, 0.27, 0.27, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.09, 0.1, 0.105, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_badge"]
+bg_color = Color(0.11, 0.12, 0.125, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.46, 0.48, 0.47, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_screen"]
+bg_color = Color(0.055, 0.09, 0.085, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.04, 0.045, 0.045, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_drawer"]
+bg_color = Color(0.19, 0.205, 0.205, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.075, 0.08, 0.085, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_keypad"]
+bg_color = Color(0.115, 0.125, 0.13, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.35, 0.37, 0.37, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_key"]
+bg_color = Color(0.58, 0.59, 0.56, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.16, 0.17, 0.17, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_key_hover"]
+bg_color = Color(0.72, 0.73, 0.68, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.32, 0.34, 0.33, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_key_pressed"]
+bg_color = Color(0.39, 0.4, 0.38, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.09, 0.09, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_back"]
+bg_color = Color(0.48, 0.34, 0.32, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.17, 0.11, 0.11, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ask"]
+bg_color = Color(0.38, 0.43, 0.47, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.12, 0.14, 0.16, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_offer"]
+bg_color = Color(0.4, 0.47, 0.37, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.13, 0.16, 0.12, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_dial"]
+bg_color = Color(0.22, 0.23, 0.23, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.075, 0.08, 0.08, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
+bg_color = Color(0.23, 0.245, 0.245, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.07, 0.075, 0.08, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CashRegister" type="Control"]
+custom_minimum_size = Vector2(430, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 430.0
+offset_bottom = 400.0
+pivot_offset = Vector2(215, 200)
+mouse_filter = 2
+script = ExtResource("1_script")
+desk_size = Vector2(430, 400)
+counter_size = Vector2(150, 96)
+
+[node name="DeskView" type="Control" parent="."]
+offset_right = 430.0
+offset_bottom = 400.0
+mouse_filter = 2
+
+[node name="Body" type="Panel" parent="DeskView"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 390.0
+offset_bottom = 210.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_body")
+
+[node name="TopBadge" type="Panel" parent="DeskView/Body"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.0
+offset_right = 302.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_badge")
+
+[node name="BrandLabel" type="Label" parent="DeskView/Body/TopBadge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.74, 0.71, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+text = "CASH REGISTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screen" type="Panel" parent="DeskView/Body"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 67.0
+offset_right = 302.0
+offset_bottom = 145.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_screen")
+
+[node name="AmountLabel" type="Label" parent="DeskView/Body/Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = -10.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.56, 0.94, 0.73, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 37
+text = "$0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ReceiptSlot" type="ColorRect" parent="DeskView/Body"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 161.0
+offset_right = 248.0
+offset_bottom = 174.0
+mouse_filter = 2
+color = Color(0.035, 0.04, 0.04, 1)
+
+[node name="SlotLabel" type="Label" parent="DeskView/Body"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 177.0
+offset_right = 249.0
+offset_bottom = 196.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.08, 0.085, 0.085, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 12
+text = "RECEIPT"
+horizontal_alignment = 1
+
+[node name="SideDial" type="Panel" parent="DeskView"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 42.0
+offset_right = 430.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_dial")
+
+[node name="DialCenter" type="ColorRect" parent="DeskView/SideDial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -19.0
+offset_right = 5.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.46, 0.47, 0.45, 1)
+
+[node name="KeyboardDrawer" type="Panel" parent="DeskView"]
+layout_mode = 0
+offset_top = 182.0
+offset_right = 430.0
+offset_bottom = 400.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_drawer")
+
+[node name="DrawerLip" type="ColorRect" parent="DeskView/KeyboardDrawer"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 10.0
+offset_right = 412.0
+offset_bottom = 17.0
+mouse_filter = 2
+color = Color(0.42, 0.44, 0.43, 1)
+
+[node name="KeyboardSurface" type="Panel" parent="DeskView/KeyboardDrawer"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 418.0
+offset_bottom = 207.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_keypad")
+
+[node name="Digit1" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 78.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "1"
+
+[node name="Digit2" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 12.0
+offset_right = 148.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "2"
+
+[node name="Digit3" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 12.0
+offset_right = 218.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "3"
+
+[node name="Digit4" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 55.0
+offset_right = 78.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "4"
+
+[node name="Digit5" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 55.0
+offset_right = 148.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "5"
+
+[node name="Digit6" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 55.0
+offset_right = 218.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "6"
+
+[node name="Digit7" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 98.0
+offset_right = 78.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "7"
+
+[node name="Digit8" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 98.0
+offset_right = 148.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "8"
+
+[node name="Digit9" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 98.0
+offset_right = 218.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "9"
+
+[node name="Digit0" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 141.0
+offset_right = 148.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.06, 0.065, 0.065, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_key")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "0"
+
+[node name="BackspaceButton" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 141.0
+offset_right = 218.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.08, 0.055, 0.05, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBox_back")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "BACK"
+
+[node name="AskButton" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 18.0
+offset_right = 388.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.06, 0.07, 0.075, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBox_ask")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "ASK"
+
+[node name="OfferButton" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 99.0
+offset_right = 388.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0.06, 0.075, 0.055, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBox_offer")
+theme_override_styles/hover = SubResource("StyleBox_key_hover")
+theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
+text = "OFFER"
+
+[node name="CounterView" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter")
+
+[node name="RegisterLabel" type="Label" parent="CounterView"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 31.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.66, 0.68, 0.65, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 15
+text = "REGISTER"
+horizontal_alignment = 1
+
+[node name="AmountLabel" type="Label" parent="CounterView"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 34.0
+offset_right = 140.0
+offset_bottom = 84.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.56, 0.94, 0.73, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 28
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIDraggable" parent="." instance=ExtResource("2_draggable")]
+follow_speed = 40.0

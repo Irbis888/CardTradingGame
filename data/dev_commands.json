@@ -1,0 +1,27 @@
+{
+	"title": "DEV CONSOLE",
+	"ready_message": "Console ready. Press ` to close.",
+	"commands": [
+		{
+			"name": "quit",
+			"tokens": ["quit"],
+			"usage": "quit",
+			"description": "Close the game.",
+			"handler": "quit",
+			"arguments": []
+		},
+		{
+			"name": "give_card",
+			"tokens": ["give", "card"],
+			"usage": "give card <card_id>",
+			"description": "Spawn a draggable card by its ID.",
+			"handler": "give_card",
+			"arguments": [
+				{
+					"name": "card_id",
+					"type": "int"
+				}
+			]
+		}
+	]
+}

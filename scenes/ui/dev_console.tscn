@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/dev_console.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_console"]
+bg_color = Color(0.035, 0.04, 0.045, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.68, 0.43, 0.18, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_input"]
+bg_color = Color(0.075, 0.08, 0.085, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.34, 0.35, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="DevConsole" type="Control"]
+visible = false
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.28)
+
+[node name="ConsolePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.54
+anchor_right = 0.62
+anchor_bottom = 0.96
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_console")
+
+[node name="Margin" type="MarginContainer" parent="ConsolePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="ConsolePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="TitleLabel" type="Label" parent="ConsolePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.66, 0.34, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "DEV CONSOLE"
+
+[node name="Separator" type="HSeparator" parent="ConsolePanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Output" type="RichTextLabel" parent="ConsolePanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.8, 0.84, 0.8, 1)
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 18
+scroll_following = true
+selection_enabled = true
+
+[node name="HintLabel" type="Label" parent="ConsolePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.53, 0.51, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "ENTER — execute    ` — close"
+
+[node name="CommandRow" type="HBoxContainer" parent="ConsolePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Prompt" type="Label" parent="ConsolePanel/Margin/VBox/CommandRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.66, 0.34, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = ">"
+
+[node name="CommandInput" type="LineEdit" parent="ConsolePanel/Margin/VBox/CommandRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.94, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBox_input")
+placeholder_text = "give card 12"
+clear_button_enabled = true
