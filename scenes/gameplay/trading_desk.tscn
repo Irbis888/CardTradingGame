@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbt42o15ol7b0" path="res://scripts/gameplay/trading_desk.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dgcsgyvhoi3n6" path="res://assets/portraits/Granddad.png" id="2_portrait"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
-[ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/gameplay/card_binder.tscn" id="4_binder"]
+[ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
 [ext_resource type="Script" uid="uid://d38dab7h5dnyx" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="5_drag_surface"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
@@ -191,7 +191,7 @@ mouse_filter = 2
 script = ExtResource("5_drag_surface")
 left_transfer_surface_path = NodePath("../CounterSurface")
 
-[node name="CardBinder" parent="DragSurface" instance=ExtResource("4_binder")]
+[node name="CardBinder" parent="DragSurface" unique_id=1197729793 instance=ExtResource("4_binder")]
 z_index = 1
 layout_mode = 0
 offset_left = 120.0

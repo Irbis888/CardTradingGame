@@ -105,7 +105,6 @@ desk_size = Vector2(1040, 650)
 counter_size = Vector2(180, 110)
 
 [node name="DeskView" type="Panel" parent="." unique_id=1441765443]
-visible = false
 layout_mode = 0
 offset_right = 1040.0
 offset_bottom = 650.0
@@ -428,7 +427,6 @@ theme_override_styles/pressed = SubResource("StyleBox_slot_input")
 theme_override_styles/hover = SubResource("StyleBox_slot_input")
 
 [node name="PreviousButton" type="Button" parent="DeskView" unique_id=1594345436]
-z_index = 10
 layout_mode = 0
 offset_left = 28.0
 offset_top = 582.0
@@ -445,7 +443,6 @@ theme_override_styles/disabled = SubResource("StyleBox_button_disabled")
 text = "<"
 
 [node name="NextButton" type="Button" parent="DeskView" unique_id=230866082]
-z_index = 10
 layout_mode = 0
 offset_left = 922.0
 offset_top = 582.0

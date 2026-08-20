@@ -141,7 +141,7 @@ func _activate_draggable(draggable, global_pointer: Vector2) -> void:
 	_active_draggable.set_picked(true)
 	_active_draggable.set_velocity(Vector2.ZERO)
 	_grab_offset = global_pointer - _active_draggable.get_target().global_position
-	_top_z_index += 1
+	_top_z_index += 2
 	_active_draggable.bring_to_front(_top_z_index)
 	get_viewport().set_input_as_handled()
 
