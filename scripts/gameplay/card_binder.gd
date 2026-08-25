@@ -4,6 +4,9 @@ extends "res://scripts/ui/drag_drop/dual_space_draggable.gd"
 
 const SLOTS_PER_PAGE := 6
 const CARD_PREVIEW_SIZE := Vector2(550.0, 800.0)
+const DROP_DISTANCE_FROM_CENTER_FRACTION := 0.5
+const HOVERED_SLOT_MODULATE := Color(0.82, 0.82, 0.82, 1.0)
+const NORMAL_SLOT_MODULATE := Color.WHITE
 const DRAGGABLE_CARD_SCENE := preload("res://scenes/ui/draggable_card.tscn")
 const CARD_VIEW_SCENE := preload("res://scenes/ui/card_view.tscn")
 
@@ -52,6 +55,7 @@ const CARD_VIEW_SCENE := preload("res://scenes/ui/card_view.tscn")
 var _slot_cards: Array[Card] = []
 var _current_page := 0
 var _registered_surface: Node
+var _hovered_slot := -1
 
 
 func _ready() -> void:
@@ -71,6 +75,8 @@ func set_drag_space(space_name: StringName) -> void:
 	super(space_name)
 	if not is_node_ready():
 		return
+	if current_space != &"desk":
+		clear_draggable_hover()
 	_configure_interactive_controls()
 	_register_as_drop_receiver()
 
@@ -94,7 +100,7 @@ func try_accept_draggable(draggable, global_pointer: Vector2) -> bool:
 	if card_node == null or card_node == self or card_node.get_card_data() == null:
 		return false
 
-	var local_slot := _find_empty_drop_slot(global_pointer, card_node.get_global_rect().get_center())
+	var local_slot := _find_empty_drop_slot(global_pointer)
 	if local_slot < 0:
 		return false
 
@@ -102,6 +108,19 @@ func try_accept_draggable(draggable, global_pointer: Vector2) -> bool:
 	_slot_cards[storage_index] = card_node.get_card_data()
 	_refresh_page()
 	return true
+
+
+func update_draggable_hover(draggable, global_pointer: Vector2) -> void:
+	var hovered_slot := -1
+	if current_space == &"desk":
+		var card_node := draggable.get_target() as DraggableCard
+		if card_node != null and card_node != self and card_node.get_card_data() != null:
+			hovered_slot = _find_empty_drop_slot(global_pointer)
+	_set_hovered_slot(hovered_slot)
+
+
+func clear_draggable_hover() -> void:
+	_set_hovered_slot(-1)
 
 
 func get_stored_cards() -> Array[Card]:
@@ -165,6 +184,7 @@ func _unregister_as_drop_receiver() -> void:
 func _show_previous_page() -> void:
 	if _current_page <= 0:
 		return
+	clear_draggable_hover()
 	_current_page -= 1
 	_refresh_page()
 
@@ -172,6 +192,7 @@ func _show_previous_page() -> void:
 func _show_next_page() -> void:
 	if _current_page >= page_count - 1:
 		return
+	clear_draggable_hover()
 	_current_page += 1
 	_refresh_page()
 
@@ -191,6 +212,7 @@ func _refresh_page() -> void:
 			_create_card_preview(_preview_hosts[local_slot], _slot_panels[local_slot], card)
 
 	counter_count_label.text = "%d / %d CARDS" % [get_stored_cards().size(), _slot_cards.size()]
+	_refresh_slot_hover()
 
 
 func _clear_preview(preview_host: Control) -> void:
@@ -248,12 +270,43 @@ func _extract_card(local_slot: int) -> void:
 	)
 
 
-func _find_empty_drop_slot(global_pointer: Vector2, card_center: Vector2) -> int:
-	for point in [global_pointer, card_center]:
-		for local_slot in range(SLOTS_PER_PAGE):
-			var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-			if _slot_cards[storage_index] != null:
-				continue
-			if _slot_panels[local_slot].get_global_rect().has_point(point):
-				return local_slot
+func _find_empty_drop_slot(global_pointer: Vector2) -> int:
+	for local_slot in range(SLOTS_PER_PAGE):
+		var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
+		if _slot_cards[storage_index] != null:
+			continue
+		if _is_pointer_inside_slot_drop_region(_slot_panels[local_slot], global_pointer):
+			return local_slot
 	return -1
+
+
+func _is_pointer_inside_slot_drop_region(slot: Control, global_pointer: Vector2) -> bool:
+	var slot_rect := slot.get_global_rect()
+	var distance_from_center := (global_pointer - slot_rect.get_center()).abs()
+	var maximum_distance := (
+		slot_rect.size * 0.5 * DROP_DISTANCE_FROM_CENTER_FRACTION
+	)
+	return (
+		distance_from_center.x <= maximum_distance.x
+		and distance_from_center.y <= maximum_distance.y
+	)
+
+
+func _set_hovered_slot(local_slot: int) -> void:
+	if _hovered_slot == local_slot:
+		return
+	_hovered_slot = local_slot
+	_refresh_slot_hover()
+
+
+func _refresh_slot_hover() -> void:
+	if not is_node_ready():
+		return
+	for local_slot in range(SLOTS_PER_PAGE):
+		var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
+		var is_empty := _slot_cards[storage_index] == null
+		_slot_panels[local_slot].self_modulate = (
+			HOVERED_SLOT_MODULATE
+			if is_empty and local_slot == _hovered_slot
+			else NORMAL_SLOT_MODULATE
+		)

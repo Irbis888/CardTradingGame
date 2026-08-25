@@ -95,6 +95,8 @@ func register_drop_receiver(receiver: Node) -> void:
 
 
 func unregister_drop_receiver(receiver: Node) -> void:
+	if is_instance_valid(receiver) and receiver.has_method("clear_draggable_hover"):
+		receiver.call("clear_draggable_hover")
 	_drop_receivers.erase(receiver)
 
 
@@ -146,6 +148,7 @@ func _activate_draggable(draggable, global_pointer: Vector2) -> void:
 	_grab_offset = global_pointer - _active_draggable.get_target().global_position
 	_top_z_index += 2
 	_active_draggable.bring_to_front(_top_z_index)
+	_update_drop_receiver_hover(_active_draggable, global_pointer)
 	get_viewport().set_input_as_handled()
 
 
@@ -172,6 +175,7 @@ func _update_drag(
 		)
 		return
 
+	_update_drop_receiver_hover(_active_draggable, global_pointer)
 	_active_draggable.set_desired_global_position(
 		_clamp_position_to_surface(_active_draggable, desired_position)
 	)
@@ -184,7 +188,9 @@ func _end_drag(global_pointer: Vector2) -> void:
 
 	var released_draggable = _active_draggable
 	released_draggable.set_picked(false)
-	if _try_accept_active_draggable(released_draggable, global_pointer):
+	var accepted := _try_accept_active_draggable(released_draggable, global_pointer)
+	_clear_drop_receiver_hover()
+	if accepted:
 		var released_target: Control = released_draggable.get_target() as Control
 		unregister_draggable(released_draggable)
 		if is_instance_valid(released_target):
@@ -234,6 +240,7 @@ func accept_transferred_draggable(
 	draggable.bring_to_front(_top_z_index)
 	draggable.set_picked(true)
 	_set_active_horizontal_velocity(pointer_velocity.x)
+	_update_drop_receiver_hover(draggable, global_pointer)
 	get_viewport().set_input_as_handled()
 
 
@@ -274,6 +281,7 @@ func _transfer_active_to_surface(
 		clampf(_grab_offset.x / maxf(target_size.x, 1.0), 0.0, 1.0),
 		clampf(_grab_offset.y / maxf(target_size.y, 1.0), 0.0, 1.0)
 	)
+	_clear_drop_receiver_hover()
 	_active_draggable = null
 	unregister_draggable(draggable)
 	target.reparent(destination_surface, true)
@@ -298,6 +306,24 @@ func _try_accept_active_draggable(draggable, global_pointer: Vector2) -> bool:
 		):
 			return true
 	return false
+
+
+func _update_drop_receiver_hover(draggable, global_pointer: Vector2) -> void:
+	for receiver in _drop_receivers.duplicate():
+		if not is_instance_valid(receiver):
+			_drop_receivers.erase(receiver)
+			continue
+		if receiver.has_method("update_draggable_hover"):
+			receiver.call("update_draggable_hover", draggable, global_pointer)
+
+
+func _clear_drop_receiver_hover() -> void:
+	for receiver in _drop_receivers.duplicate():
+		if not is_instance_valid(receiver):
+			_drop_receivers.erase(receiver)
+			continue
+		if receiver.has_method("clear_draggable_hover"):
+			receiver.call("clear_draggable_hover")
 
 
 func _set_active_horizontal_velocity(horizontal_speed: float) -> void:

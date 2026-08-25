@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
 [ext_resource type="Script" uid="uid://d38dab7h5dnyx" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="5_drag_surface"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cash_register.tscn" id="6_cash_register"]
+[ext_resource type="Script" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
@@ -24,6 +25,18 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.28, 0.205, 0.145, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_speech"]
+bg_color = Color(0.9, 0.875, 0.76, 0.96)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.19, 0.17, 0.13, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="TradingDesk" type="Control" unique_id=793389611]
 custom_minimum_size = Vector2(0, 720)
@@ -90,6 +103,58 @@ mouse_filter = 2
 texture = ExtResource("2_hfxn4")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="CustomerManager" type="Control" parent="VisitorArea"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 25.0
+offset_right = 220.99966
+offset_bottom = 456.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("7_customer_manager")
+drag_surface_path = NodePath("../../CounterSurface")
+speech_bubble_path = NodePath("SpeechBubble")
+speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
+speech_timer_path = NodePath("SpeechTimer")
+
+[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager"]
+visible = false
+layout_mode = 0
+offset_left = -38.0
+offset_top = -12.0
+offset_right = 519.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_speech")
+
+[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/SpeechBubble"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.08, 0.07, 0.055, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 21
+text = "Customer replica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+wait_time = 4.0
+one_shot = true
 
 [node name="Counter" type="Panel" parent="VisitorArea" unique_id=22616017]
 layout_mode = 1
@@ -197,7 +262,7 @@ z_index = 1
 layout_mode = 0
 offset_left = 120.0
 offset_top = 35.0
-offset_right = 1160.0
+offset_right = 710.0
 offset_bottom = 685.0
 
 [node name="CashRegister" parent="DragSurface" unique_id=280398190 instance=ExtResource("6_cash_register")]
@@ -207,3 +272,5 @@ offset_left = 855.0
 offset_top = 285.0
 offset_right = 1285.0
 offset_bottom = 685.0
+desk_view_path = null
+counter_view_path = null

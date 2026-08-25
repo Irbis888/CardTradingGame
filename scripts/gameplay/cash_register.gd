@@ -111,7 +111,7 @@ func _refresh_amount() -> void:
 
 
 func _print_receipt(receipt_type: StringName) -> void:
-	if current_space != &"desk":
+	if current_space != &"desk" or get_amount() <= 0:
 		return
 	var surface := draggable_component.get_surface_reference() as Control
 	if surface == null or not surface.has_method("register_draggable"):

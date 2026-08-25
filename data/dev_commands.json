@@ -22,6 +22,20 @@
 					"type": "int"
 				}
 			]
+		},
+		{
+			"name": "customer_say",
+			"tokens": ["customer", "say"],
+			"usage": "customer say <text>",
+			"description": "Show a replica spoken by the current customer.",
+			"handler": "customer_say",
+			"arguments": [
+				{
+					"name": "text",
+					"type": "string",
+					"consume_rest": true
+				}
+			]
 		}
 	]
 }

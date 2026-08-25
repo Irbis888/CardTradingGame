@@ -18,6 +18,7 @@ var _surface_input_states: Dictionary = {}
 
 
 func _ready() -> void:
+	add_to_group(&"dev_console")
 	visible = false
 	command_input.text_submitted.connect(_on_command_submitted)
 	_load_commands()
@@ -74,6 +75,8 @@ func execute_command(command_text: String) -> bool:
 			return true
 		"give_card":
 			return _give_card(int(parsed_arguments[0]))
+		"customer_say":
+			return _customer_say(str(parsed_arguments[0]))
 		_:
 			_write_line("Command handler is not supported.")
 			return false
@@ -145,7 +148,22 @@ func _parse_arguments(
 	parsed_arguments: Array
 ) -> bool:
 	var argument_definitions = command_definition.get("arguments", [])
-	if not (argument_definitions is Array) or raw_arguments.size() != argument_definitions.size():
+	if not (argument_definitions is Array):
+		_write_usage(command_definition)
+		return false
+
+	var consumes_rest := false
+	if not argument_definitions.is_empty():
+		var last_definition = argument_definitions[-1]
+		consumes_rest = (
+			last_definition is Dictionary
+			and bool(last_definition.get("consume_rest", false))
+		)
+	var expected_count: int = argument_definitions.size()
+	if (
+		raw_arguments.size() < expected_count
+		or (not consumes_rest and raw_arguments.size() != expected_count)
+	):
 		_write_usage(command_definition)
 		return false
 
@@ -154,7 +172,15 @@ func _parse_arguments(
 		if not (argument_definition is Dictionary):
 			_write_line("Malformed command argument definition.")
 			return false
-		var raw_value := raw_arguments[argument_index]
+		var consumes_remaining := bool(argument_definition.get("consume_rest", false))
+		if consumes_remaining and argument_index != argument_definitions.size() - 1:
+			_write_line("Only the last command argument can consume remaining text.")
+			return false
+		var raw_value := (
+			" ".join(raw_arguments.slice(argument_index))
+			if consumes_remaining
+			else raw_arguments[argument_index]
+		)
 		match str(argument_definition.get("type", "string")):
 			"int":
 				if not raw_value.is_valid_int():
@@ -201,6 +227,24 @@ func _give_card(card_id: int) -> bool:
 
 	_write_line("Spawned card %d: %s" % [card.id, card.name])
 	return true
+
+
+func _customer_say(text: String) -> bool:
+	var customer_managers := get_tree().get_nodes_in_group(&"customer_manager")
+	if customer_managers.is_empty():
+		_write_line("Customer manager is unavailable.")
+		return false
+	var spoken := false
+	for customer_manager in customer_managers:
+		if customer_manager.has_method("say"):
+			spoken = bool(customer_manager.call("say", text)) or spoken
+	if not spoken:
+		_write_line("Customer could not show this replica.")
+	return spoken
+
+
+func write_external_line(line: String) -> void:
+	_write_line(line)
 
 
 func _get_card_spawn_position(
