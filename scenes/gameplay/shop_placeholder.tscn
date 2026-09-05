@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dr1aiig6cgfom"]
 
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="1_font"]
+[ext_resource type="PackedScene" path="res://scenes/ui/shop_money_counter.tscn" id="2_money"]
 
 [sub_resource type="Gradient" id="Gradient_shop"]
 offsets = PackedFloat32Array(0, 0.55, 1)
@@ -112,6 +113,16 @@ theme_override_font_sizes/font_size = 54
 text = "FUTURE SHOP SCENE — PLACEHOLDER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ShopMoneyCounter" parent="." instance=ExtResource("2_money")]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 98.0
+grow_horizontal = 0
 
 [node name="Frame" type="Panel" parent="." unique_id=494661057]
 layout_mode = 1

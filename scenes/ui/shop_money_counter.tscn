@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/shop_money_counter.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
+bg_color = Color(0.055, 0.07, 0.065, 0.94)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.73, 0.61, 0.34, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ShopMoneyCounter" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 74)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter")
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 8
+
+[node name="AmountLabel" type="Label" parent="Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.84, 0.48, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 34
+text = "$1000"
+horizontal_alignment = 1
+vertical_alignment = 1

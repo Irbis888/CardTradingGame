@@ -36,6 +36,39 @@
 					"consume_rest": true
 				}
 			]
+		},
+		{
+			"name": "customer_end",
+			"tokens": ["customer", "end"],
+			"usage": "customer end",
+			"description": "End the current customer dialogue with a fade-out.",
+			"handler": "customer_end",
+			"arguments": []
+		},
+		{
+			"name": "customer_spawn",
+			"tokens": ["customer", "spawn"],
+			"usage": "customer spawn <portrait> <patience> <money> <cards>",
+			"description": "Spawn customer data and fade in the selected M<number> portrait.",
+			"handler": "customer_spawn",
+			"arguments": [
+				{
+					"name": "portrait",
+					"type": "int"
+				},
+				{
+					"name": "patience",
+					"type": "int"
+				},
+				{
+					"name": "money",
+					"type": "int"
+				},
+				{
+					"name": "cards",
+					"type": "int"
+				}
+			]
 		}
 	]
 }

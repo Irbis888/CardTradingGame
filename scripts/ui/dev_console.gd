@@ -77,6 +77,15 @@ func execute_command(command_text: String) -> bool:
 			return _give_card(int(parsed_arguments[0]))
 		"customer_say":
 			return _customer_say(str(parsed_arguments[0]))
+		"customer_end":
+			return _customer_end_dialogue()
+		"customer_spawn":
+			return _customer_spawn(
+				int(parsed_arguments[0]),
+				int(parsed_arguments[1]),
+				int(parsed_arguments[2]),
+				int(parsed_arguments[3])
+			)
 		_:
 			_write_line("Command handler is not supported.")
 			return false
@@ -241,6 +250,56 @@ func _customer_say(text: String) -> bool:
 	if not spoken:
 		_write_line("Customer could not show this replica.")
 	return spoken
+
+
+func _customer_end_dialogue() -> bool:
+	var customer_manager := _get_customer_manager()
+	if customer_manager == null:
+		_write_line("Customer manager is unavailable.")
+		return false
+	if not bool(customer_manager.call("end_customer_dialogue")):
+		_write_line("Customer dialogue cannot end right now.")
+		return false
+	_write_line("Customer dialogue ending...")
+	return true
+
+
+func _customer_spawn(
+	portrait_number: int,
+	patience_turns: int,
+	customer_money: int,
+	card_count: int
+) -> bool:
+	if (
+		portrait_number < 0
+		or patience_turns < 0
+		or customer_money < 0
+		or card_count < 0
+	):
+		_write_line("Customer values cannot be negative.")
+		return false
+	var customer_manager := _get_customer_manager()
+	if customer_manager == null:
+		_write_line("Customer manager is unavailable.")
+		return false
+	var customer := CustomerData.new(
+		portrait_number,
+		patience_turns,
+		customer_money,
+		card_count
+	)
+	if not bool(customer_manager.call("spawn_new_customer", customer)):
+		_write_line(
+			"Customer could not spawn. End the current dialogue and use an existing M<number> portrait."
+		)
+		return false
+	_write_line("Spawning customer: %s" % customer.get_description())
+	return true
+
+
+func _get_customer_manager() -> Node:
+	var customer_managers := get_tree().get_nodes_in_group(&"customer_manager")
+	return customer_managers[0] as Node if not customer_managers.is_empty() else null
 
 
 func write_external_line(line: String) -> void:

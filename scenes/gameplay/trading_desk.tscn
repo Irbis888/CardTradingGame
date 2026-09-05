@@ -118,6 +118,7 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("7_customer_manager")
 drag_surface_path = NodePath("../../CounterSurface")
+portrait_path = NodePath("../Portrait")
 speech_bubble_path = NodePath("SpeechBubble")
 speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
 speech_timer_path = NodePath("SpeechTimer")
