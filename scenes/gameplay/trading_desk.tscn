@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://cima7max6uau4"]
 
 [ext_resource type="Script" uid="uid://bbt42o15ol7b0" path="res://scripts/gameplay/trading_desk.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://c3qgjg0ix25g1" path="res://assets/portraits/M6.png" id="2_hfxn4"]
+[ext_resource type="Texture2D" uid="uid://60i21p45otba" path="res://assets/portraits_new/Customer_001.png" id="2_m2fvo"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
 [ext_resource type="Script" uid="uid://d38dab7h5dnyx" path="res://scripts/ui/drag_drop/ui_drag_surface.gd" id="5_drag_surface"]
 [ext_resource type="PackedScene" path="res://scenes/ui/cash_register.tscn" id="6_cash_register"]
-[ext_resource type="Script" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
+[ext_resource type="Script" uid="uid://ejc7rhvowem0" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
+[ext_resource type="PackedScene" path="res://scenes/ui/card_catalog.tscn" id="8_catalog"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
 border_width_right = 8
 border_color = Color(0.25, 0.26, 0.225, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_speech"]
+bg_color = Color(0.9, 0.875, 0.76, 0.96)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.19, 0.17, 0.13, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
 bg_color = Color(0.31, 0.325, 0.27, 1)
@@ -25,18 +38,6 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.28, 0.205, 0.145, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_speech"]
-bg_color = Color(0.9, 0.875, 0.76, 0.96)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.19, 0.17, 0.13, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="TradingDesk" type="Control" unique_id=793389611]
 custom_minimum_size = Vector2(0, 720)
@@ -90,21 +91,32 @@ mouse_filter = 2
 color = Color(0.18, 0.185, 0.165, 1)
 
 [node name="Portrait" type="TextureRect" parent="VisitorArea" unique_id=960408055]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -260.0
-offset_top = 25.0
-offset_right = 220.99966
-offset_bottom = 456.0
+offset_left = -197.00034
+offset_top = 57.0
+offset_right = 202.99966
+offset_bottom = 457.0
 grow_horizontal = 2
 mouse_filter = 2
-texture = ExtResource("2_hfxn4")
+texture = ExtResource("2_m2fvo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CustomerManager" type="Control" parent="VisitorArea"]
+[node name="HandoffLayer" type="Control" parent="VisitorArea"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CustomerManager" type="Control" parent="VisitorArea" unique_id=663779332]
 z_index = 10
 layout_mode = 1
 anchors_preset = 5
@@ -118,12 +130,17 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("7_customer_manager")
 drag_surface_path = NodePath("../../CounterSurface")
+card_return_surface_path = NodePath("../../DragSurface")
+shop_money_counter_path = NodePath("../../../ShopView/ShopMoneyCounter")
 portrait_path = NodePath("../Portrait")
+handoff_layer_path = NodePath("../HandoffLayer")
 speech_bubble_path = NodePath("SpeechBubble")
 speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
 speech_timer_path = NodePath("SpeechTimer")
+next_customer_timer_path = NodePath("NextCustomerTimer")
+result_timer_path = NodePath("ResultTimer")
 
-[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager"]
+[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager" unique_id=1293346727]
 visible = false
 layout_mode = 0
 offset_left = -38.0
@@ -133,7 +150,7 @@ offset_bottom = 112.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_speech")
 
-[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/SpeechBubble"]
+[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/SpeechBubble" unique_id=1387981149]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,7 +161,6 @@ offset_right = -18.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.08, 0.07, 0.055, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 21
@@ -153,8 +169,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=1367378141]
 wait_time = 4.0
+one_shot = true
+
+[node name="NextCustomerTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+wait_time = 0.8
+one_shot = true
+
+[node name="ResultTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+wait_time = 1.2
 one_shot = true
 
 [node name="Counter" type="Panel" parent="VisitorArea" unique_id=22616017]
@@ -265,6 +289,14 @@ offset_left = 120.0
 offset_top = 35.0
 offset_right = 710.0
 offset_bottom = 685.0
+
+[node name="CardCatalog" parent="DragSurface" instance=ExtResource("8_catalog")]
+z_index = 3
+layout_mode = 0
+offset_left = 750.0
+offset_top = 20.0
+offset_right = 1270.0
+offset_bottom = 270.0
 
 [node name="CashRegister" parent="DragSurface" unique_id=280398190 instance=ExtResource("6_cash_register")]
 z_index = 2

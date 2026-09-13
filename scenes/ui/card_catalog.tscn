@@ -1,0 +1,202 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/gameplay/card_catalog.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="2_draggable"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_cover"]
+bg_color = Color(0.125, 0.17, 0.16, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.045, 0.07, 0.065, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_page"]
+bg_color = Color(0.82, 0.775, 0.66, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.38, 0.31, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button"]
+bg_color = Color(0.18, 0.25, 0.23, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.56, 0.43, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
+bg_color = Color(0.28, 0.36, 0.32, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.68, 0.72, 0.55, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_disabled"]
+bg_color = Color(0.1, 0.13, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.27, 0.23, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_counter"]
+bg_color = Color(0.13, 0.18, 0.165, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.43, 0.52, 0.4, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="CardCatalog" type="Control"]
+custom_minimum_size = Vector2(520, 250)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 520.0
+offset_bottom = 250.0
+pivot_offset = Vector2(260, 125)
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+script = ExtResource("1_script")
+desk_size = Vector2(520, 250)
+counter_size = Vector2(170, 90)
+
+[node name="DeskView" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 250.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_cover")
+
+[node name="Page" type="Panel" parent="DeskView"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 508.0
+offset_bottom = 205.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_page")
+
+[node name="TitleLabel" type="Label" parent="DeskView"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 18.0
+offset_right = 495.0
+offset_bottom = 45.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.12, 0.1, 0.065, 1)
+theme_override_font_sizes/font_size = 21
+text = "CARD CATALOG"
+horizontal_alignment = 1
+
+[node name="EntriesGrid" type="GridContainer" parent="DeskView"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 496.0
+offset_bottom = 198.0
+mouse_filter = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="PreviousButton" type="Button" parent="DeskView"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 211.0
+offset_right = 50.0
+offset_bottom = 245.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBox_button")
+theme_override_styles/pressed = SubResource("StyleBox_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/disabled = SubResource("StyleBox_button_disabled")
+text = "<"
+
+[node name="NextButton" type="Button" parent="DeskView"]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 211.0
+offset_right = 504.0
+offset_bottom = 245.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBox_button")
+theme_override_styles/pressed = SubResource("StyleBox_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/disabled = SubResource("StyleBox_button_disabled")
+text = ">"
+
+[node name="PageLabel" type="Label" parent="DeskView"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 214.0
+offset_right = 320.0
+offset_bottom = 242.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.7, 0.73, 0.58, 1)
+theme_override_font_sizes/font_size = 17
+text = "1 / 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CounterView" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_counter")
+
+[node name="TitleLabel" type="Label" parent="CounterView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.61, 1)
+theme_override_font_sizes/font_size = 20
+text = "CATALOG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIDraggable" parent="." instance=ExtResource("2_draggable")]
+follow_speed = 32.0

@@ -1,0 +1,17 @@
+{
+  "any_card": "Любая карта",
+  "request_card": "{card}",
+  "request_card_price": "{card}, {price}",
+  "wrong_card": "{card}, нет",
+  "one_card": "Одна карта",
+  "opening_offer": "{price}",
+  "counter_offer": "{price}, не больше",
+  "counter_hidden": "Дорого",
+  "last_offer": "{price}, последнее",
+  "last_hidden": "Последнее",
+  "accepted": "{price}, беру",
+  "rejected": "Нет",
+  "card_first": "Сначала карта",
+  "ask_only": "Нужен ASK",
+  "trade_error": "Ошибка"
+}

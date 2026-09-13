@@ -51,7 +51,8 @@ func _load_cards() -> void:
 			int(card_data.get("magic", 0)),
 			str(card_data.get("series", "")),
 			int(card_data.get("rarity", 0)),
-			int(card_data.get("id", -1))
+			int(card_data.get("id", -1)),
+			int(card_data.get("price", -1))
 		)
 		cards.append(card)
 		_cards_by_id[card.id] = card

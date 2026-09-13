@@ -7,7 +7,8 @@
 		"series": "Pokemafia",
 		"attack": 3,
 		"defense": 2,
-		"magic": 1
+		"magic": 1,
+		"price": 73
 	},
 	{
 		"id": 1,
@@ -17,7 +18,8 @@
 		"series": "Pokemafia",
 		"attack": 2,
 		"defense": 3,
-		"magic": 2
+		"magic": 2,
+		"price": 81
 	},
 	{
 		"id": 2,
@@ -27,7 +29,8 @@
 		"series": "Pokemafia",
 		"attack": 1,
 		"defense": 4,
-		"magic": 1
+		"magic": 1,
+		"price": 73
 	},
 	{
 		"id": 3,
@@ -37,7 +40,8 @@
 		"series": "Pokemafia",
 		"attack": 4,
 		"defense": 1,
-		"magic": 1
+		"magic": 1,
+		"price": 73
 	},
 	{
 		"id": 4,
@@ -47,7 +51,8 @@
 		"series": "Pokemafia",
 		"attack": 2,
 		"defense": 2,
-		"magic": 3
+		"magic": 3,
+		"price": 81
 	},
 	{
 		"id": 5,
@@ -57,7 +62,8 @@
 		"series": "Pokemafia",
 		"attack": 1,
 		"defense": 1,
-		"magic": 5
+		"magic": 5,
+		"price": 81
 	},
 	{
 		"id": 6,
@@ -67,7 +73,8 @@
 		"series": "Pokemafia",
 		"attack": 3,
 		"defense": 3,
-		"magic": 1
+		"magic": 1,
+		"price": 81
 	},
 	{
 		"id": 7,
@@ -77,7 +84,8 @@
 		"series": "Pokemafia",
 		"attack": 2,
 		"defense": 1,
-		"magic": 4
+		"magic": 4,
+		"price": 81
 	},
 	{
 		"id": 8,
@@ -87,7 +95,8 @@
 		"series": "Pokemafia",
 		"attack": 5,
 		"defense": 4,
-		"magic": 3
+		"magic": 3,
+		"price": 196
 	},
 	{
 		"id": 9,
@@ -97,7 +106,8 @@
 		"series": "Pokemafia",
 		"attack": 4,
 		"defense": 5,
-		"magic": 4
+		"magic": 4,
+		"price": 204
 	},
 	{
 		"id": 10,
@@ -107,7 +117,8 @@
 		"series": "Pokemafia",
 		"attack": 3,
 		"defense": 6,
-		"magic": 2
+		"magic": 2,
+		"price": 188
 	},
 	{
 		"id": 11,
@@ -117,7 +128,8 @@
 		"series": "Pokemafia",
 		"attack": 6,
 		"defense": 3,
-		"magic": 3
+		"magic": 3,
+		"price": 196
 	},
 	{
 		"id": 12,
@@ -127,7 +139,8 @@
 		"series": "Pokemafia",
 		"attack": 4,
 		"defense": 4,
-		"magic": 5
+		"magic": 5,
+		"price": 204
 	},
 	{
 		"id": 13,
@@ -137,7 +150,8 @@
 		"series": "Pokemafia",
 		"attack": 5,
 		"defense": 5,
-		"magic": 2
+		"magic": 2,
+		"price": 196
 	},
 	{
 		"id": 14,
@@ -147,7 +161,8 @@
 		"series": "Pokemafia",
 		"attack": 3,
 		"defense": 7,
-		"magic": 3
+		"magic": 3,
+		"price": 204
 	},
 	{
 		"id": 15,
@@ -157,7 +172,8 @@
 		"series": "Pokemafia",
 		"attack": 7,
 		"defense": 3,
-		"magic": 4
+		"magic": 4,
+		"price": 212
 	},
 	{
 		"id": 16,
@@ -167,7 +183,8 @@
 		"series": "Pokemafia",
 		"attack": 8,
 		"defense": 6,
-		"magic": 5
+		"magic": 5,
+		"price": 377
 	},
 	{
 		"id": 17,
@@ -177,7 +194,8 @@
 		"series": "Pokemafia",
 		"attack": 6,
 		"defense": 8,
-		"magic": 7
+		"magic": 7,
+		"price": 393
 	},
 	{
 		"id": 18,
@@ -187,7 +205,8 @@
 		"series": "Pokemafia",
 		"attack": 7,
 		"defense": 7,
-		"magic": 8
+		"magic": 8,
+		"price": 401
 	},
 	{
 		"id": 19,
@@ -197,7 +216,8 @@
 		"series": "Pokemafia",
 		"attack": 9,
 		"defense": 5,
-		"magic": 6
+		"magic": 6,
+		"price": 385
 	},
 	{
 		"id": 20,
@@ -207,7 +227,8 @@
 		"series": "Pokemafia",
 		"attack": 5,
 		"defense": 9,
-		"magic": 7
+		"magic": 7,
+		"price": 393
 	},
 	{
 		"id": 21,
@@ -217,7 +238,8 @@
 		"series": "Pokemafia",
 		"attack": 8,
 		"defense": 8,
-		"magic": 6
+		"magic": 6,
+		"price": 401
 	},
 	{
 		"id": 22,
@@ -227,7 +249,8 @@
 		"series": "Pokemafia",
 		"attack": 6,
 		"defense": 7,
-		"magic": 9
+		"magic": 9,
+		"price": 401
 	},
 	{
 		"id": 23,
@@ -237,7 +260,8 @@
 		"series": "Pokemafia",
 		"attack": 7,
 		"defense": 6,
-		"magic": 10
+		"magic": 10,
+		"price": 409
 	},
 	{
 		"id": 24,
@@ -247,7 +271,8 @@
 		"series": "Pokemafia",
 		"attack": 12,
 		"defense": 10,
-		"magic": 9
+		"magic": 9,
+		"price": 648
 	},
 	{
 		"id": 25,
@@ -257,7 +282,8 @@
 		"series": "Pokemafia",
 		"attack": 15,
 		"defense": 8,
-		"magic": 8
+		"magic": 8,
+		"price": 648
 	},
 	{
 		"id": 26,
@@ -267,7 +293,8 @@
 		"series": "Pokemafia",
 		"attack": 9,
 		"defense": 14,
-		"magic": 10
+		"magic": 10,
+		"price": 664
 	},
 	{
 		"id": 27,
@@ -277,7 +304,8 @@
 		"series": "Pokemafia",
 		"attack": 10,
 		"defense": 12,
-		"magic": 11
+		"magic": 11,
+		"price": 664
 	},
 	{
 		"id": 28,
@@ -287,7 +315,8 @@
 		"series": "Pokemafia",
 		"attack": 8,
 		"defense": 9,
-		"magic": 15
+		"magic": 15,
+		"price": 656
 	},
 	{
 		"id": 29,
@@ -297,7 +326,8 @@
 		"series": "Pokemafia",
 		"attack": 11,
 		"defense": 11,
-		"magic": 12
+		"magic": 12,
+		"price": 672
 	},
 	{
 		"id": 30,
@@ -307,7 +337,8 @@
 		"series": "Pokemafia",
 		"attack": 13,
 		"defense": 13,
-		"magic": 7
+		"magic": 7,
+		"price": 664
 	},
 	{
 		"id": 31,
@@ -317,7 +348,8 @@
 		"series": "Pokemafia",
 		"attack": 14,
 		"defense": 7,
-		"magic": 13
+		"magic": 13,
+		"price": 672
 	},
 	{
 		"id": 32,
@@ -327,7 +359,8 @@
 		"series": "Pokemafia",
 		"attack": 18,
 		"defense": 14,
-		"magic": 16
+		"magic": 16,
+		"price": 1009
 	},
 	{
 		"id": 33,
@@ -337,7 +370,8 @@
 		"series": "Pokemafia",
 		"attack": 15,
 		"defense": 18,
-		"magic": 15
+		"magic": 15,
+		"price": 1009
 	},
 
 	{
@@ -348,7 +382,8 @@
 		"series": "Pokemafia",
 		"attack": 20,
 		"defense": 16,
-		"magic": 19
+		"magic": 19,
+		"price": 1340
 	},
 	{
 		"id": 35,
@@ -358,7 +393,8 @@
 		"series": "Pokemafia",
 		"attack": 17,
 		"defense": 20,
-		"magic": 18
+		"magic": 18,
+		"price": 1340
 	},
 	{
 		"id": 36,
@@ -368,7 +404,8 @@
 		"series": "Pokemafia",
 		"attack": 19,
 		"defense": 19,
-		"magic": 17
+		"magic": 17,
+		"price": 1340
 	},
 	{
 		"id": 37,
@@ -378,6 +415,7 @@
 		"series": "Pokemafia",
 		"attack": 16,
 		"defense": 17,
-		"magic": 20
+		"magic": 20,
+		"price": 1324
 	}
 ]

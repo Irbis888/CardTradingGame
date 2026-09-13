@@ -1,9 +1,9 @@
-# card.gd
 class_name Card
+extends RefCounted
 
 
 var name: String
-var base_price: int = 10
+var base_price: int
 var rarity: int
 
 var str: int
@@ -12,8 +12,33 @@ var mag: int
 
 var series: String
 var picture: Resource
-
 var id: int
+
+
+func _init(
+	card_name: String,
+	card_picture: Resource,
+	attack: int,
+	defense: int,
+	magic: int,
+	card_series: String,
+	card_rarity: int,
+	card_id: int,
+	catalog_price: int = -1
+) -> void:
+	name = card_name
+	picture = card_picture
+	str = attack
+	def = defense
+	mag = magic
+	series = card_series
+	rarity = card_rarity
+	id = card_id
+	base_price = (
+		catalog_price
+		if catalog_price > 0
+		else _calculate_catalog_price()
+	)
 
 
 func get_literal_name() -> String:
@@ -33,21 +58,12 @@ func get_literal_name() -> String:
 		_:
 			return "NO"
 
-func _init(name: String, pic: Resource, str, def, mag, series, rarity, id):
-	self.name = name
-	self.picture = pic
-	self.str = str
-	self.def = def
-	self.mag = mag
-	self.rarity = rarity
-	self.series = series
-	self.id = id
-	base_price = abs(self.get_price())
 
 func get_price() -> int:
-	# Пока просто возвращает базовую цену
-	var coeffVector = Vector3i(1,1,1) * randi()%10
-	var sum = int(Vector3(coeffVector).dot(Vector3(str, def, mag)))
-	sum += (rarity+1) * randf_range(0.5, 1.5) * 20
-	sum *= randf_range(0.8, 1.2)
-	return sum
+	return base_price
+
+
+func _calculate_catalog_price() -> int:
+	var stat_total := maxi(str, 0) + maxi(def, 0) + maxi(mag, 0)
+	var rarity_tier := maxi(rarity + 1, 1)
+	return maxi(stat_total * 8 + rarity_tier * rarity_tier * 25, 1)

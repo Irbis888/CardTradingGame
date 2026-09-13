@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 		else:
 			draggable.follow_target(delta)
 
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_button := event as InputEventMouseButton
@@ -188,12 +187,23 @@ func _end_drag(global_pointer: Vector2) -> void:
 
 	var released_draggable = _active_draggable
 	released_draggable.set_picked(false)
-	var accepted := _try_accept_active_draggable(released_draggable, global_pointer)
+	var accepting_receiver := _find_accepting_drop_receiver(
+		released_draggable,
+		global_pointer
+	)
 	_clear_drop_receiver_hover()
-	if accepted:
+	if accepting_receiver != null:
 		var released_target: Control = released_draggable.get_target() as Control
 		unregister_draggable(released_draggable)
-		if is_instance_valid(released_target):
+		var receiver_kept_target := false
+		if accepting_receiver.has_method("take_accepted_draggable"):
+			receiver_kept_target = bool(
+				accepting_receiver.call(
+					"take_accepted_draggable",
+					released_draggable
+				)
+			)
+		if not receiver_kept_target and is_instance_valid(released_target):
 			released_target.queue_free()
 		get_viewport().set_input_as_handled()
 		return
@@ -296,7 +306,10 @@ func _transfer_active_to_surface(
 	get_viewport().set_input_as_handled()
 
 
-func _try_accept_active_draggable(draggable, global_pointer: Vector2) -> bool:
+func _find_accepting_drop_receiver(
+	draggable,
+	global_pointer: Vector2
+) -> Node:
 	for receiver in _drop_receivers.duplicate():
 		if not is_instance_valid(receiver):
 			_drop_receivers.erase(receiver)
@@ -304,8 +317,8 @@ func _try_accept_active_draggable(draggable, global_pointer: Vector2) -> bool:
 		if receiver.has_method("try_accept_draggable") and bool(
 			receiver.call("try_accept_draggable", draggable, global_pointer)
 		):
-			return true
-	return false
+			return receiver
+	return null
 
 
 func _update_drop_receiver_hover(draggable, global_pointer: Vector2) -> void:

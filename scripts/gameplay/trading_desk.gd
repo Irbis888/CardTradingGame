@@ -3,12 +3,17 @@ extends Control
 
 
 @onready var card_binder: CardBinder = $DragSurface/CardBinder
+@onready var card_catalog: CardCatalog = $DragSurface/CardCatalog
 @onready var cash_register: CashRegister = $DragSurface/CashRegister
 @onready var customer_manager: CustomerManager = $VisitorArea/CustomerManager
 
 
 func get_card_binder() -> CardBinder:
 	return card_binder
+
+
+func get_card_catalog() -> CardCatalog:
+	return card_catalog
 
 
 func get_cash_register() -> CashRegister:
