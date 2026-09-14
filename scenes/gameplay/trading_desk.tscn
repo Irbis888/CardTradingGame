@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/cash_register.tscn" id="6_cash_register"]
 [ext_resource type="Script" uid="uid://ejc7rhvowem0" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
 [ext_resource type="PackedScene" path="res://scenes/ui/card_catalog.tscn" id="8_catalog"]
+[ext_resource type="Script" uid="uid://dtmrrxcv6bxng" path="res://scripts/ui/customer_view.gd" id="9_customer_view"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
@@ -106,7 +107,7 @@ texture = ExtResource("2_m2fvo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HandoffLayer" type="Control" parent="VisitorArea"]
+[node name="HandoffLayer" type="Control" parent="VisitorArea" unique_id=2002585148]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -129,18 +130,28 @@ offset_bottom = 456.0
 grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("7_customer_manager")
-drag_surface_path = NodePath("../../CounterSurface")
-card_return_surface_path = NodePath("../../DragSurface")
 shop_money_counter_path = NodePath("../../../ShopView/ShopMoneyCounter")
-portrait_path = NodePath("../Portrait")
-handoff_layer_path = NodePath("../HandoffLayer")
-speech_bubble_path = NodePath("SpeechBubble")
-speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
-speech_timer_path = NodePath("SpeechTimer")
 next_customer_timer_path = NodePath("NextCustomerTimer")
 result_timer_path = NodePath("ResultTimer")
 
-[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager" unique_id=1293346727]
+[node name="CustomerView" type="Control" parent="VisitorArea/CustomerManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_customer_view")
+drag_surface_path = NodePath("../../../CounterSurface")
+card_return_surface_path = NodePath("../../../DragSurface")
+portrait_path = NodePath("../../Portrait")
+handoff_layer_path = NodePath("../../HandoffLayer")
+speech_bubble_path = NodePath("SpeechBubble")
+speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
+speech_timer_path = NodePath("SpeechTimer")
+
+[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager/CustomerView" unique_id=1293346727]
 visible = false
 layout_mode = 0
 offset_left = -38.0
@@ -150,7 +161,7 @@ offset_bottom = 112.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_speech")
 
-[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/SpeechBubble" unique_id=1387981149]
+[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/CustomerView/SpeechBubble" unique_id=1387981149]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,15 +180,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=1367378141]
+[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager/CustomerView" unique_id=1367378141]
 wait_time = 4.0
 one_shot = true
 
-[node name="NextCustomerTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+[node name="NextCustomerTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=1365846]
 wait_time = 0.8
 one_shot = true
 
-[node name="ResultTimer" type="Timer" parent="VisitorArea/CustomerManager"]
+[node name="ResultTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=964057983]
 wait_time = 1.2
 one_shot = true
 
@@ -285,12 +296,12 @@ left_transfer_surface_path = NodePath("../CounterSurface")
 [node name="CardBinder" parent="DragSurface" unique_id=1197729793 instance=ExtResource("4_binder")]
 z_index = 1
 layout_mode = 0
-offset_left = 120.0
-offset_top = 35.0
-offset_right = 710.0
-offset_bottom = 685.0
+offset_left = 62.99933
+offset_top = 52.0
+offset_right = 652.9993
+offset_bottom = 702.0
 
-[node name="CardCatalog" parent="DragSurface" instance=ExtResource("8_catalog")]
+[node name="CardCatalog" parent="DragSurface" unique_id=124433016 instance=ExtResource("8_catalog")]
 z_index = 3
 layout_mode = 0
 offset_left = 750.0

@@ -45,6 +45,18 @@ func add_card_to_hand(card: Card) -> void:
 	card_count += 1
 
 
+func can_afford(amount: int) -> bool:
+	return amount > 0 and amount <= money
+
+
+func buy_card(card: Card, price: int) -> bool:
+	if card == null or not can_afford(price):
+		return false
+	money -= price
+	add_card_to_hand(card)
+	return true
+
+
 func get_description() -> String:
 	var request_text := requested_card.name if requested_card != null else "any card"
 	return "portrait #%d, patience %d turns, $%d, %d cards, %d known in hand, acceptability %.2f, wants %s" % [
