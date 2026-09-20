@@ -2,6 +2,9 @@ class_name CardCatalog
 extends "res://scripts/ui/drag_drop/dual_space_draggable.gd"
 
 
+# Presents the read-only card catalog and its pagination controls.
+
+
 const ENTRIES_PER_PAGE := 12
 const CATALOG_FONT := preload("res://assets/fonts/at01.ttf")
 
@@ -16,7 +19,7 @@ var _current_page := 0
 
 func _ready() -> void:
 	super()
-	_cards = Globals.get_cards()
+	_cards = CardDatabase.get_cards()
 	previous_button.pressed.connect(_show_previous_page)
 	next_button.pressed.connect(_show_next_page)
 	_configure_interactive_controls()

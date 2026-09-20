@@ -2,6 +2,9 @@ class_name CashRegister
 extends "res://scripts/ui/drag_drop/dual_space_draggable.gd"
 
 
+# Presents keypad input and creates receipt views for player intent.
+
+
 const DRAGGABLE_RECEIPT_SCENE := preload("res://scenes/ui/draggable_receipt.tscn")
 const MAX_DIGITS := 9
 

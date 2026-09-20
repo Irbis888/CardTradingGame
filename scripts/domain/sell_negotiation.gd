@@ -13,7 +13,7 @@ const AUTO_ACCEPT_PROBABILITY := 0.95
 const PROBABILITY_SOFTNESS := 0.08
 
 var card: Card
-var customer: CustomerData
+var customer: CustomerVisit
 var reference_price := 0
 var reservation_price := 0
 var customer_offer := 0
@@ -26,7 +26,7 @@ var closed := false
 var _concession_rate := 0.25
 
 
-func _init(traded_card: Card, buyer: CustomerData) -> void:
+func _init(traded_card: Card, buyer: CustomerVisit) -> void:
 	card = traded_card
 	customer = buyer
 	if card == null or customer == null:

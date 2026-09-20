@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7iyv8d84t5rc"]
 
-[ext_resource type="Script" uid="uid://bq8ykgc58v4ad" path="res://scripts/gameplay/card_binder.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bq8ykgc58v4ad" path="res://scripts/ui/card_binder.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="2_draggable"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 

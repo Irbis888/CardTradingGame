@@ -8,7 +8,6 @@ const DROP_DISTANCE_FROM_CENTER_FRACTION := 0.5
 const HOVERED_SLOT_MODULATE := Color(0.82, 0.82, 0.82, 1.0)
 const NORMAL_SLOT_MODULATE := Color.WHITE
 const DRAGGABLE_CARD_SCENE := preload("res://scenes/ui/draggable_card.tscn")
-const CARD_VIEW_SCENE := preload("res://scenes/ui/card_view.tscn")
 
 @export_range(1, 24, 1) var page_count := 3
 @export var initial_card_ids: Array[int] = [8, 16, 24, 9, 17, 25, 10, 18, 26]
@@ -52,7 +51,7 @@ const CARD_VIEW_SCENE := preload("res://scenes/ui/card_view.tscn")
 	$DeskView/Slot6/SlotButton,
 ]
 
-var _slot_cards: Array[Card] = []
+var _collection: CardCollection
 var _current_page := 0
 var _registered_surface: Node
 var _hovered_slot := -1
@@ -61,7 +60,7 @@ var _hovered_slot := -1
 func _ready() -> void:
 	super()
 	_connect_controls()
-	_initialize_card_slots()
+	_initialize_collection()
 	_configure_interactive_controls()
 	_register_as_drop_receiver()
 	_refresh_page()
@@ -93,29 +92,31 @@ func can_start_drag_at(global_point: Vector2) -> bool:
 	return true
 
 
-func try_accept_draggable(draggable, global_pointer: Vector2) -> bool:
+func can_accept_drop(draggable, global_pointer: Vector2) -> bool:
+	return _get_dropped_card(draggable) != null and _find_empty_drop_slot(global_pointer) >= 0
+
+
+func accept_drop(draggable, global_pointer: Vector2) -> bool:
 	if current_space != &"desk":
 		return false
-	var card_node := draggable.get_target() as DraggableCard
-	if card_node == null or card_node == self or card_node.get_card_data() == null:
-		return false
-
+	var card := _get_dropped_card(draggable)
 	var local_slot := _find_empty_drop_slot(global_pointer)
-	if local_slot < 0:
+	if card == null or local_slot < 0:
 		return false
-
 	var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-	_slot_cards[storage_index] = card_node.get_card_data()
+	if not _collection.store_at(storage_index, card):
+		return false
+	var card_node := draggable.get_target() as DraggableCard
+	if card_node != null:
+		card_node.queue_free()
 	_refresh_page()
 	return true
 
 
 func update_draggable_hover(draggable, global_pointer: Vector2) -> void:
 	var hovered_slot := -1
-	if current_space == &"desk":
-		var card_node := draggable.get_target() as DraggableCard
-		if card_node != null and card_node != self and card_node.get_card_data() != null:
-			hovered_slot = _find_empty_drop_slot(global_pointer)
+	if _get_dropped_card(draggable) != null:
+		hovered_slot = _find_empty_drop_slot(global_pointer)
 	_set_hovered_slot(hovered_slot)
 
 
@@ -124,15 +125,11 @@ func clear_draggable_hover() -> void:
 
 
 func get_stored_cards() -> Array[Card]:
-	var stored_cards: Array[Card] = []
-	for card in _slot_cards:
-		if card != null:
-			stored_cards.append(card)
-	return stored_cards
+	return _collection.get_cards()
 
 
 func get_slot_cards() -> Array[Card]:
-	return _slot_cards.duplicate()
+	return _collection.get_slots()
 
 
 func get_current_page() -> int:
@@ -146,15 +143,15 @@ func _connect_controls() -> void:
 		_slot_buttons[local_slot].button_down.connect(_extract_card.bind(local_slot))
 
 
-func _initialize_card_slots() -> void:
+func _initialize_collection() -> void:
 	page_count = maxi(page_count, 1)
-	_slot_cards.resize(page_count * SLOTS_PER_PAGE)
-	var maximum_initial_cards := mini(initial_card_ids.size(), _slot_cards.size() / 2)
+	_collection = CardCollection.new(page_count * SLOTS_PER_PAGE)
+	var maximum_initial_cards := mini(initial_card_ids.size(), _collection.get_capacity() / 2)
 	for card_index in range(maximum_initial_cards):
-		var card := Globals.get_card_by_id(initial_card_ids[card_index])
+		var card := CardDatabase.get_card_by_id(initial_card_ids[card_index])
 		if card != null:
-			_slot_cards[card_index * 2] = card
-	set_item_payload(_slot_cards)
+			_collection.store_at(card_index * 2, card)
+	set_item_payload(_collection)
 
 
 func _configure_interactive_controls() -> void:
@@ -204,44 +201,21 @@ func _refresh_page() -> void:
 	next_button.disabled = _current_page == page_count - 1
 
 	for local_slot in range(SLOTS_PER_PAGE):
-		_clear_preview(_preview_hosts[local_slot])
 		var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-		var card := _slot_cards[storage_index]
+		var card := _collection.get_card(storage_index)
+		CardBinderPreviewRenderer.render(
+			_preview_hosts[local_slot],
+			_slot_panels[local_slot],
+			card,
+			CARD_PREVIEW_SIZE
+		)
 		_empty_labels[local_slot].visible = card == null
-		if card != null:
-			_create_card_preview(_preview_hosts[local_slot], _slot_panels[local_slot], card)
 
-	counter_count_label.text = "%d / %d CARDS" % [get_stored_cards().size(), _slot_cards.size()]
+	counter_count_label.text = "%d / %d CARDS" % [
+		_collection.get_count(),
+		_collection.get_capacity(),
+	]
 	_refresh_slot_hover()
-
-
-func _clear_preview(preview_host: Control) -> void:
-	for child in preview_host.get_children():
-		preview_host.remove_child(child)
-		child.queue_free()
-
-
-func _create_card_preview(preview_host: Control, slot_panel: Control, card: Card) -> void:
-	var preview := CARD_VIEW_SCENE.instantiate() as Control
-	preview_host.add_child(preview)
-	preview.set_anchors_preset(Control.PRESET_TOP_LEFT)
-	preview.size = CARD_PREVIEW_SIZE
-	var available_size := slot_panel.size - Vector2(14.0, 14.0)
-	var preview_scale := minf(
-		available_size.x / CARD_PREVIEW_SIZE.x,
-		available_size.y / CARD_PREVIEW_SIZE.y
-	)
-	preview.scale = Vector2.ONE * preview_scale
-	preview.position = (slot_panel.size - CARD_PREVIEW_SIZE * preview_scale) * 0.5
-	_set_mouse_input_ignored(preview)
-	preview.call("init", card)
-
-
-func _set_mouse_input_ignored(node: Node) -> void:
-	if node is Control:
-		(node as Control).mouse_filter = Control.MOUSE_FILTER_IGNORE
-	for child in node.get_children():
-		_set_mouse_input_ignored(child)
 
 
 func _extract_card(local_slot: int) -> void:
@@ -251,7 +225,7 @@ func _extract_card(local_slot: int) -> void:
 		return
 
 	var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-	var card := _slot_cards[storage_index]
+	var card := _collection.take_at(storage_index)
 	if card == null:
 		return
 
@@ -260,20 +234,30 @@ func _extract_card(local_slot: int) -> void:
 	card_instance.display_card(card)
 	var slot_rect := _slot_panels[local_slot].get_global_rect()
 	card_instance.global_position = slot_rect.get_center() - card_instance.size * 0.5
-
-	_slot_cards[storage_index] = null
-	_refresh_page()
-	_registered_surface.call(
+	var drag_started := bool(_registered_surface.call(
 		"begin_draggable_drag",
 		card_instance.get_node("UIDraggable"),
 		get_viewport().get_mouse_position()
-	)
+	))
+	if not drag_started:
+		_collection.store_at(storage_index, card)
+		card_instance.queue_free()
+	_refresh_page()
+
+
+func _get_dropped_card(draggable) -> Card:
+	if current_space != &"desk" or draggable == null or not draggable.has_method("get_target"):
+		return null
+	var card_node := draggable.get_target() as DraggableCard
+	if card_node == null or card_node == self:
+		return null
+	return card_node.get_card_data()
 
 
 func _find_empty_drop_slot(global_pointer: Vector2) -> int:
 	for local_slot in range(SLOTS_PER_PAGE):
 		var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-		if _slot_cards[storage_index] != null:
+		if not _collection.is_slot_empty(storage_index):
 			continue
 		if _is_pointer_inside_slot_drop_region(_slot_panels[local_slot], global_pointer):
 			return local_slot
@@ -283,9 +267,7 @@ func _find_empty_drop_slot(global_pointer: Vector2) -> int:
 func _is_pointer_inside_slot_drop_region(slot: Control, global_pointer: Vector2) -> bool:
 	var slot_rect := slot.get_global_rect()
 	var distance_from_center := (global_pointer - slot_rect.get_center()).abs()
-	var maximum_distance := (
-		slot_rect.size * 0.5 * DROP_DISTANCE_FROM_CENTER_FRACTION
-	)
+	var maximum_distance := slot_rect.size * 0.5 * DROP_DISTANCE_FROM_CENTER_FRACTION
 	return (
 		distance_from_center.x <= maximum_distance.x
 		and distance_from_center.y <= maximum_distance.y
@@ -304,7 +286,7 @@ func _refresh_slot_hover() -> void:
 		return
 	for local_slot in range(SLOTS_PER_PAGE):
 		var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
-		var is_empty := _slot_cards[storage_index] == null
+		var is_empty := _collection.is_slot_empty(storage_index)
 		_slot_panels[local_slot].self_modulate = (
 			HOVERED_SLOT_MODULATE
 			if is_empty and local_slot == _hovered_slot

@@ -1,4 +1,4 @@
-class_name CustomerData
+class_name CustomerVisit
 extends RefCounted
 
 

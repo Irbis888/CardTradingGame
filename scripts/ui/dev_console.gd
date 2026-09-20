@@ -23,6 +23,7 @@ func _ready() -> void:
 	command_input.text_submitted.connect(_on_command_submitted)
 	_load_commands()
 	_write_welcome()
+	call_deferred("_connect_customer_activity")
 
 
 func _exit_tree() -> void:
@@ -207,7 +208,7 @@ func _write_usage(command_definition: Dictionary) -> void:
 
 
 func _give_card(card_id: int) -> bool:
-	var card := Globals.get_card_by_id(card_id)
+	var card := CardDatabase.get_card_by_id(card_id)
 	if card == null:
 		_write_line("Card ID %d does not exist." % card_id)
 		return false
@@ -282,7 +283,7 @@ func _customer_spawn(
 	if customer_manager == null:
 		_write_line("Customer manager is unavailable.")
 		return false
-	var customer := CustomerData.new(
+	var customer := CustomerVisit.new(
 		portrait_number,
 		patience_turns,
 		customer_money,
@@ -297,9 +298,15 @@ func _customer_spawn(
 	return true
 
 
-func _get_customer_manager() -> Node:
+func _connect_customer_activity() -> void:
+	var customer_manager := _get_customer_manager()
+	if customer_manager != null and not customer_manager.activity_logged.is_connected(write_external_line):
+		customer_manager.activity_logged.connect(write_external_line)
+
+
+func _get_customer_manager() -> CustomerManager:
 	var customer_managers := get_tree().get_nodes_in_group(&"customer_manager")
-	return customer_managers[0] as Node if not customer_managers.is_empty() else null
+	return customer_managers[0] as CustomerManager if not customer_managers.is_empty() else null
 
 
 func write_external_line(line: String) -> void:

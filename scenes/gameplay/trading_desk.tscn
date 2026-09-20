@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cima7max6uau4"]
 
-[ext_resource type="Script" uid="uid://bbt42o15ol7b0" path="res://scripts/gameplay/trading_desk.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bbt42o15ol7b0" path="res://scripts/ui/trading_desk.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://60i21p45otba" path="res://assets/portraits_new/Customer_001.png" id="2_m2fvo"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="4_binder"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://ejc7rhvowem0" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
 [ext_resource type="PackedScene" path="res://scenes/ui/card_catalog.tscn" id="8_catalog"]
 [ext_resource type="Script" uid="uid://dtmrrxcv6bxng" path="res://scripts/ui/customer_view.gd" id="9_customer_view"]
+[ext_resource type="Script" path="res://scripts/ui/customer_handoff_view.gd" id="10_handoff_view"]
+[ext_resource type="Script" path="res://scripts/ui/customer_speech_view.gd" id="11_speech_view"]
+[ext_resource type="PackedScene" uid="uid://2xfshpwfx2pn" path="res://scenes/gameplay/lower_shelf.tscn" id="12_lower_shelf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
@@ -41,6 +44,7 @@ border_width_bottom = 10
 border_color = Color(0.28, 0.205, 0.145, 1)
 
 [node name="TradingDesk" type="Control" unique_id=793389611]
+clip_contents = true
 custom_minimum_size = Vector2(0, 720)
 custom_maximum_size = Vector2(-1, 720)
 layout_mode = 3
@@ -116,8 +120,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("10_handoff_view")
+customer_manager_path = NodePath("../CustomerManager")
+drag_surface_path = NodePath("../../CounterSurface")
+card_return_surface_path = NodePath("../../DragSurface")
+drop_region_path = NodePath("../CustomerView")
+portrait_path = NodePath("../Portrait")
 
-[node name="CustomerManager" type="Control" parent="VisitorArea" unique_id=663779332]
+[node name="CustomerManager" type="Node" parent="VisitorArea" unique_id=663779332]
+script = ExtResource("7_customer_manager")
+next_customer_timer_path = NodePath("NextCustomerTimer")
+result_timer_path = NodePath("ResultTimer")
+
+[node name="CustomerView" type="Control" parent="VisitorArea"]
 z_index = 10
 layout_mode = 1
 anchors_preset = 5
@@ -129,29 +144,11 @@ offset_right = 220.99966
 offset_bottom = 456.0
 grow_horizontal = 2
 mouse_filter = 2
-script = ExtResource("7_customer_manager")
-shop_money_counter_path = NodePath("../../../ShopView/ShopMoneyCounter")
-next_customer_timer_path = NodePath("NextCustomerTimer")
-result_timer_path = NodePath("ResultTimer")
-
-[node name="CustomerView" type="Control" parent="VisitorArea/CustomerManager"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("9_customer_view")
-drag_surface_path = NodePath("../../../CounterSurface")
-card_return_surface_path = NodePath("../../../DragSurface")
-portrait_path = NodePath("../../Portrait")
-handoff_layer_path = NodePath("../../HandoffLayer")
-speech_bubble_path = NodePath("SpeechBubble")
-speech_label_path = NodePath("SpeechBubble/ReplicaLabel")
-speech_timer_path = NodePath("SpeechTimer")
+customer_manager_path = NodePath("../CustomerManager")
+portrait_path = NodePath("../Portrait")
 
-[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerManager/CustomerView" unique_id=1293346727]
+[node name="SpeechBubble" type="Panel" parent="VisitorArea/CustomerView" unique_id=1293346727]
 visible = false
 layout_mode = 0
 offset_left = -38.0
@@ -160,8 +157,9 @@ offset_right = 519.0
 offset_bottom = 112.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_speech")
+script = ExtResource("11_speech_view")
 
-[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerManager/CustomerView/SpeechBubble" unique_id=1387981149]
+[node name="ReplicaLabel" type="Label" parent="VisitorArea/CustomerView/SpeechBubble" unique_id=1387981149]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,7 +178,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerManager/CustomerView" unique_id=1367378141]
+[node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerView/SpeechBubble" unique_id=1367378141]
 wait_time = 4.0
 one_shot = true
 
@@ -281,6 +279,11 @@ horizontal_deceleration = 12000.0
 maximum_horizontal_speed = 400.0
 ground_level_path = NodePath("../VisitorArea/Counter/CounterSlot")
 
+[node name="LowerShelf" parent="CounterSurface" instance=ExtResource("12_lower_shelf")]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 720.0
+
 [node name="DragSurface" type="Control" parent="." unique_id=3995233]
 clip_contents = true
 layout_mode = 1
@@ -318,3 +321,16 @@ offset_right = 1285.0
 offset_bottom = 685.0
 desk_view_path = null
 counter_view_path = null
+
+[node name="LowerShelfHoverStrip" type="ColorRect" parent="."]
+z_index = 200
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.331633
+anchor_bottom = 1.0
+offset_top = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 8
+color = Color(0.48, 0.29, 0.12, 1)

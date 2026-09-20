@@ -1,0 +1,287 @@
+[gd_scene load_steps=7 format=3 uid="uid://2xfshpwfx2pn"]
+
+[ext_resource type="Script" path="res://scripts/ui/lower_shelf.gd" id="1_shelf"]
+[ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="2_binder"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_background"]
+bg_color = Color(0.075, 0.046, 0.026, 1)
+border_width_right = 8
+border_color = Color(0.31, 0.18, 0.075, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_slot"]
+bg_color = Color(0.045, 0.029, 0.018, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 12
+border_color = Color(0.32, 0.185, 0.08, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_header"]
+bg_color = Color(0.13, 0.078, 0.038, 1)
+border_width_bottom = 4
+border_color = Color(0.53, 0.32, 0.135, 1)
+
+[node name="LowerShelf" type="Control" unique_id=829598332]
+visible = false
+custom_minimum_size = Vector2(650, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 650.0
+offset_bottom = 720.0
+mouse_filter = 2
+script = ExtResource("1_shelf")
+slot_paths = Array[NodePath]([NodePath("ShelfPanel/Slots/ShelfSlot01"), NodePath("ShelfPanel/Slots/ShelfSlot02"), NodePath("ShelfPanel/Slots/ShelfSlot03"), NodePath("ShelfPanel/Slots/ShelfSlot04"), NodePath("ShelfPanel/Slots/ShelfSlot05"), NodePath("ShelfPanel/Slots/ShelfSlot06"), NodePath("ShelfPanel/Slots/ShelfSlot07"), NodePath("ShelfPanel/Slots/ShelfSlot08"), NodePath("ShelfPanel/Slots/ShelfSlot09"), NodePath("ShelfPanel/Slots/ShelfSlot10")])
+initial_item_paths = Array[NodePath]([NodePath("SecondCardBinder")])
+
+[node name="ShelfPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_background")
+
+[node name="Header" type="Panel" parent="ShelfPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_right = -8.0
+offset_bottom = 62.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_header")
+
+[node name="Title" type="Label" parent="ShelfPanel/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.88, 0.71, 0.4, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 22
+text = "LOWER SHELVES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slots" type="GridContainer" parent="ShelfPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 72.0
+offset_right = -26.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 9
+columns = 2
+
+[node name="ShelfSlot01" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot01"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot02" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot02"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "02"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot03" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot03"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "03"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot04" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot04"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "04"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot05" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot05"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "05"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot06" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot06"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "06"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot07" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot07"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "07"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot08" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot08"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "08"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot09" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot09"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "09"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShelfSlot10" type="PanelContainer" parent="ShelfPanel/Slots"]
+custom_minimum_size = Vector2(294, 116)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_slot")
+
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot10"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondCardBinder" parent="." instance=ExtResource("2_binder")]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 76.0
+offset_right = 255.0
+offset_bottom = 186.0
+initial_card_ids = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 11])
+
+[node name="ReturnHoverStrip" type="ColorRect" parent="."]
+z_index = 100
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -8.0
+offset_bottom = 15.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 8
+color = Color(0.48, 0.29, 0.12, 1)
+
+[node name="Hint" type="Label" parent="ReturnHoverStrip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.96, 0.82, 0.53, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+text = "▲  COUNTER"
+horizontal_alignment = 1
+vertical_alignment = 1

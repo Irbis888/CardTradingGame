@@ -14,9 +14,9 @@ extends Control
 func init(card: Card) -> void:
 	portrait.texture = card.picture
 	series_label.text = card.series
-	attack_label.text = str(Globals.card_ui_text.get("attack_prefix", "")) + str(card.str)
-	defense_label.text = str(Globals.card_ui_text.get("defense_prefix", "")) + str(card.def)
-	magic_label.text = str(Globals.card_ui_text.get("magic_prefix", "")) + str(card.mag)
+	attack_label.text = str(CardDatabase.card_ui_text.get("attack_prefix", "")) + str(card.str)
+	defense_label.text = str(CardDatabase.card_ui_text.get("defense_prefix", "")) + str(card.def)
+	magic_label.text = str(CardDatabase.card_ui_text.get("magic_prefix", "")) + str(card.mag)
 	rarity_label.text = card.get_literal_name()
 	name_label.text = card.name
 	frame.texture = load(GamePaths.card_frame(card.get_literal_name())) as Texture2D

@@ -2,6 +2,8 @@ class_name UIDragSurface
 extends Control
 
 
+signal drag_released(draggable, global_pointer: Vector2)
+
 @export var space_name: StringName = &"desk"
 @export_range(0.0, 32.0, 0.5) var boundary_inset := 0.0
 @export_range(-1.0, 0.95, 0.05) var outside_fraction_override := -1.0
@@ -14,16 +16,18 @@ extends Control
 @export var ground_level_path: NodePath
 
 var _draggables: Array = []
-var _drop_receivers: Array = []
 var _active_draggable = null
 var _grab_offset := Vector2.ZERO
 var _top_z_index := 0
 var _left_transfer_surface: Node
 var _right_transfer_surface: Node
 var _ground_level: Control
+var _drop_targets := UIDropTargetRegistry.new()
+var _motion := UIDragMotion.new()
 
 
 func _ready() -> void:
+	_configure_motion()
 	_left_transfer_surface = get_node_or_null(left_transfer_surface_path)
 	if is_instance_valid(_left_transfer_surface):
 		_left_transfer_surface.call_deferred("set_right_transfer_surface", self)
@@ -38,9 +42,9 @@ func _process(delta: float) -> void:
 		if draggable == _active_draggable:
 			draggable.follow_target(delta)
 			if gravity_enabled:
-				_decelerate_horizontal_velocity(draggable, delta)
+				_motion.decelerate_horizontal_velocity(draggable, delta)
 		elif gravity_enabled:
-			_apply_gravity(draggable, delta)
+			_motion.apply_gravity(draggable, delta, self, _ground_level)
 		else:
 			draggable.follow_target(delta)
 
@@ -88,15 +92,43 @@ func unregister_draggable(draggable) -> void:
 		_active_draggable = null
 
 
+func has_active_drag() -> bool:
+	return _active_draggable != null
+
+
+func get_active_draggable():
+	return _active_draggable
+
+
+func set_gravity_active(active: bool) -> void:
+	gravity_enabled = active
+	_motion.gravity_enabled = active
+
+
+func transfer_active_draggable_to(
+	destination_surface: Node,
+	global_pointer: Vector2,
+	entry_side: StringName
+) -> bool:
+	if _active_draggable == null or not is_instance_valid(destination_surface):
+		return false
+	if not destination_surface.has_method("accept_transferred_draggable"):
+		return false
+	_transfer_active_to_surface(
+		destination_surface,
+		global_pointer,
+		Vector2.ZERO,
+		entry_side
+	)
+	return true
+
+
 func register_drop_receiver(receiver: Node) -> void:
-	if receiver not in _drop_receivers:
-		_drop_receivers.append(receiver)
+	_drop_targets.register(receiver)
 
 
 func unregister_drop_receiver(receiver: Node) -> void:
-	if is_instance_valid(receiver) and receiver.has_method("clear_draggable_hover"):
-		receiver.call("clear_draggable_hover")
-	_drop_receivers.erase(receiver)
+	_drop_targets.unregister(receiver)
 
 
 func begin_draggable_drag(draggable, global_pointer: Vector2) -> bool:
@@ -113,11 +145,7 @@ func set_right_transfer_surface(surface: Node) -> void:
 
 
 func get_boundary_rect() -> Rect2:
-	var boundary := get_global_rect()
-	if gravity_enabled and is_instance_valid(_ground_level):
-		var ground_y := _ground_level.get_global_rect().position.y
-		boundary.size.y = maxf(0.0, ground_y - boundary.position.y)
-	return boundary
+	return _motion.get_boundary(self, _ground_level)
 
 
 func _begin_drag(global_pointer: Vector2) -> void:
@@ -155,7 +183,7 @@ func _update_drag(
 	global_pointer: Vector2,
 	pointer_velocity: Vector2 = Vector2.ZERO
 ) -> void:
-	_set_active_horizontal_velocity(pointer_velocity.x)
+	_motion.set_horizontal_velocity(_active_draggable, pointer_velocity.x)
 	var desired_position := global_pointer - _grab_offset
 	if _should_transfer_left(global_pointer, desired_position):
 		_transfer_active_to_surface(
@@ -192,19 +220,11 @@ func _end_drag(global_pointer: Vector2) -> void:
 		global_pointer
 	)
 	_clear_drop_receiver_hover()
-	if accepting_receiver != null:
-		var released_target: Control = released_draggable.get_target() as Control
+	if accepting_receiver != null and accepting_receiver.has_method("accept_drop") and bool(
+		accepting_receiver.call("accept_drop", released_draggable, global_pointer)
+	):
 		unregister_draggable(released_draggable)
-		var receiver_kept_target := false
-		if accepting_receiver.has_method("take_accepted_draggable"):
-			receiver_kept_target = bool(
-				accepting_receiver.call(
-					"take_accepted_draggable",
-					released_draggable
-				)
-			)
-		if not receiver_kept_target and is_instance_valid(released_target):
-			released_target.queue_free()
+		_active_draggable = null
 		get_viewport().set_input_as_handled()
 		return
 
@@ -215,6 +235,7 @@ func _end_drag(global_pointer: Vector2) -> void:
 	else:
 		released_draggable.reset_motion()
 	_active_draggable = null
+	drag_released.emit(released_draggable, global_pointer)
 	get_viewport().set_input_as_handled()
 
 
@@ -249,7 +270,7 @@ func accept_transferred_draggable(
 	_top_z_index += 1
 	draggable.bring_to_front(_top_z_index)
 	draggable.set_picked(true)
-	_set_active_horizontal_velocity(pointer_velocity.x)
+	_motion.set_horizontal_velocity(_active_draggable, pointer_velocity.x)
 	_update_drop_receiver_hover(draggable, global_pointer)
 	get_viewport().set_input_as_handled()
 
@@ -310,69 +331,15 @@ func _find_accepting_drop_receiver(
 	draggable,
 	global_pointer: Vector2
 ) -> Node:
-	for receiver in _drop_receivers.duplicate():
-		if not is_instance_valid(receiver):
-			_drop_receivers.erase(receiver)
-			continue
-		if receiver.has_method("try_accept_draggable") and bool(
-			receiver.call("try_accept_draggable", draggable, global_pointer)
-		):
-			return receiver
-	return null
+	return _drop_targets.find_accepting(draggable, global_pointer)
 
 
 func _update_drop_receiver_hover(draggable, global_pointer: Vector2) -> void:
-	for receiver in _drop_receivers.duplicate():
-		if not is_instance_valid(receiver):
-			_drop_receivers.erase(receiver)
-			continue
-		if receiver.has_method("update_draggable_hover"):
-			receiver.call("update_draggable_hover", draggable, global_pointer)
+	_drop_targets.update_hover(draggable, global_pointer)
 
 
 func _clear_drop_receiver_hover() -> void:
-	for receiver in _drop_receivers.duplicate():
-		if not is_instance_valid(receiver):
-			_drop_receivers.erase(receiver)
-			continue
-		if receiver.has_method("clear_draggable_hover"):
-			receiver.call("clear_draggable_hover")
-
-
-func _set_active_horizontal_velocity(horizontal_speed: float) -> void:
-	if not gravity_enabled or _active_draggable == null:
-		return
-	_active_draggable.set_velocity(Vector2(
-		clampf(horizontal_speed, -maximum_horizontal_speed, maximum_horizontal_speed),
-		0.0
-	))
-
-
-func _decelerate_horizontal_velocity(draggable, delta: float) -> void:
-	var velocity: Vector2 = draggable.get_velocity()
-	velocity.x = move_toward(velocity.x, 0.0, horizontal_deceleration * delta)
-	velocity.y = 0.0
-	draggable.set_velocity(velocity)
-
-
-func _apply_gravity(draggable, delta: float) -> void:
-	var target: Control = draggable.get_target() as Control
-	var velocity: Vector2 = draggable.get_velocity()
-	velocity.x = move_toward(velocity.x, 0.0, horizontal_deceleration * delta)
-	velocity.y += gravity_acceleration * delta
-	var unclamped_position := target.global_position + velocity * delta
-	var boundary := get_boundary_rect()
-	var target_size := target.get_global_rect().size
-	var ground_position := boundary.end.y - target_size.y
-	if unclamped_position.y >= ground_position:
-		unclamped_position.y = ground_position
-		velocity.y = 0.0
-	var next_position := _clamp_position_to_surface(draggable, unclamped_position)
-	if not is_equal_approx(next_position.x, unclamped_position.x):
-		velocity.x = 0.0
-	target.global_position = next_position
-	draggable.set_desired_global_position(next_position)
-	draggable.set_velocity(velocity)
+	_drop_targets.clear_hover()
 
 
 func _keep_items_reachable() -> void:
@@ -395,18 +362,13 @@ func _clamp_position_to_surface(
 	draggable,
 	desired_position: Vector2
 ) -> Vector2:
-	var boundary := get_boundary_rect()
-	var target_size: Vector2 = draggable.get_target().get_global_rect().size
-	var outside_fraction: float = draggable.maximum_outside_fraction
-	if outside_fraction_override >= 0.0:
-		outside_fraction = outside_fraction_override
-	outside_fraction = clampf(outside_fraction, 0.0, 0.95)
-	var maximum_outside := target_size * outside_fraction
-	var minimum_inside := target_size - maximum_outside
-	var inset := Vector2.ONE * boundary_inset
-	var minimum_position := boundary.position + inset - maximum_outside
-	var maximum_position := boundary.end - inset - minimum_inside
-	return Vector2(
-		clampf(desired_position.x, minimum_position.x, maximum_position.x),
-		clampf(desired_position.y, minimum_position.y, maximum_position.y)
-	)
+	return _motion.clamp_position(draggable, desired_position, self, _ground_level)
+
+
+func _configure_motion() -> void:
+	_motion.boundary_inset = boundary_inset
+	_motion.outside_fraction_override = outside_fraction_override
+	_motion.gravity_enabled = gravity_enabled
+	_motion.gravity_acceleration = gravity_acceleration
+	_motion.horizontal_deceleration = horizontal_deceleration
+	_motion.maximum_horizontal_speed = maximum_horizontal_speed

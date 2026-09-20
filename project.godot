@@ -21,7 +21,8 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Globals="*res://scripts/core/globals.gd"
+CardDatabase="*res://game/card_database.gd"
+GameState="*res://game/game_state.gd"
 
 [display]
 
