@@ -18,19 +18,21 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="DraggableCard" type="Control" unique_id=573639911]
-custom_minimum_size = Vector2(240, 344)
+custom_minimum_size = Vector2(275, 400)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 344.0
-pivot_offset = Vector2(120, 172)
+offset_right = 275.0
+offset_bottom = 400.0
+pivot_offset = Vector2(137.5, 200)
 mouse_filter = 2
 script = ExtResource("1_script")
+desk_size = Vector2(275, 400)
+counter_size = Vector2(120, 78)
 
 [node name="DeskView" type="Control" parent="." unique_id=1217859255]
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 344.0
+offset_right = 275.0
+offset_bottom = 400.0
 mouse_filter = 2
 
 [node name="CardVisual" parent="DeskView" unique_id=1441292550 instance=ExtResource("2_card_view")]
@@ -42,7 +44,7 @@ offset_right = 550.0
 offset_bottom = 800.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.42, 0.42)
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 
 [node name="CounterView" type="Panel" parent="." unique_id=566310313]
@@ -83,18 +85,6 @@ theme_override_colors/font_color = Color(0.72, 0.74, 0.74, 1)
 theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 11
 text = "SERIES  R"
-text_overrun_behavior = 3
-
-[node name="StatsLabel" type="Label" parent="CounterView" unique_id=978977554]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 50.0
-offset_right = 113.0
-offset_bottom = 70.0
-theme_override_colors/font_color = Color(0.13, 0.14, 0.145, 1)
-theme_override_fonts/font = ExtResource("4_font")
-theme_override_font_sizes/font_size = 12
-text = "S:0 D:0 M:0"
 text_overrun_behavior = 3
 
 [node name="UIDraggable" parent="." unique_id=1438408778 instance=ExtResource("3_draggable")]

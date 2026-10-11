@@ -1,24 +1,79 @@
 [gd_scene format=3 uid="uid://d3cypyp7313y8"]
 
-[ext_resource type="Script" uid="uid://qt3u4kk1pcsr" path="res://scripts/ui/card_view.gd" id="1_e6qnf"]
-[ext_resource type="Texture2D" uid="uid://br6kd5mivyfpx" path="res://assets/cards/vittolupo.jpg" id="1_mgepw"]
-[ext_resource type="Texture2D" uid="uid://c80nyumaiifen" path="res://assets/ui/card_frames/fSP.png" id="2_e6qnf"]
-[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_e6qnf"]
-[ext_resource type="Texture2D" uid="uid://notw1gr3ofsp" path="res://assets/ui/icons/icon_1.png" id="3_mgepw"]
+[ext_resource type="Script" uid="uid://qt3u4kk1pcsr" path="res://scripts/ui/card_view.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://ceh48d867rjge" path="res://assets/cards_new/HenryVIII.png" id="3_portrait"]
 
-[node name="Card" type="Control" unique_id=475670584]
-custom_minimum_size = Vector2(300, 400)
+[sub_resource type="Theme" id="Theme_card"]
+default_font = ExtResource("2_font")
+default_font_size = 26
+Label/colors/font_color = Color(0.18, 0.15, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_paper"]
+bg_color = Color(0.92, 0.887, 0.79, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.22, 0.18, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_name_plate"]
+bg_color = Color(0.92, 0.887, 0.79, 0.94)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 14.0
+content_margin_right = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_corner"]
+bg_color = Color(0.92, 0.887, 0.79, 0.96)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_corner_hover"]
+bg_color = Color(0.8, 0.73, 0.55, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[node name="Card" type="Control" unique_id=2030493281]
+custom_minimum_size = Vector2(550, 800)
+texture_filter = 1
 layout_mode = 3
+anchors_preset = 0
+offset_right = 550.0
+offset_bottom = 800.0
+mouse_filter = 2
+theme = SubResource("Theme_card")
+script = ExtResource("1_script")
+
+[node name="Faces" type="Control" parent="." unique_id=450288105]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1410.0
-offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_e6qnf")
+mouse_filter = 2
 
-[node name="Portrait1280x853" type="TextureRect" parent="." unique_id=258795354]
+[node name="Front" type="Control" parent="Faces" unique_id=1501905507]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Portrait" type="TextureRect" parent="Faces/Front" unique_id=823741325]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -26,170 +81,123 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_mgepw")
+mouse_filter = 2
+texture = ExtResource("3_portrait")
 expand_mode = 1
+stretch_mode = 6
 
-[node name="Frame" type="TextureRect" parent="." unique_id=1755783862]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 18.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_e6qnf")
-expand_mode = 1
+[node name="NameLabel" type="Label" parent="Faces/Front" unique_id=834598574]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 530.0
+offset_bottom = 84.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBox_name_plate")
+text = "Henry VIII"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
 
-[node name="TestText" type="Label" parent="Frame" unique_id=1562665884]
+[node name="Back" type="Panel" parent="Faces" unique_id=610481811]
 visible = false
 layout_mode = 1
-offset_left = 38.0
-offset_top = 337.0
-offset_right = 541.0
-offset_bottom = 733.0
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_paper")
+
+[node name="NameLabel" type="Label" parent="Faces/Back" unique_id=1414808021]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 26.0
+offset_right = 514.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 58
+text = "Henry VIII"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="HeaderRule" type="ColorRect" parent="Faces/Back" unique_id=1978803909]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 116.0
+offset_right = 508.0
+offset_bottom = 118.0
+mouse_filter = 2
+color = Color(0.35, 0.29, 0.2, 0.65)
+
+[node name="Content" type="ScrollContainer" parent="Faces/Back" unique_id=2091547753]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 138.0
+offset_right = 516.0
+offset_bottom = 690.0
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Body" type="VBoxContainer" parent="Faces/Back/Content" unique_id=1674952755]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 32
+
+[node name="Description" type="Label" parent="Faces/Back/Content/Body" unique_id=1039865214]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/font_size = 38
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+autowrap_mode = 3
+
+[node name="TriviaRows" type="VBoxContainer" parent="Faces/Back/Content/Body" unique_id=2115870164]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 18
+
+[node name="FooterRule" type="ColorRect" parent="Faces/Back" unique_id=921990888]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 715.0
+offset_right = 508.0
+offset_bottom = 717.0
+mouse_filter = 2
+color = Color(0.35, 0.29, 0.2, 0.65)
+
+[node name="SeriesLabel" type="Label" parent="Faces/Back" unique_id=1271240727]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 728.0
+offset_right = 442.0
+offset_bottom = 788.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 34
+text = "Old Earth, New Earth"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="FlipButton" type="Button" parent="." unique_id=627621583]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 704.0
+offset_right = 538.0
+offset_bottom = 788.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.32, 0.25, 0.14, 1)
+theme_override_colors/font_hover_color = Color(0.15, 0.12, 0.07, 1)
 theme_override_font_sizes/font_size = 40
-text = "великий астроном, но для карточки гораздо веселее то, что в молодости он потерял часть носа на дуэли и после этого носил протез. Это уже хорошо установленная часть его биографии, а не просто легенда."
-autowrap_mode = 2
-
-[node name="SeriesFrame" type="TextureRect" parent="Frame" unique_id=656693837]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -153.5
-offset_top = -85.0
-offset_right = 153.5
-offset_bottom = -41.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_mgepw")
-expand_mode = 1
-
-[node name="SeriesLabel" type="Label" parent="Frame/SeriesFrame" unique_id=1445931056]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = -4.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 50
-text = "Series: Dragons"
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="StatPanel" type="Panel" parent="Frame" unique_id=302789292]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -162.0
-offset_top = -228.1
-offset_right = 162.0
-offset_bottom = -90.1
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Stats" type="VBoxContainer" parent="Frame/StatPanel" unique_id=1043551307]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 3.0
-offset_right = -15.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="STR" type="Label" parent="Frame/StatPanel/Stats" unique_id=1787132080]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 45
-text = "STR: 1"
-autowrap_mode = 1
-
-[node name="DEF" type="Label" parent="Frame/StatPanel/Stats" unique_id=1940339562]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 45
-text = "DEF: 3"
-autowrap_mode = 1
-
-[node name="MAG" type="Label" parent="Frame/StatPanel/Stats" unique_id=281824624]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 45
-text = "MAG: 7"
-autowrap_mode = 1
-
-[node name="RarityLabel" type="Label" parent="Frame/StatPanel" unique_id=1115968760]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 61.5
-offset_top = 7.0
-offset_right = 142.5
-offset_bottom = 92.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 50
-text = "Rarity
-"
-horizontal_alignment = 1
-
-[node name="Panel" type="Panel" parent="Frame" unique_id=65186590]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -159.0
-offset_top = 35.0
-offset_right = 159.0
-offset_bottom = 74.0
-grow_horizontal = 2
-
-[node name="NameLabel" type="Label" parent="Frame/Panel" unique_id=1851290825]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.756753, 0.676684, 0.473127, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_e6qnf")
-theme_override_font_sizes/font_size = 50
-text = "Name"
-horizontal_alignment = 1
+theme_override_styles/normal = SubResource("StyleBox_corner")
+theme_override_styles/pressed = SubResource("StyleBox_corner_hover")
+theme_override_styles/hover = SubResource("StyleBox_corner_hover")
+theme_override_styles/disabled = SubResource("StyleBox_corner")
+text = "↻"

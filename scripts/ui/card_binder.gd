@@ -10,7 +10,7 @@ const NORMAL_SLOT_MODULATE := Color.WHITE
 const DRAGGABLE_CARD_SCENE := preload("res://scenes/ui/draggable_card.tscn")
 
 @export_range(1, 24, 1) var page_count := 3
-@export var initial_card_ids: Array[int] = [8, 16, 24, 9, 17, 25, 10, 18, 26]
+@export var initial_card_ids: Array[int] = [38, 16, 24, 9, 17, 25, 10, 18, 26]
 
 @onready var previous_button: Button = $DeskView/PreviousButton
 @onready var next_button: Button = $DeskView/NextButton
@@ -55,6 +55,7 @@ var _collection: CardCollection
 var _current_page := 0
 var _registered_surface: Node
 var _hovered_slot := -1
+var _back_visible_by_slot: Dictionary = {}
 
 
 func _ready() -> void:
@@ -108,6 +109,7 @@ func accept_drop(draggable, global_pointer: Vector2) -> bool:
 		return false
 	var card_node := draggable.get_target() as DraggableCard
 	if card_node != null:
+		_back_visible_by_slot[storage_index] = card_node.card_visual.is_back
 		card_node.queue_free()
 	_refresh_page()
 	return true
@@ -140,7 +142,7 @@ func _connect_controls() -> void:
 	previous_button.pressed.connect(_show_previous_page)
 	next_button.pressed.connect(_show_next_page)
 	for local_slot in range(SLOTS_PER_PAGE):
-		_slot_buttons[local_slot].button_down.connect(_extract_card.bind(local_slot))
+		_slot_buttons[local_slot].gui_input.connect(_on_slot_gui_input.bind(local_slot))
 
 
 func _initialize_collection() -> void:
@@ -209,6 +211,10 @@ func _refresh_page() -> void:
 			card,
 			CARD_PREVIEW_SIZE
 		)
+		if card != null:
+			var preview = _preview_hosts[local_slot].get_child(0)
+			preview.set_back_visible(bool(_back_visible_by_slot.get(storage_index, false)))
+			preview.side_changed.connect(_on_preview_side_changed.bind(storage_index))
 		_empty_labels[local_slot].visible = card == null
 
 	counter_count_label.text = "%d / %d CARDS" % [
@@ -218,11 +224,40 @@ func _refresh_page() -> void:
 	_refresh_slot_hover()
 
 
-func _extract_card(local_slot: int) -> void:
+func _on_slot_gui_input(event: InputEvent, local_slot: int) -> void:
+	if event is InputEventMouseButton:
+		var button_event := event as InputEventMouseButton
+		if button_event.pressed and button_event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+			var host := _preview_hosts[local_slot]
+			if host.get_child_count() > 0:
+				host.get_child(0).scroll_details(-1 if button_event.button_index == MOUSE_BUTTON_WHEEL_UP else 1)
+		if button_event.button_index == MOUSE_BUTTON_LEFT and button_event.pressed:
+			_extract_card(local_slot, _slot_buttons[local_slot].get_global_transform() * button_event.position)
+	elif event is InputEventScreenTouch:
+		var touch_event := event as InputEventScreenTouch
+		if touch_event.index == 0 and touch_event.pressed:
+			_extract_card(local_slot, _slot_buttons[local_slot].get_global_transform() * touch_event.position)
+
+
+func _on_preview_side_changed(back_visible: bool, storage_index: int) -> void:
+	_back_visible_by_slot[storage_index] = back_visible
+
+
+func _extract_card(local_slot: int, global_pointer: Vector2 = Vector2.INF) -> void:
 	if current_space != &"desk" or not is_instance_valid(_registered_surface):
 		return
 	if not _registered_surface.has_method("begin_draggable_drag"):
 		return
+	if global_pointer == Vector2.INF:
+		global_pointer = get_viewport().get_mouse_position()
+	var preview_host := _preview_hosts[local_slot]
+	var preview: Control = preview_host.get_child(0) as Control if preview_host.get_child_count() > 0 else null
+	if preview != null:
+		if preview.is_flipping():
+			return
+		if preview.can_flip_at(global_pointer):
+			preview.flip()
+			return
 
 	var storage_index := _current_page * SLOTS_PER_PAGE + local_slot
 	var card := _collection.take_at(storage_index)
@@ -232,16 +267,20 @@ func _extract_card(local_slot: int) -> void:
 	var card_instance := DRAGGABLE_CARD_SCENE.instantiate() as DraggableCard
 	_registered_surface.add_child(card_instance)
 	card_instance.display_card(card)
+	if preview != null:
+		card_instance.set_back_visible(preview.is_back)
 	var slot_rect := _slot_panels[local_slot].get_global_rect()
 	card_instance.global_position = slot_rect.get_center() - card_instance.size * 0.5
 	var drag_started := bool(_registered_surface.call(
 		"begin_draggable_drag",
 		card_instance.get_node("UIDraggable"),
-		get_viewport().get_mouse_position()
+		global_pointer
 	))
 	if not drag_started:
 		_collection.store_at(storage_index, card)
 		card_instance.queue_free()
+	else:
+		_back_visible_by_slot.erase(storage_index)
 	_refresh_page()
 
 

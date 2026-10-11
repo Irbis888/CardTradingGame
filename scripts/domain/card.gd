@@ -3,42 +3,34 @@ extends RefCounted
 
 
 var name: String
-var base_price: int
 var rarity: int
 
-var str: int
-var def: int
-var mag: int
-
 var series: String
-var picture: Resource
+var picture: Texture2D
 var id: int
+var description: String
+var trivia: Dictionary = {}
+var _prices: CardPrices
 
 
 func _init(
 	card_name: String,
-	card_picture: Resource,
-	attack: int,
-	defense: int,
-	magic: int,
+	card_picture: Texture2D,
 	card_series: String,
 	card_rarity: int,
 	card_id: int,
-	catalog_price: int = -1
+	card_prices: CardPrices,
+	card_description: String = "",
+	card_trivia: Dictionary = {}
 ) -> void:
 	name = card_name
 	picture = card_picture
-	str = attack
-	def = defense
-	mag = magic
 	series = card_series
 	rarity = card_rarity
 	id = card_id
-	base_price = (
-		catalog_price
-		if catalog_price > 0
-		else _calculate_catalog_price()
-	)
+	description = card_description
+	trivia = card_trivia.duplicate(true)
+	_prices = card_prices
 
 
 func get_literal_name() -> String:
@@ -60,10 +52,4 @@ func get_literal_name() -> String:
 
 
 func get_price() -> int:
-	return base_price
-
-
-func _calculate_catalog_price() -> int:
-	var stat_total := maxi(str, 0) + maxi(def, 0) + maxi(mag, 0)
-	var rarity_tier := maxi(rarity + 1, 1)
-	return maxi(stat_total * 8 + rarity_tier * rarity_tier * 25, 1)
+	return _prices.get_price(id)

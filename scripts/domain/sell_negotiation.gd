@@ -32,7 +32,7 @@ func _init(traded_card: Card, buyer: CustomerVisit) -> void:
 	if card == null or customer == null:
 		closed = true
 		return
-	reference_price = maxi(card.base_price, 1)
+	reference_price = maxi(card.get_price(), 1)
 	reservation_price = mini(
 		customer.money,
 		maxi(1, int(round(reference_price * (1.0 + customer.acceptability))))

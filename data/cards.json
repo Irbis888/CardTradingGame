@@ -5,10 +5,12 @@
 		"picture": "chippindale.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 3,
-		"defense": 2,
-		"magic": 1,
-		"price": 73
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 1,
@@ -16,10 +18,12 @@
 		"picture": "pororo.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 2,
-		"defense": 3,
-		"magic": 2,
-		"price": 81
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 2,
@@ -27,10 +31,12 @@
 		"picture": "oldgarry.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 1,
-		"defense": 4,
-		"magic": 1,
-		"price": 73
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 3,
@@ -38,10 +44,12 @@
 		"picture": "quizzle.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 4,
-		"defense": 1,
-		"magic": 1,
-		"price": 73
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 4,
@@ -49,10 +57,12 @@
 		"picture": "sanchez.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 2,
-		"defense": 2,
-		"magic": 3,
-		"price": 81
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 5,
@@ -60,10 +70,12 @@
 		"picture": "crystalo.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 1,
-		"defense": 1,
-		"magic": 5,
-		"price": 81
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 6,
@@ -71,10 +83,12 @@
 		"picture": "sparklino.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 3,
-		"defense": 3,
-		"magic": 1,
-		"price": 81
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 7,
@@ -82,10 +96,12 @@
 		"picture": "kickimero.png",
 		"rarity": 0,
 		"series": "Pokemafia",
-		"attack": 2,
-		"defense": 1,
-		"magic": 4,
-		"price": 81
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 8,
@@ -93,10 +109,12 @@
 		"picture": "dravinci.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 5,
-		"defense": 4,
-		"magic": 3,
-		"price": 196
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 9,
@@ -104,10 +122,12 @@
 		"picture": "draricci.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 4,
-		"defense": 5,
-		"magic": 4,
-		"price": 204
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 10,
@@ -115,10 +135,12 @@
 		"picture": "draci.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 3,
-		"defense": 6,
-		"magic": 2,
-		"price": 188
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 11,
@@ -126,10 +148,12 @@
 		"picture": "jackdonalds.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 6,
-		"defense": 3,
-		"magic": 3,
-		"price": 196
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 12,
@@ -137,10 +161,12 @@
 		"picture": "vittolupo.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 4,
-		"defense": 4,
-		"magic": 5,
-		"price": 204
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 13,
@@ -148,10 +174,12 @@
 		"picture": "bobtsovski.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 5,
-		"defense": 5,
-		"magic": 2,
-		"price": 196
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 14,
@@ -159,10 +187,12 @@
 		"picture": "trentinotrelli.jpg",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 3,
-		"defense": 7,
-		"magic": 3,
-		"price": 204
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 15,
@@ -170,10 +200,12 @@
 		"picture": "crocoBruno.png",
 		"rarity": 1,
 		"series": "Pokemafia",
-		"attack": 7,
-		"defense": 3,
-		"magic": 4,
-		"price": 212
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 16,
@@ -181,10 +213,12 @@
 		"picture": "draciMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 8,
-		"defense": 6,
-		"magic": 5,
-		"price": 377
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 17,
@@ -192,10 +226,12 @@
 		"picture": "draricciMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 6,
-		"defense": 8,
-		"magic": 7,
-		"price": 393
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 18,
@@ -203,10 +239,12 @@
 		"picture": "dravinciMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 7,
-		"defense": 7,
-		"magic": 8,
-		"price": 401
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 19,
@@ -214,10 +252,12 @@
 		"picture": "jackdonaldsMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 9,
-		"defense": 5,
-		"magic": 6,
-		"price": 385
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 20,
@@ -225,10 +265,12 @@
 		"picture": "bobtsovskiMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 5,
-		"defense": 9,
-		"magic": 7,
-		"price": 393
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 21,
@@ -236,10 +278,12 @@
 		"picture": "crocoBrunoMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 8,
-		"defense": 8,
-		"magic": 6,
-		"price": 401
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 22,
@@ -247,10 +291,12 @@
 		"picture": "trentinoMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 6,
-		"defense": 7,
-		"magic": 9,
-		"price": 401
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 23,
@@ -258,10 +304,12 @@
 		"picture": "vittoMod.png",
 		"rarity": 2,
 		"series": "Pokemafia",
-		"attack": 7,
-		"defense": 6,
-		"magic": 10,
-		"price": 409
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 24,
@@ -269,10 +317,12 @@
 		"picture": "super_rare/bobCatski.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 12,
-		"defense": 10,
-		"magic": 9,
-		"price": 648
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 25,
@@ -280,10 +330,12 @@
 		"picture": "super_rare/bombardilo.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 15,
-		"defense": 8,
-		"magic": 8,
-		"price": 648
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 26,
@@ -291,10 +343,12 @@
 		"picture": "super_rare/brawl.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 9,
-		"defense": 14,
-		"magic": 10,
-		"price": 664
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 27,
@@ -302,10 +356,12 @@
 		"picture": "super_rare/happyFurry.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 10,
-		"defense": 12,
-		"magic": 11,
-		"price": 664
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 28,
@@ -313,10 +369,12 @@
 		"picture": "super_rare/meditation.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 8,
-		"defense": 9,
-		"magic": 15,
-		"price": 656
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 29,
@@ -324,10 +382,12 @@
 		"picture": "super_rare/poker.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 11,
-		"defense": 11,
-		"magic": 12,
-		"price": 672
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 30,
@@ -335,10 +395,12 @@
 		"picture": "super_rare/roadtrip.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 13,
-		"defense": 13,
-		"magic": 7,
-		"price": 664
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 31,
@@ -346,10 +408,12 @@
 		"picture": "super_rare/sadDonalds.png",
 		"rarity": 3,
 		"series": "Pokemafia",
-		"attack": 14,
-		"defense": 7,
-		"magic": 13,
-		"price": 672
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 32,
@@ -357,10 +421,12 @@
 		"picture": "special/draricciSign.png",
 		"rarity": 4,
 		"series": "Pokemafia",
-		"attack": 18,
-		"defense": 14,
-		"magic": 16,
-		"price": 1009
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 33,
@@ -368,22 +434,25 @@
 		"picture": "special/dravinciSign.png",
 		"rarity": 4,
 		"series": "Pokemafia",
-		"attack": 15,
-		"defense": 18,
-		"magic": 15,
-		"price": 1009
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
-
 	{
 		"id": 34,
 		"name": "EraemEreff",
 		"picture": "super_special/EraemEreff.png",
 		"rarity": 5,
 		"series": "Pokemafia",
-		"attack": 20,
-		"defense": 16,
-		"magic": 19,
-		"price": 1340
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 35,
@@ -391,10 +460,12 @@
 		"picture": "super_special/holyGoat.png",
 		"rarity": 5,
 		"series": "Pokemafia",
-		"attack": 17,
-		"defense": 20,
-		"magic": 18,
-		"price": 1340
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 36,
@@ -402,10 +473,12 @@
 		"picture": "super_special/swinouborous.png",
 		"rarity": 5,
 		"series": "Pokemafia",
-		"attack": 19,
-		"defense": 19,
-		"magic": 17,
-		"price": 1340
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
 	},
 	{
 		"id": 37,
@@ -413,9 +486,24 @@
 		"picture": "super_special/xiuZiang.png",
 		"rarity": 5,
 		"series": "Pokemafia",
-		"attack": 16,
-		"defense": 17,
-		"magic": 20,
-		"price": 1324
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "—",
+			"Place": "—",
+			"Occupation": "—"
+		}
+	},
+	{
+		"id": 38,
+		"name": "Henry VIII",
+		"picture": "res://assets/cards_new/HenryVIII.png",
+		"rarity": 2,
+		"series": "Old Earth, New Earth",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"trivia": {
+			"Life": "1491–1547",
+			"Place": "England",
+			"Occupation": "King"
+		}
 	}
 ]

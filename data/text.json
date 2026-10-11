@@ -79,9 +79,6 @@
 		]
 	},
 	"ui": {
-		"attack_prefix": "ATK: ",
-		"defense_prefix": "DEF: ",
-		"magic_prefix": "MAG: ",
 		"money_prefix": "$",
 		"day_prefix": "Day ",
 		"summary_title": "Summary:",

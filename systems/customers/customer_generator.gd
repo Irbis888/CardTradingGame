@@ -54,10 +54,10 @@ func _pick_requested_card(all_cards: Array[Card]) -> Card:
 
 func _pick_price_reference(all_cards: Array[Card], requested: Card) -> int:
 	if requested != null:
-		return requested.base_price
+		return requested.get_price()
 	if all_cards.is_empty():
 		return 200
-	return all_cards[_rng.randi_range(0, all_cards.size() - 1)].base_price
+	return all_cards[_rng.randi_range(0, all_cards.size() - 1)].get_price()
 
 
 func _pick_available_portrait() -> int:

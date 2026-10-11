@@ -20,6 +20,7 @@ var _current_page := 0
 func _ready() -> void:
 	super()
 	_cards = CardDatabase.get_cards()
+	CardDatabase.prices.prices_changed.connect(_refresh_page)
 	previous_button.pressed.connect(_show_previous_page)
 	next_button.pressed.connect(_show_next_page)
 	_configure_interactive_controls()
@@ -83,7 +84,7 @@ func _add_card_entry(card: Card) -> void:
 	entries_grid.add_child(name_label)
 
 	var price_label := Label.new()
-	price_label.text = "$%d" % card.base_price
+	price_label.text = "$%d" % card.get_price()
 	price_label.custom_minimum_size = Vector2(55.0, 24.0)
 	price_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	price_label.mouse_filter = Control.MOUSE_FILTER_IGNORE

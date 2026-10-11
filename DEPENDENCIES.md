@@ -28,6 +28,11 @@ flowchart TD
 ```mermaid
 flowchart LR
     Json[cards.json] --> DB[CardDatabase]
+    PriceJson[card_prices.json] --> Prices[CardPrices]
+    SavedPrices[user://card_prices.json] <--> Prices
+    DB -->|владеет| Prices
+    Card -->|get_price| Prices
+    Prices -->|prices_changed| Catalog
     DB -->|создаёт| Card[Card]
     DB -->|выдаёт| Binder[CardBinder]
     DB -->|выдаёт| Catalog[CardCatalog]
