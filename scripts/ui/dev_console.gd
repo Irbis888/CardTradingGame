@@ -359,6 +359,8 @@ func _suspend_surface_input() -> void:
 		if surface == null or _surface_input_states.has(surface):
 			continue
 		_surface_input_states[surface] = surface.is_processing_input()
+		if surface.has_method("cancel_active_drag"):
+			surface.call("cancel_active_drag")
 		surface.set_process_input(false)
 
 

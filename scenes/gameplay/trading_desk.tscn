@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://ejc7rhvowem0" path="res://scripts/gameplay/customer_manager.gd" id="7_customer_manager"]
 [ext_resource type="PackedScene" path="res://scenes/ui/card_catalog.tscn" id="8_catalog"]
 [ext_resource type="Script" uid="uid://dtmrrxcv6bxng" path="res://scripts/ui/customer_view.gd" id="9_customer_view"]
-[ext_resource type="Script" path="res://scripts/ui/customer_handoff_view.gd" id="10_handoff_view"]
-[ext_resource type="Script" path="res://scripts/ui/customer_speech_view.gd" id="11_speech_view"]
+[ext_resource type="Script" uid="uid://bhhq4tsco8icc" path="res://scripts/ui/customer_handoff_view.gd" id="10_handoff_view"]
+[ext_resource type="Script" uid="uid://djce8q1jtv5e2" path="res://scripts/ui/customer_speech_view.gd" id="11_speech_view"]
 [ext_resource type="PackedScene" uid="uid://2xfshpwfx2pn" path="res://scenes/gameplay/lower_shelf.tscn" id="12_lower_shelf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
@@ -44,9 +44,9 @@ border_width_bottom = 10
 border_color = Color(0.28, 0.205, 0.145, 1)
 
 [node name="TradingDesk" type="Control" unique_id=793389611]
-clip_contents = true
 custom_minimum_size = Vector2(0, 720)
 custom_maximum_size = Vector2(-1, 720)
+clip_contents = true
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -132,7 +132,15 @@ script = ExtResource("7_customer_manager")
 next_customer_timer_path = NodePath("NextCustomerTimer")
 result_timer_path = NodePath("ResultTimer")
 
-[node name="CustomerView" type="Control" parent="VisitorArea"]
+[node name="NextCustomerTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=1365846]
+wait_time = 0.8
+one_shot = true
+
+[node name="ResultTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=964057983]
+wait_time = 1.2
+one_shot = true
+
+[node name="CustomerView" type="Control" parent="VisitorArea" unique_id=517710417]
 z_index = 10
 layout_mode = 1
 anchors_preset = 5
@@ -180,14 +188,6 @@ autowrap_mode = 2
 
 [node name="SpeechTimer" type="Timer" parent="VisitorArea/CustomerView/SpeechBubble" unique_id=1367378141]
 wait_time = 4.0
-one_shot = true
-
-[node name="NextCustomerTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=1365846]
-wait_time = 0.8
-one_shot = true
-
-[node name="ResultTimer" type="Timer" parent="VisitorArea/CustomerManager" unique_id=964057983]
-wait_time = 1.2
 one_shot = true
 
 [node name="Counter" type="Panel" parent="VisitorArea" unique_id=22616017]
@@ -279,10 +279,9 @@ horizontal_deceleration = 12000.0
 maximum_horizontal_speed = 400.0
 ground_level_path = NodePath("../VisitorArea/Counter/CounterSlot")
 
-[node name="LowerShelf" parent="CounterSurface" instance=ExtResource("12_lower_shelf")]
+[node name="LowerShelf" parent="CounterSurface" unique_id=1037430699 instance=ExtResource("12_lower_shelf")]
+visible = false
 layout_mode = 0
-offset_right = 650.0
-offset_bottom = 720.0
 
 [node name="DragSurface" type="Control" parent="." unique_id=3995233]
 clip_contents = true
@@ -322,7 +321,7 @@ offset_bottom = 685.0
 desk_view_path = null
 counter_view_path = null
 
-[node name="LowerShelfHoverStrip" type="ColorRect" parent="."]
+[node name="LowerShelfHoverStrip" type="ColorRect" parent="." unique_id=256845799]
 z_index = 200
 layout_mode = 1
 anchors_preset = -1

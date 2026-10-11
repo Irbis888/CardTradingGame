@@ -100,6 +100,15 @@ func get_active_draggable():
 	return _active_draggable
 
 
+func cancel_active_drag() -> void:
+	var cancelled_draggable = _active_draggable
+	_active_draggable = null
+	_clear_drop_receiver_hover()
+	if is_instance_valid(cancelled_draggable):
+		cancelled_draggable.set_picked(false)
+		cancelled_draggable.reset_motion()
+
+
 func set_gravity_active(active: bool) -> void:
 	gravity_enabled = active
 	_motion.gravity_enabled = active

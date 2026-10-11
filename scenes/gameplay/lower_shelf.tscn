@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2xfshpwfx2pn"]
+[gd_scene format=3 uid="uid://2xfshpwfx2pn"]
 
-[ext_resource type="Script" path="res://scripts/ui/lower_shelf.gd" id="1_shelf"]
+[ext_resource type="Script" uid="uid://coelu25a16wa7" path="res://scripts/ui/lower_shelf.gd" id="1_shelf"]
 [ext_resource type="PackedScene" uid="uid://b7iyv8d84t5rc" path="res://scenes/ui/card_binder.tscn" id="2_binder"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="3_font"]
 
@@ -8,6 +8,11 @@
 bg_color = Color(0.075, 0.046, 0.026, 1)
 border_width_right = 8
 border_color = Color(0.31, 0.18, 0.075, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_header"]
+bg_color = Color(0.13, 0.078, 0.038, 1)
+border_width_bottom = 4
+border_color = Color(0.53, 0.32, 0.135, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_slot"]
 bg_color = Color(0.045, 0.029, 0.018, 1)
@@ -23,13 +28,7 @@ corner_radius_bottom_left = 4
 shadow_color = Color(0, 0, 0, 0.55)
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBox_header"]
-bg_color = Color(0.13, 0.078, 0.038, 1)
-border_width_bottom = 4
-border_color = Color(0.53, 0.32, 0.135, 1)
-
 [node name="LowerShelf" type="Control" unique_id=829598332]
-visible = false
 custom_minimum_size = Vector2(650, 720)
 layout_mode = 3
 anchors_preset = 0
@@ -40,7 +39,7 @@ script = ExtResource("1_shelf")
 slot_paths = Array[NodePath]([NodePath("ShelfPanel/Slots/ShelfSlot01"), NodePath("ShelfPanel/Slots/ShelfSlot02"), NodePath("ShelfPanel/Slots/ShelfSlot03"), NodePath("ShelfPanel/Slots/ShelfSlot04"), NodePath("ShelfPanel/Slots/ShelfSlot05"), NodePath("ShelfPanel/Slots/ShelfSlot06"), NodePath("ShelfPanel/Slots/ShelfSlot07"), NodePath("ShelfPanel/Slots/ShelfSlot08"), NodePath("ShelfPanel/Slots/ShelfSlot09"), NodePath("ShelfPanel/Slots/ShelfSlot10")])
 initial_item_paths = Array[NodePath]([NodePath("SecondCardBinder")])
 
-[node name="ShelfPanel" type="Panel" parent="."]
+[node name="ShelfPanel" type="Panel" parent="." unique_id=1961906581]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +49,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_background")
 
-[node name="Header" type="Panel" parent="ShelfPanel"]
+[node name="Header" type="Panel" parent="ShelfPanel" unique_id=1202204726]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -61,14 +60,13 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_header")
 
-[node name="Title" type="Label" parent="ShelfPanel/Header"]
+[node name="Title" type="Label" parent="ShelfPanel/Header" unique_id=1777257716]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.88, 0.71, 0.4, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 22
@@ -76,7 +74,7 @@ text = "LOWER SHELVES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slots" type="GridContainer" parent="ShelfPanel"]
+[node name="Slots" type="GridContainer" parent="ShelfPanel" unique_id=67190716]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -92,15 +90,14 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 9
 columns = 2
 
-[node name="ShelfSlot01" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot01" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=2051893307]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot01"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot01" unique_id=667477783]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -108,15 +105,14 @@ text = "01"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot02" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot02" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=1636404700]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot02"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot02" unique_id=1470999486]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -124,15 +120,14 @@ text = "02"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot03" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot03" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=1668531769]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot03"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot03" unique_id=1705072243]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -140,15 +135,14 @@ text = "03"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot04" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot04" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=1617774455]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot04"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot04" unique_id=191729055]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -156,15 +150,14 @@ text = "04"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot05" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot05" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=637513829]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot05"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot05" unique_id=1762408479]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -172,15 +165,14 @@ text = "05"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot06" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot06" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=991411704]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot06"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot06" unique_id=1446781159]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -188,15 +180,14 @@ text = "06"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot07" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot07" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=807535017]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot07"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot07" unique_id=1053835077]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -204,15 +195,14 @@ text = "07"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot08" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot08" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=578828158]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot08"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot08" unique_id=204695307]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -220,15 +210,14 @@ text = "08"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot09" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot09" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=2006261462]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot09"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot09" unique_id=182942738]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -236,15 +225,14 @@ text = "09"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShelfSlot10" type="PanelContainer" parent="ShelfPanel/Slots"]
+[node name="ShelfSlot10" type="PanelContainer" parent="ShelfPanel/Slots" unique_id=799088659]
 custom_minimum_size = Vector2(294, 116)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBox_slot")
 
-[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot10"]
+[node name="Label" type="Label" parent="ShelfPanel/Slots/ShelfSlot10" unique_id=647656633]
 layout_mode = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.38, 0.23, 0.11, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
@@ -252,7 +240,7 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SecondCardBinder" parent="." instance=ExtResource("2_binder")]
+[node name="SecondCardBinder" parent="." unique_id=585806120 instance=ExtResource("2_binder")]
 layout_mode = 0
 offset_left = 75.0
 offset_top = 76.0
@@ -260,7 +248,7 @@ offset_right = 255.0
 offset_bottom = 186.0
 initial_card_ids = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 11])
 
-[node name="ReturnHoverStrip" type="ColorRect" parent="."]
+[node name="ReturnHoverStrip" type="ColorRect" parent="." unique_id=1663740000]
 z_index = 100
 layout_mode = 1
 anchors_preset = 10
@@ -271,14 +259,13 @@ grow_horizontal = 2
 mouse_default_cursor_shape = 8
 color = Color(0.48, 0.29, 0.12, 1)
 
-[node name="Hint" type="Label" parent="ReturnHoverStrip"]
+[node name="Hint" type="Label" parent="ReturnHoverStrip" unique_id=1823980015]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.96, 0.82, 0.53, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 11

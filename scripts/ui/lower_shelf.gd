@@ -21,6 +21,7 @@ func _ready() -> void:
 		_return_strip.mouse_entered.connect(_on_return_strip_mouse_entered)
 	if _drag_surface != null:
 		_drag_surface.drag_released.connect(_on_drag_released)
+		_drag_surface.child_exiting_tree.connect(_on_surface_child_exiting_tree)
 	call_deferred("_place_initial_items")
 
 
@@ -52,6 +53,12 @@ func release_held_item(draggable) -> void:
 	if item == null:
 		return
 	var slot_index := _find_item_slot(item)
+	if slot_index >= 0:
+		_slot_items[slot_index] = null
+
+
+func _on_surface_child_exiting_tree(item: Node) -> void:
+	var slot_index := _slot_items.find(item)
 	if slot_index >= 0:
 		_slot_items[slot_index] = null
 

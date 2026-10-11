@@ -16,4 +16,7 @@ static func card_image(file_name: String) -> String:
 
 
 static func card_frame(rarity_name: String) -> String:
+	# The existing common-rarity frame uses Cyrillic С (U+0421) in its filename.
+	if rarity_name == "C":
+		return CARD_FRAMES_DIR + "f\u0421.png"
 	return CARD_FRAMES_DIR + "f" + rarity_name + ".png"
