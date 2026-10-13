@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bhhq4tsco8icc" path="res://scripts/ui/customer_handoff_view.gd" id="10_handoff_view"]
 [ext_resource type="Script" uid="uid://djce8q1jtv5e2" path="res://scripts/ui/customer_speech_view.gd" id="11_speech_view"]
 [ext_resource type="PackedScene" uid="uid://2xfshpwfx2pn" path="res://scenes/gameplay/lower_shelf.tscn" id="12_lower_shelf"]
+[ext_resource type="PackedScene" uid="uid://b2xeul8i7hxjn" path="res://scenes/ui/draggable_card.tscn" id="13_mop2b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_visitor"]
 bg_color = Color(0.105, 0.11, 0.105, 1)
@@ -320,6 +321,13 @@ offset_right = 1285.0
 offset_bottom = 685.0
 desk_view_path = null
 counter_view_path = null
+
+[node name="DraggableCard" parent="DragSurface" unique_id=573639911 instance=ExtResource("13_mop2b")]
+layout_mode = 0
+offset_left = 561.9993
+offset_top = 266.0
+offset_right = 836.9993
+offset_bottom = 666.0
 
 [node name="LowerShelfHoverStrip" type="ColorRect" parent="." unique_id=256845799]
 z_index = 200

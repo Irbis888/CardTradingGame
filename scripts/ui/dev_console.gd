@@ -76,6 +76,8 @@ func execute_command(command_text: String) -> bool:
 			return true
 		"give_card":
 			return _give_card(int(parsed_arguments[0]))
+		"give_specimen":
+			return _give_card(int(parsed_arguments[0]), str(parsed_arguments[1]))
 		"customer_say":
 			return _customer_say(str(parsed_arguments[0]))
 		"customer_end":
@@ -207,8 +209,11 @@ func _write_usage(command_definition: Dictionary) -> void:
 	_write_line("Usage: %s" % str(command_definition.get("usage", "")))
 
 
-func _give_card(card_id: int) -> bool:
-	var card := CardDatabase.get_card_by_id(card_id)
+func _give_card(card_id: int, profile: String = "") -> bool:
+	if not profile.is_empty() and not CardDatabase.specimen_profiles.has(profile):
+		_write_line("Unknown profile. Available: %s" % ", ".join(CardDatabase.specimen_profiles.keys()))
+		return false
+	var card := CardDatabase.create_card_from_profile(card_id, profile)
 	if card == null:
 		_write_line("Card ID %d does not exist." % card_id)
 		return false

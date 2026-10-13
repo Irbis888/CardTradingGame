@@ -40,6 +40,8 @@ func receive_card(card: Card) -> void:
 			_request_dialogue("wrong_card", {"card": card.name})
 			card_return_requested.emit(card)
 			return
+		# The request only identifies a card type. Keep the delivered specimen.
+		_negotiation.card = card
 	else:
 		_negotiation = SellNegotiation.new(card, _customer)
 

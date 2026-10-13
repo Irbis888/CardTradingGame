@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d3cypyp7313y8" path="res://scenes/ui/card_view.tscn" id="2_card_view"]
 [ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="3_draggable"]
 [ext_resource type="FontFile" uid="uid://b74a0p8c8tqx7" path="res://assets/fonts/at01.ttf" id="4_font"]
+[ext_resource type="Script" path="res://scripts/ui/card_instance_inspector.gd" id="5_inspector"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_counter_card"]
 bg_color = Color(0.3, 0.32, 0.33, 1)
@@ -89,3 +90,6 @@ text_overrun_behavior = 3
 
 [node name="UIDraggable" parent="." unique_id=1438408778 instance=ExtResource("3_draggable")]
 follow_speed = 40.0
+
+[node name="InstanceInspector" type="Node" parent="."]
+script = ExtResource("5_inspector")

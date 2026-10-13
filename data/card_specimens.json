@@ -1,0 +1,67 @@
+{
+	"pristine": {},
+	"numbered_foil": {
+		"printing": 2,
+		"is_foil": true,
+		"art_variant": "standard",
+		"special_features": [
+			"Limited edition",
+			"Gold foil"
+		],
+		"serial_number": 17,
+		"serial_total": 100,
+		"signatures": [
+			"H. VIII"
+		],
+		"extra_stamps": [
+			"Royal Exhibition 2026"
+		]
+	},
+	"worn_conjured": {
+		"printing": 3,
+		"is_holo": true,
+		"condition": {
+			"wear": 2,
+			"scratches": 1,
+			"origin": "CONJURED"
+		}
+	},
+	"counterfeit": {
+		"printing": 2,
+		"condition": {
+			"factory_stamp": "INCORRECT",
+			"edge_perforation": "CORRECT",
+			"origin": "PHYSICAL"
+		}
+	},
+	"verified_physical": {
+		"printing": 1,
+		"condition": {
+			"wear": 1,
+			"conjuration_verification_hole": true
+		}
+	},
+	"text_misprint": {
+		"printing": 2,
+		"misprints": [
+			{
+				"type": "name",
+				"text": "Henri VIII"
+			},
+			{
+				"type": "biography",
+				"text": "Lorem ipsum dolor sit amet. This copy has an incorrectly printed biography."
+			}
+		]
+	},
+	"visual_misprint": {
+		"printing": 2,
+		"is_foil": true,
+		"misprints": [
+			{
+				"type": "foil_shift",
+				"description": "Foil registration shifted"
+			}
+		]
+	}
+}

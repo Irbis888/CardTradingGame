@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/card_instance_popup.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/fonts/at01.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_paper"]
+bg_color = Color(0.96, 0.93, 0.84, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.19, 0.12, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+
+[node name="CardInstancePopup" type="PanelContainer"]
+visible = false
+offset_right = 470.0
+offset_bottom = 780.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBox_paper")
+script = ExtResource("1_script")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="Body" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Margin/Body"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.18, 0.15, 0.11, 1)
+text = "Specimen"
+text_overrun_behavior = 3
+
+[node name="Identity" type="Label" parent="Margin/Body"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.38, 0.32, 0.23, 1)
+autowrap_mode = 3
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 1
+
+[node name="Rows" type="VBoxContainer" parent="Margin/Body/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6

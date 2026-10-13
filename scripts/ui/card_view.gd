@@ -19,6 +19,8 @@ const INK := Color(0.18, 0.15, 0.11)
 @onready var series_label: Label = $Faces/Back/SeriesLabel
 @onready var flip_button: Button = $FlipButton
 @onready var content: ScrollContainer = $Faces/Back/Content
+@onready var printing_label: Label = $Faces/Back/PrintingLabel
+@onready var specimen_text: VBoxContainer = $Faces/Back/Content/Body/SpecimenText
 
 var is_back := false
 var _flip_tween: Tween
@@ -38,17 +40,36 @@ func _exit_tree() -> void:
 
 func init(card: Card) -> void:
 	portrait.texture = card.picture as Texture2D
-	front_name.text = card.name
+	front_name.text = card.get_printed_name()
 	_update_name_plate()
-	back_name.text = card.name
-	description_label.text = card.description if not card.description.is_empty() else PLACEHOLDER_DESCRIPTION
+	back_name.text = card.get_printed_name()
+	var printed_description := card.get_printed_description()
+	description_label.text = printed_description if not printed_description.is_empty() else PLACEHOLDER_DESCRIPTION
 	series_label.text = card.series
+	printing_label.text = "P%d" % card.printing
+	if not card.get_serial_text().is_empty():
+		printing_label.text += "   ·   " + card.get_serial_text()
 	content.scroll_vertical = 0
 	for child in trivia_rows.get_children():
 		trivia_rows.remove_child(child)
 		child.queue_free()
 	for field in card.trivia:
 		_add_trivia_row(str(field), str(card.trivia[field]))
+	for child in specimen_text.get_children():
+		specimen_text.remove_child(child)
+		child.queue_free()
+	for signature in card.signatures:
+		_add_specimen_text("Signed: " + signature)
+	for stamp in card.extra_stamps:
+		_add_specimen_text(stamp)
+	specimen_text.visible = specimen_text.get_child_count() > 0
+
+
+func _add_specimen_text(text: String) -> void:
+	var label := _make_trivia_label(text)
+	label.add_theme_font_size_override("font_size", 30)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	specimen_text.add_child(label)
 
 
 func set_interactive(enabled: bool) -> void:

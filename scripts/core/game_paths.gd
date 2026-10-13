@@ -3,6 +3,7 @@ extends RefCounted
 
 
 const DATA_CARDS := "res://data/cards.json"
+const DATA_CARD_SPECIMENS := "res://data/card_specimens.json"
 const DATA_CARD_PRICES := "res://data/card_prices.json"
 const SAVE_CARD_PRICES := "user://card_prices.json"
 const DATA_TEXT := "res://data/text.json"

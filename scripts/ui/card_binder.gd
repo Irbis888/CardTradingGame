@@ -11,6 +11,7 @@ const DRAGGABLE_CARD_SCENE := preload("res://scenes/ui/draggable_card.tscn")
 
 @export_range(1, 24, 1) var page_count := 3
 @export var initial_card_ids: Array[int] = [38, 16, 24, 9, 17, 25, 10, 18, 26]
+@export var initial_specimen_profiles: Array[String] = ["numbered_foil", "worn_conjured"]
 
 @onready var previous_button: Button = $DeskView/PreviousButton
 @onready var next_button: Button = $DeskView/NextButton
@@ -150,7 +151,8 @@ func _initialize_collection() -> void:
 	_collection = CardCollection.new(page_count * SLOTS_PER_PAGE)
 	var maximum_initial_cards := mini(initial_card_ids.size(), _collection.get_capacity() / 2)
 	for card_index in range(maximum_initial_cards):
-		var card := CardDatabase.get_card_by_id(initial_card_ids[card_index])
+		var profile := initial_specimen_profiles[card_index] if card_index < initial_specimen_profiles.size() else ""
+		var card := CardDatabase.create_card_from_profile(initial_card_ids[card_index], profile)
 		if card != null:
 			_collection.store_at(card_index * 2, card)
 	set_item_payload(_collection)

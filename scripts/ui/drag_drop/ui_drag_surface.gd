@@ -160,6 +160,13 @@ func get_boundary_rect() -> Rect2:
 func _begin_drag(global_pointer: Vector2) -> void:
 	if not get_boundary_rect().has_point(global_pointer):
 		return
+	var picked = get_top_draggable_at(global_pointer)
+	if picked == null or not picked.contains_global_point(global_pointer):
+		return
+	_activate_draggable(picked, global_pointer)
+
+
+func get_top_draggable_at(global_pointer: Vector2):
 
 	var picked = null
 	for draggable in _draggables:
@@ -171,9 +178,7 @@ func _begin_drag(global_pointer: Vector2) -> void:
 		if picked == null or target.z_index >= picked.get_target().z_index:
 			picked = draggable
 
-	if picked == null or not picked.contains_global_point(global_pointer):
-		return
-	_activate_draggable(picked, global_pointer)
+	return picked
 
 
 func _activate_draggable(draggable, global_pointer: Vector2) -> void:

@@ -33,7 +33,11 @@ flowchart LR
     DB -->|владеет| Prices
     Card -->|get_price| Prices
     Prices -->|prices_changed| Catalog
-    DB -->|создаёт| Card[Card]
+    DB -->|загружает| Definition[CardDefinition]
+    DB -->|создаёт экземпляр| Card[Card]
+    Card --> Definition
+    Card --> Condition[CardCondition]
+    Profiles[card_specimens.json] --> DB
     DB -->|выдаёт| Binder[CardBinder]
     DB -->|выдаёт| Catalog[CardCatalog]
     DB -->|выдаёт| Generator[CustomerGenerator]
@@ -51,7 +55,7 @@ flowchart LR
 
 | Создатель | Когда | Где используется |
 |---|---|---|
-| `CardDatabase._load_cards()` | Один раз при запуске | Каталог, альбом, генератор клиентов, консоль и визуальные карты. |
+| `CardDatabase.create_card()` / `get_card_by_id()` | Каждый новый экземпляр | Альбом, консоль и новые игровые предметы. Общий `CardDefinition` загружается один раз через `_load_cards()`. |
 
 `Card` — не нода и не сцена, а объект с данными карты.
 

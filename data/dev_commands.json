@@ -4,7 +4,9 @@
 	"commands": [
 		{
 			"name": "quit",
-			"tokens": ["quit"],
+			"tokens": [
+				"quit"
+			],
 			"usage": "quit",
 			"description": "Close the game.",
 			"handler": "quit",
@@ -12,7 +14,10 @@
 		},
 		{
 			"name": "give_card",
-			"tokens": ["give", "card"],
+			"tokens": [
+				"give",
+				"card"
+			],
 			"usage": "give card <card_id>",
 			"description": "Spawn a draggable card by its ID.",
 			"handler": "give_card",
@@ -24,8 +29,31 @@
 			]
 		},
 		{
+			"name": "give_specimen",
+			"tokens": [
+				"give",
+				"specimen"
+			],
+			"usage": "give specimen <card_id> <profile>",
+			"description": "Spawn an independent specimen using a profile from card_specimens.json.",
+			"handler": "give_specimen",
+			"arguments": [
+				{
+					"name": "card_id",
+					"type": "int"
+				},
+				{
+					"name": "profile",
+					"type": "string"
+				}
+			]
+		},
+		{
 			"name": "customer_say",
-			"tokens": ["customer", "say"],
+			"tokens": [
+				"customer",
+				"say"
+			],
 			"usage": "customer say <text>",
 			"description": "Show a replica spoken by the current customer.",
 			"handler": "customer_say",
@@ -39,7 +67,10 @@
 		},
 		{
 			"name": "customer_end",
-			"tokens": ["customer", "end"],
+			"tokens": [
+				"customer",
+				"end"
+			],
 			"usage": "customer end",
 			"description": "End the current customer dialogue with a fade-out.",
 			"handler": "customer_end",
@@ -47,7 +78,10 @@
 		},
 		{
 			"name": "customer_spawn",
-			"tokens": ["customer", "spawn"],
+			"tokens": [
+				"customer",
+				"spawn"
+			],
 			"usage": "customer spawn <portrait> <patience> <money> <cards>",
 			"description": "Spawn customer data and fade in the selected M<number> portrait.",
 			"handler": "customer_spawn",
