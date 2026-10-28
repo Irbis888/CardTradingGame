@@ -76,6 +76,8 @@ func execute_command(command_text: String) -> bool:
 			return true
 		"give_card":
 			return _give_card(int(parsed_arguments[0]))
+		"give_money":
+			return _give_money(int(parsed_arguments[0]))
 		"give_specimen":
 			return _give_card(int(parsed_arguments[0]), str(parsed_arguments[1]))
 		"customer_say":
@@ -207,6 +209,15 @@ func _parse_arguments(
 
 func _write_usage(command_definition: Dictionary) -> void:
 	_write_line("Usage: %s" % str(command_definition.get("usage", "")))
+
+
+func _give_money(amount: int) -> bool:
+	if amount <= 0:
+		_write_line("Amount must be positive.")
+		return false
+	GameState.add_money(amount)
+	_write_line("Added $%d. Balance: $%d" % [amount, GameState.get_money()])
+	return true
 
 
 func _give_card(card_id: int, profile: String = "") -> bool:

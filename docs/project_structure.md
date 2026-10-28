@@ -379,6 +379,7 @@ classDiagram
 
 ```text
 quit
+give money <amount>
 give card <card_id>
 customer say <text>
 customer end

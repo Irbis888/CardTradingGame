@@ -13,6 +13,14 @@
 			"arguments": []
 		},
 		{
+			"name": "give_money",
+			"tokens": ["give", "money"],
+			"usage": "give money <amount>",
+			"description": "Add money to the shop balance.",
+			"handler": "give_money",
+			"arguments": [{"name": "amount", "type": "int"}]
+		},
+		{
 			"name": "give_card",
 			"tokens": [
 				"give",
