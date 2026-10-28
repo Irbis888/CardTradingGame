@@ -26,7 +26,6 @@ const MAX_DIGITS := 9
 	$DeskView/KeyboardDrawer/KeyboardSurface/Digit9,
 ]
 @onready var backspace_button: Button = $DeskView/KeyboardDrawer/KeyboardSurface/BackspaceButton
-@onready var ask_button: Button = $DeskView/KeyboardDrawer/KeyboardSurface/AskButton
 @onready var offer_button: Button = $DeskView/KeyboardDrawer/KeyboardSurface/OfferButton
 
 var _amount_digits := ""
@@ -66,7 +65,6 @@ func _connect_controls() -> void:
 	for button in digit_buttons:
 		button.pressed.connect(_append_digit.bind(button.text))
 	backspace_button.pressed.connect(_erase_last_digit)
-	ask_button.pressed.connect(_print_receipt.bind(&"ASK"))
 	offer_button.pressed.connect(_print_receipt.bind(&"OFFER"))
 
 
@@ -79,7 +77,6 @@ func _configure_interactive_controls() -> void:
 func _get_interactive_buttons() -> Array[Button]:
 	var buttons := digit_buttons.duplicate()
 	buttons.append(backspace_button)
-	buttons.append(ask_button)
 	buttons.append(offer_button)
 	return buttons
 

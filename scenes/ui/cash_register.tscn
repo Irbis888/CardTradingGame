@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/cash_register.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://scenes/ui/drag_drop/ui_draggable.tscn" id="2_draggable"]
@@ -111,18 +111,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBox_ask"]
-bg_color = Color(0.38, 0.43, 0.47, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.12, 0.14, 0.16, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxFlat" id="StyleBox_offer"]
 bg_color = Color(0.4, 0.47, 0.37, 1)
@@ -464,24 +452,10 @@ theme_override_styles/hover = SubResource("StyleBox_key_hover")
 theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
 text = "BACK"
 
-[node name="AskButton" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
-layout_mode = 0
-offset_left = 242.0
-offset_top = 18.0
-offset_right = 388.0
-offset_bottom = 85.0
-theme_override_colors/font_color = Color(0.06, 0.07, 0.075, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBox_ask")
-theme_override_styles/hover = SubResource("StyleBox_key_hover")
-theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
-text = "ASK"
-
 [node name="OfferButton" type="Button" parent="DeskView/KeyboardDrawer/KeyboardSurface"]
 layout_mode = 0
 offset_left = 242.0
-offset_top = 99.0
+offset_top = 18.0
 offset_right = 388.0
 offset_bottom = 166.0
 theme_override_colors/font_color = Color(0.06, 0.075, 0.055, 1)
@@ -490,7 +464,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBox_offer")
 theme_override_styles/hover = SubResource("StyleBox_key_hover")
 theme_override_styles/pressed = SubResource("StyleBox_key_pressed")
-text = "OFFER"
+text = "Offer"
 
 [node name="CounterView" type="Panel" parent="."]
 visible = false

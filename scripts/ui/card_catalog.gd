@@ -76,7 +76,7 @@ func _refresh_page() -> void:
 
 func _add_card_entry(card: Card) -> void:
 	var name_label := Label.new()
-	name_label.text = card.name
+	name_label.text = "%d. %s" % [card.id, card.name]
 	name_label.custom_minimum_size = Vector2(170.0, 24.0)
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	name_label.add_theme_font_override("font", CATALOG_FONT)

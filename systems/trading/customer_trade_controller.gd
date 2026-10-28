@@ -61,7 +61,7 @@ func receive_ask(receipt_type: StringName, amount: int) -> void:
 		_request_dialogue("ask_only")
 		return
 	_handle_negotiation_result(
-		_negotiation.submit_ask(amount, receipt_type == &"OFFER")
+		_negotiation.submit_ask(amount)
 	)
 
 
