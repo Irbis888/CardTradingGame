@@ -131,6 +131,15 @@ func get_stored_cards() -> Array[Card]:
 	return _collection.get_cards()
 
 
+func get_collection() -> CardCollection:
+	return _collection
+
+
+func refresh_storage() -> void:
+	page_count = maxi(1, ceili(float(_collection.get_capacity()) / SLOTS_PER_PAGE))
+	_refresh_page()
+
+
 func get_slot_cards() -> Array[Card]:
 	return _collection.get_slots()
 

@@ -6,6 +6,7 @@ signal money_changed(balance: int)
 const INITIAL_MONEY := 1000
 
 var _wallet := ShopWallet.new(INITIAL_MONEY)
+var day_cycle := DayCycleManager.new()
 
 
 func _ready() -> void:

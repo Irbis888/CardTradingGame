@@ -15,6 +15,16 @@ func get_capacity() -> int:
 	return _slots.size()
 
 
+func store_first_available(card: Card, growth: int = 6) -> bool:
+	if card == null:
+		return false
+	var index := _slots.find(null)
+	if index < 0:
+		index = _slots.size()
+		_slots.resize(index + maxi(growth, 1))
+	return store_at(index, card)
+
+
 func get_count() -> int:
 	var count := 0
 	for card in _slots:

@@ -3,8 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dr1aiig6cgfom" path="res://scenes/gameplay/shop_placeholder.tscn" id="1_shop"]
 [ext_resource type="PackedScene" uid="uid://cima7max6uau4" path="res://scenes/gameplay/trading_desk.tscn" id="2_desk"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dev_console.tscn" id="3_console"]
+[ext_resource type="Script" path="res://scripts/ui/day_cycle_screen.gd" id="4_cycle"]
 
 [node name="ShopTableScreen" type="Control" unique_id=290378006]
+script = ExtResource("4_cycle")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
